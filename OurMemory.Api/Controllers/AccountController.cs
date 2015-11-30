@@ -348,7 +348,7 @@ namespace OurMemory.Controllers
                 return GetErrorResult(createUserResult);
             }
 
-            var addRoleResult = await UserManager.AddToRoleAsync(user.Id, UserRoles.Guest);
+            var addRoleResult = await UserManager.AddToRoleAsync(user.Id, UserRoles.User);
 
             return !addRoleResult.Succeeded ? GetErrorResult(addRoleResult) : Ok();
         }

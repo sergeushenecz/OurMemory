@@ -29,8 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>App_Data/XmlDocument.xml</DocumentationFile>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -42,6 +41,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -312,6 +317,10 @@
     <ProjectReference Include="..\OurMemory.Domain\OurMemory.Domain.csproj">
       <Project>{e5bd802a-051c-45f9-ae9a-9533aacbee18}</Project>
       <Name>OurMemory.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OurMemory.Ioc\OurMemory.Ioc.csproj">
+      <Project>{0734e76b-5e4b-451b-aea0-002ec8f6d2e8}</Project>
+      <Name>OurMemory.Ioc</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
