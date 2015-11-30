@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using OurMemory.Data;
 
-namespace WebApplication1
+namespace OurMemory
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 
@@ -29,9 +29,9 @@ namespace WebApplication1
             {
                 RequiredLength = 6,
 //                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+//                RequireDigit = true,
+//                RequireLowercase = true,
+//                RequireUppercase = true,
             };
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)

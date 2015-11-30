@@ -11,11 +11,11 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using WebApplication1.Areas.HelpPage.ModelDescriptions;
-using WebApplication1.Areas.HelpPage.Models;
-using WebApplication1.Areas.HelpPage.SampleGeneration;
+using OurMemory.Areas.HelpPage.ModelDescriptions;
+using OurMemory.Areas.HelpPage.Models;
+using OurMemory.Areas.HelpPage.SampleGeneration;
 
-namespace WebApplication1.Areas.HelpPage
+namespace OurMemory.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

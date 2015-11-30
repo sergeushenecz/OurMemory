@@ -9,10 +9,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using OurMemory;
+using OurMemory.Controllers;
 using OurMemory.Data;
-using WebApplication1;
-using WebApplication1.Controllers;
-using WebApplication1.Models;
+using OurMemory.Models;
 
 namespace UnitTestProject1
 {

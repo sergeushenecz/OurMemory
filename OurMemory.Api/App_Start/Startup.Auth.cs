@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using OurMemory.Data;
+using OurMemory.Providers;
 using Owin;
-using WebApplication1.Providers;
-using WebApplication1.Models;
 
-namespace WebApplication1
+namespace OurMemory
 {
     public partial class Startup
     {
@@ -32,7 +29,7 @@ namespace WebApplication1
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/Token"),
+                TokenEndpointPath = new PathString("/api/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),

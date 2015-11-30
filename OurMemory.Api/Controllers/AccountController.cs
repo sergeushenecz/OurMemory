@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -13,16 +14,17 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using OurMemory.Data;
-using WebApplication1.Models;
-using WebApplication1.Providers;
-using WebApplication1.Results;
+using OurMemory.Domain;
+using OurMemory.Models;
+using OurMemory.Providers;
+using OurMemory.Results;
 
-namespace WebApplication1.Controllers
+namespace OurMemory.Controllers
 {
 
 
     [Authorize]
-   
+
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -346,7 +348,7 @@ namespace WebApplication1.Controllers
                 return GetErrorResult(createUserResult);
             }
 
-            var addRoleResult = await UserManager.AddToRoleAsync(user.Id, "Guest");
+            var addRoleResult = await UserManager.AddToRoleAsync(user.Id, UserRoles.Guest);
 
             return !addRoleResult.Succeeded ? GetErrorResult(addRoleResult) : Ok();
         }
@@ -415,7 +417,7 @@ namespace WebApplication1.Controllers
                 {
                     foreach (string error in result.Errors)
                     {
-                        ModelState.AddModelError("", error);
+                        ModelState.AddModelError("errors", error);
                     }
                 }
 

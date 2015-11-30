@@ -2,7 +2,7 @@
 using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
 
-namespace WebApplication1
+namespace OurMemory
 {
     public static class WebApiConfig
     {
@@ -15,7 +15,6 @@ namespace WebApplication1
 
             var cors = new EnableCorsAttribute("http://192.168.1.6:3000", "*", "*");
             config.EnableCors(cors);
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 

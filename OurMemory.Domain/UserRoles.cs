@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OurMemory.Domain
 {
-    public enum Role
+    public static class UserRoles
     {
-        
+        public static string Guest = "Guest";
     }
 }

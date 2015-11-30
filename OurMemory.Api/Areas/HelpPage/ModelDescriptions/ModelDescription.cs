@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApplication1.Areas.HelpPage.ModelDescriptions
+namespace OurMemory.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

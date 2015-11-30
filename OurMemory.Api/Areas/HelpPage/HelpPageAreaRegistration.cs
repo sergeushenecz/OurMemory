@@ -1,8 +1,8 @@
 using System.Web.Http;
 using System.Web.Mvc;
-using WebApplication1.Areas.HelpPage.App_Start;
+using OurMemory.Areas.HelpPage.App_Start;
 
-namespace WebApplication1.Areas.HelpPage
+namespace OurMemory.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

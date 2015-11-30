@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApplication1</RootNamespace>
-    <AssemblyName>WebApplication1</AssemblyName>
+    <RootNamespace>OurMemory</RootNamespace>
+    <AssemblyName>OurMemory</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -29,6 +29,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -305,6 +308,10 @@
     <ProjectReference Include="..\OurMemory.Data\OurMemory.Data.csproj">
       <Project>{4ccde6d8-d107-4682-a4d8-61ca6beb35a8}</Project>
       <Name>OurMemory.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OurMemory.Domain\OurMemory.Domain.csproj">
+      <Project>{e5bd802a-051c-45f9-ae9a-9533aacbee18}</Project>
+      <Name>OurMemory.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

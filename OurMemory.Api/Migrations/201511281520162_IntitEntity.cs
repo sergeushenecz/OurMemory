@@ -1,8 +1,7 @@
-namespace WebApplication1.Migrations
+using System.Data.Entity.Migrations;
+
+namespace OurMemory.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class IntitEntity : DbMigration
     {
         public override void Up()
