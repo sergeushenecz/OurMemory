@@ -24,6 +24,10 @@ namespace OurMemory
 
             container.Install(FromAssembly.This());
 
+            AutoMapperConfig mapperConfig = new AutoMapperConfig();
+
+            mapperConfig.Initialization();
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

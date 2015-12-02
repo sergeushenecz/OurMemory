@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -183,6 +186,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -220,16 +224,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VeteranController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511281520162_IntitEntity.cs" />
-    <Compile Include="Migrations\201511281520162_IntitEntity.Designer.cs">
-      <DependentUpon>201511281520162_IntitEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\VeteranBindingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -305,11 +306,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511281520162_IntitEntity.resx">
-      <DependentUpon>201511281520162_IntitEntity.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\OurMemory.Data\OurMemory.Data.csproj">
       <Project>{4ccde6d8-d107-4682-a4d8-61ca6beb35a8}</Project>
       <Name>OurMemory.Data</Name>
@@ -321,6 +317,10 @@
     <ProjectReference Include="..\OurMemory.Ioc\OurMemory.Ioc.csproj">
       <Project>{0734e76b-5e4b-451b-aea0-002ec8f6d2e8}</Project>
       <Name>OurMemory.Ioc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OurMemory.Service\OurMemory.Service.csproj">
+      <Project>{8698481e-2877-4df9-a53c-6ac71504c22e}</Project>
+      <Name>OurMemory.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

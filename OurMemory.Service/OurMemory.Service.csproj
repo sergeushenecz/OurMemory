@@ -39,7 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IVeteranService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VeteranService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OurMemory.Data\OurMemory.Data.csproj">
+      <Project>{4ccde6d8-d107-4682-a4d8-61ca6beb35a8}</Project>
+      <Name>OurMemory.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OurMemory.Domain\OurMemory.Domain.csproj">
+      <Project>{e5bd802a-051c-45f9-ae9a-9533aacbee18}</Project>
+      <Name>OurMemory.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
