@@ -8,6 +8,10 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using Microsoft.Practices.Unity;
+using OurMemory.Ioc;
+using OurMemory.Service;
+using OurMemory.Service.Interfaces;
 
 
 namespace OurMemory
@@ -20,20 +24,23 @@ namespace OurMemory
         
         protected void Application_Start()
         {
-            var container = new WindsorContainer();
-
-            container.Install(new WebApiInstaller());
+//            var container = new WindsorContainer();
+//
+//            container.Install(new WebApiInstaller());
 
             AutoMapperConfig mapperConfig = new AutoMapperConfig();
 
             mapperConfig.Initialization();
 
             AreaRegistration.RegisterAllAreas();
+            UnityConfig.RegisterComponents(); 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalConfiguration.Configuration.DependencyResolver = new DependencyResolver(container.Kernel);
+//            GlobalConfiguration.Configuration.DependencyResolver = new DependencyResolver(container.Kernel);
+
+          
         }
     }
 }

@@ -21,6 +21,11 @@ namespace OurMemory
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             app.UseCors(CorsOptions.AllowAll);
+
+         
+
+     
+
             ConfigureAuth(app);
         }
     }

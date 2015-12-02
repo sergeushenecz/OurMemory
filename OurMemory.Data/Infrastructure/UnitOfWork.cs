@@ -1,6 +1,6 @@
 ﻿namespace OurMemory.Data.Infrastructure
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly IDatabaseFactory databaseFactory;
         private ApplicationDbContext dataContext;

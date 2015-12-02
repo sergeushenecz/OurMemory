@@ -15,7 +15,8 @@ namespace OurMemory.Service
         {
             _veteranRepository = veteranRepository;
             _unitOfWork = unitOfWork;
-        }
+        } 
+
 
         #region IVeteranRepository Members
 

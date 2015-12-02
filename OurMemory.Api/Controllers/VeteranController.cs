@@ -15,10 +15,8 @@ namespace OurMemory.Controllers
             _veteranService = veteranService;
         }
 
+    
 
-        public VeteranController()
-        {
-        }
 
         public IEnumerable<string> Get()
         {
