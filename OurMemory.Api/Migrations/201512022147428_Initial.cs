@@ -1,8 +1,9 @@
-using System.Data.Entity.Migrations;
-
 namespace OurMemory.Migrations
 {
-    public partial class IntitEntity : DbMigration
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {

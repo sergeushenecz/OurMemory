@@ -16,6 +16,10 @@ namespace OurMemory.Controllers
         }
 
 
+        public VeteranController()
+        {
+        }
+
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };

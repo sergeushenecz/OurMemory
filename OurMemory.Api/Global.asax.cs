@@ -22,7 +22,7 @@ namespace OurMemory
         {
             var container = new WindsorContainer();
 
-            container.Install(FromAssembly.This());
+            container.Install(new WebApiInstaller());
 
             AutoMapperConfig mapperConfig = new AutoMapperConfig();
 

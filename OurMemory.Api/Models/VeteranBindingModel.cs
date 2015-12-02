@@ -5,16 +5,15 @@ namespace OurMemory.Models
 {
     public class VeteranBindingModel
     {
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string MidleName { get; set; }
-        string CountryLive { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MidleName { get; set; }
+        public string CountryLive { get; set; }
         [DataType(DataType.DateTime)]
-        DateTime DataBirh { get; set; }
-        [DataType(DataType.DateTime)]
-        string Сalled { get; set; }
-        string Front { get; set; }
-        byte[] ImageVeteran { get; set; }
-        string Description { get; set; } 
+        public DateTime DataBirh { get; set; }
+        public string Сalled { get; set; }
+        public string Front { get; set; }
+        public byte[] ImageVeteran { get; set; }
+        public string Description { get; set; }
     }
 }

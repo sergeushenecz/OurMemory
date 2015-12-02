@@ -1,7 +1,10 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using OurMemory.Data.Mapping;
+using OurMemory.Domain.Entities;
 
 namespace OurMemory.Data
 {
@@ -23,7 +26,14 @@ namespace OurMemory.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-       
+
+        DbSet<Veteran> Veterans { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new VeteranMap()); 
+        }
+
         public virtual void Commit()
         {
             base.SaveChanges();
