@@ -5,8 +5,10 @@ namespace OurMemory.Service.Interfaces
 {
     public interface IVeteranService
     {
-        void CreateVeteran(Veteran veteran);
+        void Add(Veteran veteran);
+        IEnumerable<Veteran> GetAll();
+        Veteran GetById(int id);
+
         void SaveVeteran();
-        IEnumerable<Veteran> GetAllVeterans();
     }
 }

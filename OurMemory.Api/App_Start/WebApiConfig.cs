@@ -1,10 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
-using Microsoft.Practices.Unity;
-using OurMemory.Ioc;
-using OurMemory.Service;
-using OurMemory.Service.Interfaces;
 
 namespace OurMemory
 {

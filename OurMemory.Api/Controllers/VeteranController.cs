@@ -17,13 +17,13 @@ namespace OurMemory.Controllers
 
         public IEnumerable<Veteran> Get()
         {
-            return _veteranService.GetAllVeterans();
+            return _veteranService.GetAll();
         }
 
 
-        public string Get(int id)
+        public Veteran Get(int id)
         {
-            return "value";
+            return _veteranService.GetById(id);
         }
 
 
@@ -31,8 +31,8 @@ namespace OurMemory.Controllers
         {
             var veteranModel = AutoMapper.Mapper.Map<Veteran>(veteran);
 
-            _veteranService.CreateVeteran(veteranModel);
-
+            _veteranService.Add(veteranModel);
+      
         }
 
 

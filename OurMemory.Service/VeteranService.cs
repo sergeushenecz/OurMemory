@@ -18,22 +18,27 @@ namespace OurMemory.Service
         }
 
 
-        #region IVeteranRepository Members
+        #region VeteranService Members
 
-        public void CreateVeteran(Veteran veteran)
+        public void Add(Veteran veteran)
         {
             _veteranRepository.Add(veteran);
             SaveVeteran();
         }
 
+        public Veteran GetById(int id)
+        {
+            return _veteranRepository.GetById(id);
+        }
+
+        public IEnumerable<Veteran> GetAll()
+        {
+            return _veteranRepository.GetAll();
+        }
+
         public void SaveVeteran()
         {
             _unitOfWork.Commit();
-        }
-
-        public IEnumerable<Veteran> GetAllVeterans()
-        {
-            return _veteranRepository.GetAll();
         }
 
         #endregion

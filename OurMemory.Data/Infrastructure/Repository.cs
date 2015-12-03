@@ -8,7 +8,7 @@ namespace OurMemory.Data.Infrastructure
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private EntityDbContext dataContext;
+        private ApplicationDbContext dataContext;
         private readonly IDbSet<T> dbset;
 
 
@@ -24,7 +24,7 @@ namespace OurMemory.Data.Infrastructure
             private set;
         }
 
-        protected EntityDbContext DataContext
+        protected ApplicationDbContext DataContext
         {
             get { return dataContext ?? (dataContext = DatabaseFactory.Get()); }
         }
