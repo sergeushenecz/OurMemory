@@ -1,5 +1,5 @@
-﻿using OurMemory.Data.Infrastructure;
-using OurMemory.Data.Interfaces;
+﻿using System.Collections.Generic;
+using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
 
@@ -8,14 +8,14 @@ namespace OurMemory.Service
     public class VeteranService : IVeteranService
     {
 
-        private readonly IVeteranRepository _veteranRepository;
+        private readonly IRepository<Veteran> _veteranRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public VeteranService(IVeteranRepository veteranRepository, IUnitOfWork unitOfWork)
+        public VeteranService(IRepository<Veteran> veteranRepository, IUnitOfWork unitOfWork)
         {
             _veteranRepository = veteranRepository;
             _unitOfWork = unitOfWork;
-        } 
+        }
 
 
         #region IVeteranRepository Members
@@ -31,6 +31,10 @@ namespace OurMemory.Service
             _unitOfWork.Commit();
         }
 
+        public IEnumerable<Veteran> GetAllVeterans()
+        {
+            return _veteranRepository.GetAll();
+        }
 
         #endregion
     }

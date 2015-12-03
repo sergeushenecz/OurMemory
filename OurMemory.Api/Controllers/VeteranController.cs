@@ -15,12 +15,9 @@ namespace OurMemory.Controllers
             _veteranService = veteranService;
         }
 
-    
-
-
-        public IEnumerable<string> Get()
+        public IEnumerable<Veteran> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _veteranService.GetAllVeterans();
         }
 
 

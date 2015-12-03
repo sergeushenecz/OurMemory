@@ -6,11 +6,13 @@ using System.Linq.Expressions;
 
 namespace OurMemory.Data.Infrastructure
 {
-    public class RepositoryBase<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
-        private ApplicationDbContext dataContext;
+        private EntityDbContext dataContext;
         private readonly IDbSet<T> dbset;
-        protected RepositoryBase(IDatabaseFactory databaseFactory)
+
+
+        public Repository(IDatabaseFactory databaseFactory)
         {
             DatabaseFactory = databaseFactory;
             dbset = DataContext.Set<T>();
@@ -22,7 +24,7 @@ namespace OurMemory.Data.Infrastructure
             private set;
         }
 
-        protected ApplicationDbContext DataContext
+        protected EntityDbContext DataContext
         {
             get { return dataContext ?? (dataContext = DatabaseFactory.Get()); }
         }
@@ -64,6 +66,6 @@ namespace OurMemory.Data.Infrastructure
         public T Get(Expression<Func<T, bool>> where)
         {
             return dbset.Where(where).FirstOrDefault<T>();
-        } 
+        }
     }
 }

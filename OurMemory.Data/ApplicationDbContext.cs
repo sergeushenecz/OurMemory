@@ -27,18 +27,6 @@ namespace OurMemory.Data
         {
         }
 
-        DbSet<Veteran> Veterans { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add(new VeteranMap()); 
-        }
-
-        public virtual void Commit()
-        {
-            base.SaveChanges();
-        }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

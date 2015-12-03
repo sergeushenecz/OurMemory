@@ -1,4 +1,5 @@
-﻿using OurMemory.Domain.Entities;
+﻿using System.Collections.Generic;
+using OurMemory.Domain.Entities;
 
 namespace OurMemory.Service.Interfaces
 {
@@ -6,5 +7,6 @@ namespace OurMemory.Service.Interfaces
     {
         void CreateVeteran(Veteran veteran);
         void SaveVeteran();
+        IEnumerable<Veteran> GetAllVeterans();
     }
 }

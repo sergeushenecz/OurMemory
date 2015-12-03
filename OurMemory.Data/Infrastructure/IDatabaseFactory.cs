@@ -2,6 +2,6 @@
 {
     public interface IDatabaseFactory
     {
-        ApplicationDbContext Get(); 
+        EntityDbContext Get(); 
     }
 }

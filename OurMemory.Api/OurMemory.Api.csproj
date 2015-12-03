@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -249,11 +250,12 @@
     <Compile Include="Migrations\201512022147428_Initial.Designer.cs">
       <DependentUpon>201512022147428_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512022150575_AddTable.cs" />
-    <Compile Include="Migrations\201512022150575_AddTable.Designer.cs">
-      <DependentUpon>201512022150575_AddTable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Entity\201512030918465_AddTableVeterans.cs" />
+    <Compile Include="Migrations\Entity\201512030918465_AddTableVeterans.Designer.cs">
+      <DependentUpon>201512030918465_AddTableVeterans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Entity\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\VeteranBindingModel.cs" />
@@ -353,8 +355,8 @@
     <EmbeddedResource Include="Migrations\201512022147428_Initial.resx">
       <DependentUpon>201512022147428_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512022150575_AddTable.resx">
-      <DependentUpon>201512022150575_AddTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Entity\201512030918465_AddTableVeterans.resx">
+      <DependentUpon>201512030918465_AddTableVeterans.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

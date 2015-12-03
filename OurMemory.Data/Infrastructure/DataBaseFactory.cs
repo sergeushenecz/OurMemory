@@ -2,10 +2,10 @@
 {
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
-        private ApplicationDbContext _dataContext;
-        public ApplicationDbContext Get()
+        private EntityDbContext _dataContext;
+        public EntityDbContext Get()
         {
-            return _dataContext ?? (_dataContext = new ApplicationDbContext());
+            return _dataContext ?? (_dataContext = new EntityDbContext());
         }
         protected override void DisposeCore()
         {

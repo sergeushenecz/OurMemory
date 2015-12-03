@@ -1,9 +1,9 @@
-namespace OurMemory.Migrations
+namespace OurMemory.Migrations.Entity
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddTable : DbMigration
+    public partial class AddTableVeterans : DbMigration
     {
         public override void Up()
         {
@@ -11,15 +11,15 @@ namespace OurMemory.Migrations
                 "dbo.Veterans",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         FirstName = c.String(),
                         LastName = c.String(),
                         MidleName = c.String(),
                         CountryLive = c.String(),
-                        DataBirh = c.DateTime(nullable: false).IsNullable,
+                        DataBirh = c.DateTime(nullable: true),
                         Сalled = c.String(),
                         Front = c.String(),
-                        ImageVeteran = c.Binary().IsNullable,
+                        ImageVeteran = c.Binary(),
                         Description = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
