@@ -10,8 +10,5 @@ namespace OurMemory.Data.Repositories
            : base(databaseFactory)
         {
         }
-
     }
-
-
 }

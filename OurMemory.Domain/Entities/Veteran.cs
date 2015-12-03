@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 
 namespace OurMemory.Domain.Entities
@@ -13,8 +13,13 @@ namespace OurMemory.Domain.Entities
         public DateTime? DataBirh { get; set; }
         public string Сalled { get; set; }
         public string Front { get; set; }
-        public byte[] ImageVeteran { get; set; }
         public string Description { get; set; }
 
+        public virtual ICollection<ImageVeteran> ImageVeterans { get; set; }
+
+        public Veteran()
+        {
+            ImageVeterans = new List<ImageVeteran>();
+        }
     }
 }

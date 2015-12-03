@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
+using Newtonsoft.Json;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
 using OurMemory.Service.Interfaces;
@@ -32,7 +36,7 @@ namespace OurMemory.Controllers
             var veteranModel = AutoMapper.Mapper.Map<Veteran>(veteran);
 
             _veteranService.Add(veteranModel);
-      
+
         }
 
 

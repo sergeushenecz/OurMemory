@@ -57,8 +57,10 @@ namespace OurMemory.Data.Infrastructure
         }
         public virtual IEnumerable<T> GetAll()
         {
-            return dbset.ToList();
+            var enumerable = dbset.ToList();
+            return enumerable;
         }
+
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
             return dbset.Where(where).ToList();

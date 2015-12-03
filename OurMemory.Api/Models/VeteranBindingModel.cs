@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using OurMemory.Domain.Entities;
 
 namespace OurMemory.Models
 {
@@ -13,7 +15,8 @@ namespace OurMemory.Models
         public DateTime DataBirh { get; set; }
         public string Сalled { get; set; }
         public string Front { get; set; }
-        public byte[] ImageVeteran { get; set; }
         public string Description { get; set; }
+
+        public IEnumerable<ImageVeteran> ImageVeterans { get; set; }
     }
 }

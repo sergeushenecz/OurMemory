@@ -255,6 +255,14 @@
     <Compile Include="Migrations\201512031035028_Init.Designer.cs">
       <DependentUpon>201512031035028_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512031354022_AddTableImageVeteran.cs" />
+    <Compile Include="Migrations\201512031354022_AddTableImageVeteran.Designer.cs">
+      <DependentUpon>201512031354022_AddTableImageVeteran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512031419326_ChangeColumnImageDataType.cs" />
+    <Compile Include="Migrations\201512031419326_ChangeColumnImageDataType.Designer.cs">
+      <DependentUpon>201512031419326_ChangeColumnImageDataType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -350,6 +358,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512031035028_Init.resx">
       <DependentUpon>201512031035028_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512031354022_AddTableImageVeteran.resx">
+      <DependentUpon>201512031354022_AddTableImageVeteran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512031419326_ChangeColumnImageDataType.resx">
+      <DependentUpon>201512031419326_ChangeColumnImageDataType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

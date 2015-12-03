@@ -17,8 +17,9 @@ namespace OurMemory.Data.Mapping
             this.Property(x => x.Description);
             this.Property(x => x.Front);
             this.Property(x => x.Сalled);
-            this.Property(x => x.ImageVeteran);
-            
+
+
+            HasMany(x => x.ImageVeterans);
         }
     }
 }
