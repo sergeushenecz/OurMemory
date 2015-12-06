@@ -57,7 +57,8 @@ namespace OurMemory.Data.Infrastructure
         }
         public virtual IEnumerable<T> GetAll()
         {
-            var enumerable = dbset.ToList();
+            List<T> enumerable = dbset.ToList();
+
             return enumerable;
         }
 

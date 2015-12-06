@@ -11,9 +11,9 @@ namespace OurMemory.Data.Mapping
 
             this.Property(x => x.FirstName);
             this.Property(x => x.LastName);
-            this.Property(x => x.MidleName);
+            this.Property(x => x.MiddleName);
             this.Property(x => x.CountryLive);
-            this.Property(x => x.DataBirh);
+            this.Property(x => x.DataBirth);
             this.Property(x => x.Description);
             this.Property(x => x.Front);
             this.Property(x => x.Сalled);

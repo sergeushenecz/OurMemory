@@ -13,7 +13,7 @@ namespace OurMemory.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512031035028_Init"; }
+            get { return "201512051036052_Init"; }
         }
         
         string IMigrationMetadata.Source

@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace OurMemory.Domain.Entities
 {
-    public class Veteran : Base
+    public class  Veteran : Base
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string MidleName { get; set; }
+        public string MiddleName { get; set; }
         public string CountryLive { get; set; }
-        public DateTime? DataBirh { get; set; }
+        public DateTime? DataBirth { get; set; }
         public string Сalled { get; set; }
         public string Front { get; set; }
         public string Description { get; set; }

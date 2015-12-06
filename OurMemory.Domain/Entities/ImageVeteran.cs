@@ -6,9 +6,9 @@ namespace OurMemory.Domain.Entities
 {
     public class ImageVeteran : Base
     {
-        public byte[] ImageData { get; set; }
+        public string ImageOriginal { get; set; }
+        public string ThumbnailImage { get; set; }
         public string ImageMimeType { get; set; }
-        [JsonIgnore]
         public Veteran Veteran { get; set; }
 
     }
