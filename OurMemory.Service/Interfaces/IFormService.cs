@@ -6,7 +6,7 @@ namespace OurMemory.Service.Interfaces
 {
     public interface IFormService<in T>
     {
-        Dictionary<string, string> SetDataFromForm(HttpContext context);
+        Dictionary<string, string> GetDataFromForm(HttpContext context);
         Veteran MapperDataVeteran(Dictionary<string, string> dictionaryDataFromForm);
     }
 }

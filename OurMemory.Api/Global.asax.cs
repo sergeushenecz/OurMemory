@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.IO;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -11,6 +13,7 @@ namespace OurMemory
     {
         private static IWindsorContainer container;
 
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
         protected void Application_Start()
@@ -28,6 +31,14 @@ namespace OurMemory
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
+            log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
+
+        }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            logger.Error(ex);
         }
     }
 }

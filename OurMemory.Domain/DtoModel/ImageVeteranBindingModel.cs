@@ -1,4 +1,4 @@
-﻿namespace OurMemory.Models.Veteran
+﻿namespace OurMemory.Domain.DtoModel
 {
     public class ImageVeteranBindingModel
     {

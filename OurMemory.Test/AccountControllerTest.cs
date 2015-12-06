@@ -12,6 +12,7 @@ using Moq;
 using OurMemory;
 using OurMemory.Controllers;
 using OurMemory.Data;
+using OurMemory.Domain.Entities;
 using OurMemory.Models;
 
 namespace UnitTestProject1
@@ -22,7 +23,7 @@ namespace UnitTestProject1
         [TestMethod]
         public async Task RegisterSuccsess()
         {
-            var userStore = new Mock<UserStore<ApplicationUser>>();
+            var userStore = new Mock<UserStore<User>>();
             Mock<ApplicationUserManager> userManager = new Mock<ApplicationUserManager>(userStore.Object);
 
             var registerBindingModel = new RegisterBindingModel()
@@ -32,11 +33,11 @@ namespace UnitTestProject1
                ConfirmPassword = "f12uch12345Q1212z121123"
            };
 
-            userManager.Setup(x => x.CreateAsync(It.IsAny<ApplicationUser>(), registerBindingModel.Password)).ReturnsAsync(IdentityResult.Success);
+            userManager.Setup(x => x.CreateAsync(It.IsAny<User>(), registerBindingModel.Password)).ReturnsAsync(IdentityResult.Success);
 
             userManager.Setup(x => x.AddToRoleAsync(It.IsAny<string>(), "Guest"));
 
-            var accountController = new AccountController(userManager.Object, null) { Request = new HttpRequestMessage() };
+            var accountController = new AccountController(userManager.Object) { Request = new HttpRequestMessage() };
 
             IHttpActionResult register = accountController.Register(registerBindingModel).Result;
 

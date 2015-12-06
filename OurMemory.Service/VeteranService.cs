@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
@@ -22,7 +23,12 @@ namespace OurMemory.Service
 
         public void Add(Veteran veteran)
         {
+            User user = new User();
+
+            
             _veteranRepository.Add(veteran);
+
+          
             SaveVeteran();
         }
 

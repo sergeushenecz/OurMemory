@@ -15,6 +15,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using OurMemory.Data;
 using OurMemory.Domain;
+using OurMemory.Domain.Entities;
 using OurMemory.Models;
 using OurMemory.Providers;
 using OurMemory.Results;
@@ -31,15 +32,10 @@ namespace OurMemory.Controllers
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+        public AccountController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
-            AccessTokenFormat = accessTokenFormat;
+
         }
 
         public ApplicationUserManager UserManager
@@ -260,7 +256,7 @@ namespace OurMemory.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            User user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -338,7 +334,7 @@ namespace OurMemory.Controllers
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            User user = new User() { UserName = model.Email, Email = model.Email };
 
             IdentityResult createUserResult = await UserManager.CreateAsync(user, model.Password);
 
@@ -370,7 +366,7 @@ namespace OurMemory.Controllers
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)

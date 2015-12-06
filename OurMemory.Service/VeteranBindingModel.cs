@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace OurMemory.Models.Veteran
+namespace OurMemory.Service
 {
     public class VeteranBindingModel
     {

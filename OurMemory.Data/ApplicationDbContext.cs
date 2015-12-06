@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
 using System.Runtime.InteropServices;
@@ -12,18 +13,9 @@ using OurMemory.Domain.Entities;
 namespace OurMemory.Data
 {
 
-    public class ApplicationUser : IdentityUser
-    {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
-            // Add custom user claims here
-            return userIdentity;
-        }
-    }
+    
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -41,7 +33,7 @@ namespace OurMemory.Data
 
 
             // Needed to ensure subclasses share the same table
-            var user = modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers");
+            var user = modelBuilder.Entity<User>().ToTable("AspNetUsers");
             user.HasMany(u => u.Roles).WithRequired().HasForeignKey(ur => ur.UserId);
             user.HasMany(u => u.Claims).WithRequired().HasForeignKey(uc => uc.UserId);
             user.HasMany(u => u.Logins).WithRequired().HasForeignKey(ul => ul.UserId);

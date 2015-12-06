@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
-using OurMemory.Models.Veteran;
 
 namespace OurMemory
 {

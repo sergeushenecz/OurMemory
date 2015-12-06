@@ -12,14 +12,20 @@ namespace OurMemory.Data.Mapping
             this.Property(x => x.FirstName);
             this.Property(x => x.LastName);
             this.Property(x => x.MiddleName);
-            this.Property(x => x.CountryLive);
-            this.Property(x => x.DataBirth);
+            this.Property(x => x.DateBirth);
+            this.Property(x => x.BirthPlace);
+            this.Property(x => x.DateDeath);
+            this.Property(x => x.Latitude);
+            this.Property(x => x.Longitude);
+            this.Property(x => x.Called);
+            this.Property(x => x.Awards);
+            this.Property(x => x.Troops);
             this.Property(x => x.Description);
-            this.Property(x => x.Front);
-            this.Property(x => x.Сalled);
 
 
-            HasMany(x => x.ImageVeterans);
+            this.HasMany(x => x.Images);
+
+//            HasRequired(x => x.User);
         }
     }
 }

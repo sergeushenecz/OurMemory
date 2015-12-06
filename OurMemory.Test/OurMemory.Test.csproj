@@ -137,6 +137,10 @@
       <Project>{809c17b7-7236-4dd0-b425-ce0ca73e6023}</Project>
       <Name>OurMemory.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OurMemory.Domain\OurMemory.Domain.csproj">
+      <Project>{E5BD802A-051C-45F9-AE9A-9533AACBEE18}</Project>
+      <Name>OurMemory.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

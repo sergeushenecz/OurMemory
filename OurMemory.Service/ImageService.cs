@@ -48,5 +48,7 @@ namespace OurMemory.Service
             }
             return byteArray;
         }
+
+        public void SaveFiles() { }
     }
 }

@@ -1,4 +1,4 @@
-namespace OurMemory.Migrations
+﻿namespace OurMemory.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -8,7 +8,7 @@ namespace OurMemory.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.ImageVeterans",
+                "dbo.Images",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -115,21 +115,21 @@ namespace OurMemory.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.ImageVeterans", "Veteran_Id", "dbo.Veterans");
+            DropForeignKey("dbo.Images", "Veteran_Id", "dbo.Veterans");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.ImageVeterans", new[] { "Veteran_Id" });
+            DropIndex("dbo.Images", new[] { "Veteran_Id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Veterans");
-            DropTable("dbo.ImageVeterans");
+            DropTable("dbo.Images");
         }
     }
 }

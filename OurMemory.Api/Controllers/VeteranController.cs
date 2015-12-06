@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using AutoMapper;
+using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
-using OurMemory.Models.Veteran;
 using OurMemory.Service.Interfaces;
 
 namespace OurMemory.Controllers
@@ -35,14 +35,18 @@ namespace OurMemory.Controllers
             return veteranBindingModels;
         }
 
-        public Veteran Get(int id)
+        public VeteranBindingModel Get(int id)
         {
-            return _veteranService.GetById(id);
+            var veteran = _veteranService.GetById(id);
+
+            var veteranBindingModels = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
+
+            return veteranBindingModels;
         }
 
         public IEnumerable<VeteranBindingModel> GetVeterans(int pageIndex, int pageise)
         {
-            var veterans = _veteranService.GetAll().Skip(pageIndex*pageise).Take(pageise);
+            var veterans = _veteranService.GetAll().Skip(pageIndex * pageise).Take(pageise);
 
             var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
 
@@ -52,7 +56,6 @@ namespace OurMemory.Controllers
 
         public async Task<IHttpActionResult> Post()
         {
-
             //TODO Refactor
             if (!Request.Content.IsMimeMultipartContent())
             {
@@ -65,10 +68,12 @@ namespace OurMemory.Controllers
 
             await Request.Content.ReadAsMultipartAsync(provider);
 
-            var dictionaryFormData = _formService.SetDataFromForm(HttpContext.Current);
+            var dictionaryFormData = _formService.GetDataFromForm(HttpContext.Current);
 
-
-            var imageUrl = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.ApplicationPath + "Content/Files";
+            var imageUrl = HttpContext.Current.Request.Url.Scheme +
+                "://"
+                + HttpContext.Current.Request.Url.Authority
+                + HttpContext.Current.Request.ApplicationPath + "Content/Files";
 
             var veteran = _formService.MapperDataVeteran(dictionaryFormData);
 
@@ -77,20 +82,20 @@ namespace OurMemory.Controllers
 
             if (ModelState.IsValid)
             {
-                List<ImageFilesVeteran> imageFilesVeterans = new List<ImageFilesVeteran>();
+                List<ImageVeteranBindingModel> imageFilesVeterans = new List<ImageVeteranBindingModel>();
 
                 foreach (var file in provider.Contents)
                 {
-                    if (file.Headers.ContentDisposition.Name.Trim('\"').Contains("file"))
+                    if (file.Headers.ContentDisposition.Name.Trim('\"').Contains("images"))
                     {
-                        var filesVeteran = new ImageFilesVeteran();
+                        var filesVeteran = new ImageVeteranBindingModel();
 
                         var filename = Guid.NewGuid() + ".jpg";
                         var thumpImageFilename = Guid.NewGuid() + ".jpg";
 
 
-                        filesVeteran.ImageFile = filename;
-                        filesVeteran.ThumpImageFile = thumpImageFilename;
+                        filesVeteran.ImageOriginal = filename;
+                        filesVeteran.ThumbnailImage = thumpImageFilename;
 
                         imageFilesVeterans.Add(filesVeteran);
 
@@ -98,7 +103,7 @@ namespace OurMemory.Controllers
 
                         using (FileStream fs = new FileStream(root + filename, FileMode.Create))
                         {
-                            await fs.WriteAsync(fileArray, 0, fileArray.Length);
+                            fs.Write(fileArray, 0, fileArray.Length);
                         }
 
                         using (
@@ -112,7 +117,7 @@ namespace OurMemory.Controllers
 
                             var imageToByte = _imageService.ImageToByte(resizeImage);
 
-                            await fs.WriteAsync(imageToByte, 0, imageToByte.Length);
+                            fs.Write(imageToByte, 0, imageToByte.Length);
                         }
                     }
                 }
@@ -121,11 +126,11 @@ namespace OurMemory.Controllers
                 {
                     ImageVeteran imageVeteran = new ImageVeteran
                     {
-                        ImageOriginal = imageUrl + @"/" + file.ImageFile,
-                        ThumbnailImage = imageUrl + @"/" + file.ThumpImageFile
+                        ImageOriginal = imageUrl + @"/" + file.ImageOriginal,
+                        ThumbnailImage = imageUrl + @"/" + file.ThumbnailImage
                     };
 
-                    veteran.ImageVeterans.Add(imageVeteran);
+                    veteran.Images.Add(imageVeteran);
 
                     imageVeteran.Veteran = veteran;
                 }
@@ -136,10 +141,9 @@ namespace OurMemory.Controllers
 
                 return Ok(veteranBindingModel);
             }
+
             return BadRequest(ModelState);
         }
-
-
 
         public string Put(int id, [FromBody]string value)
         {

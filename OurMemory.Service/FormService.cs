@@ -5,7 +5,6 @@ using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
 using OurMemory.Domain.Entities;
-using OurMemory.Models.Veteran;
 using OurMemory.Service.Interfaces;
 
 namespace OurMemory.Service
@@ -13,7 +12,7 @@ namespace OurMemory.Service
     public class FormService<T> : IFormService<T> where T : class, new()
     {
 
-        public Dictionary<string, string> SetDataFromForm(HttpContext context)
+        public Dictionary<string, string> GetDataFromForm(HttpContext context)
         {
             var propertyInfos = typeof(T).GetProperties();
 
@@ -22,7 +21,9 @@ namespace OurMemory.Service
 
             foreach (var propertyInfo in propertyInfos)
             {
-                var value = context.Request.Form[propertyInfo.Name];
+                string propertyName = propertyInfo.Name;
+
+                var value = context.Request.Form[propertyName];
 
                 if (value != null)
                 {
@@ -39,21 +40,19 @@ namespace OurMemory.Service
         {
             var veteran = new Veteran
             {
-
+                FirstName = dictionaryDataFromForm["FirstName"],
+                LastName = dictionaryDataFromForm["LastName"],
+                MiddleName = dictionaryDataFromForm["MiddleName"],
+                Description = dictionaryDataFromForm["Description"],
+                DateBirth = Convert.ToDateTime(dictionaryDataFromForm["DateBirth"]),
+                BirthPlace = dictionaryDataFromForm["BirthPlace"],
+                DateDeath = Convert.ToDateTime(dictionaryDataFromForm["DateDeath"]),
+                Latitude = Convert.ToDouble(dictionaryDataFromForm["Latitude"]),
+                Longitude = Convert.ToDouble(dictionaryDataFromForm["Longitude"]),
+                Called = Convert.ToDateTime(dictionaryDataFromForm["Called"]),
+                Awards = dictionaryDataFromForm["Awards"],
+                Troops = dictionaryDataFromForm["Troops"]
             };
-
-
-
-            veteran.FirstName = dictionaryDataFromForm["FirstName"];
-
-            veteran.LastName = dictionaryDataFromForm["LastName"];
-//            veteran.MiddleName = dictionaryDataFromForm["MiddleName"];
-//            veteran.Description = dictionaryDataFromForm["Description"];
-//            veteran.DataBirth = Convert.ToDateTime(dictionaryDataFromForm["DataBirth"]);
-//            veteran.Front = dictionaryDataFromForm["Front"];
-//            veteran.Сalled = dictionaryDataFromForm["Сalled"];
-//            veteran.CountryLive = dictionaryDataFromForm["CountryLive"];
-
 
             return veteran;
 

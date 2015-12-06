@@ -481,10 +481,5 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="T:OurMemory.Controllers.ValuesController">
-            <summary>
-            Values COntroller
-            </summary>
-        </member>
     </members>
 </doc>
