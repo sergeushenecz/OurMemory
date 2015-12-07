@@ -20,6 +20,8 @@ namespace OurMemory.Domain.Entities
         public string Troops { get; set; }
         public string Description { get; set; }
 
+        public int Views { get; set; }
+
         public virtual ICollection<ImageVeteran> Images { get; set; }
 
         public virtual User User { get; set; }

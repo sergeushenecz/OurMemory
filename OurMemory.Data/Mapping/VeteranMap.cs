@@ -21,6 +21,7 @@ namespace OurMemory.Data.Mapping
             this.Property(x => x.Awards);
             this.Property(x => x.Troops);
             this.Property(x => x.Description);
+            this.Property(x => x.Views);
 
 
             this.HasMany(x => x.Images);

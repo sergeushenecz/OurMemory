@@ -39,6 +39,10 @@ namespace OurMemory.Controllers
         {
             var veteran = _veteranService.GetById(id);
 
+            veteran.Views++;
+
+            _veteranService.SaveVeteran();
+
             var veteranBindingModels = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
 
             return veteranBindingModels;
@@ -82,45 +86,8 @@ namespace OurMemory.Controllers
 
             if (ModelState.IsValid)
             {
-                List<ImageVeteranBindingModel> imageFilesVeterans = new List<ImageVeteranBindingModel>();
+                var imageFilesVeterans = _imageService.SaveFiles(provider, root);
 
-                foreach (var file in provider.Contents)
-                {
-                    if (file.Headers.ContentDisposition.Name.Trim('\"').Contains("images"))
-                    {
-                        var filesVeteran = new ImageVeteranBindingModel();
-
-                        var filename = Guid.NewGuid() + ".jpg";
-                        var thumpImageFilename = Guid.NewGuid() + ".jpg";
-
-
-                        filesVeteran.ImageOriginal = filename;
-                        filesVeteran.ThumbnailImage = thumpImageFilename;
-
-                        imageFilesVeterans.Add(filesVeteran);
-
-                        byte[] fileArray = await file.ReadAsByteArrayAsync();
-
-                        using (FileStream fs = new FileStream(root + filename, FileMode.Create))
-                        {
-                            fs.Write(fileArray, 0, fileArray.Length);
-                        }
-
-                        using (
-                            FileStream fs = new FileStream(root + thumpImageFilename,
-                                FileMode.Create))
-                        {
-                            MemoryStream ms = new MemoryStream(fileArray);
-                            Image image = Image.FromStream(ms);
-
-                            Bitmap resizeImage = _imageService.ResizeImage(image, 200, 200);
-
-                            var imageToByte = _imageService.ImageToByte(resizeImage);
-
-                            fs.Write(imageToByte, 0, imageToByte.Length);
-                        }
-                    }
-                }
 
                 foreach (var file in imageFilesVeterans)
                 {

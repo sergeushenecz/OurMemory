@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201512062043573_AddAdditionalFields.Designer.cs">
       <DependentUpon>201512062043573_AddAdditionalFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512071745494_AddFieldViews.cs" />
+    <Compile Include="Migrations\201512071745494_AddFieldViews.Designer.cs">
+      <DependentUpon>201512071745494_AddFieldViews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512062043573_AddAdditionalFields.resx">
       <DependentUpon>201512062043573_AddAdditionalFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512071745494_AddFieldViews.resx">
+      <DependentUpon>201512071745494_AddFieldViews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
