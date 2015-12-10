@@ -7,9 +7,9 @@ namespace OurMemory.Service.Interfaces
 {
     public interface IImageService
     {
-        Bitmap ResizeImage(Image image, int width, int height);
+        Image ResizeImage(Image image, Size size, bool preserveAspectRatio = true);
         byte[] ImageToByte(Image img);
 
-        List<ImageVeteranBindingModel> SaveFiles(MultipartMemoryStreamProvider provider, string root);
+        List<ImageVeteranBindingModel> SaveImages(MultipartMemoryStreamProvider provider, string root, ref Dictionary<string, string> errors);
     }
 }

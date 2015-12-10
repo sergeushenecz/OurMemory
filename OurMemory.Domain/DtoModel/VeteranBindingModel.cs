@@ -6,7 +6,6 @@ namespace OurMemory.Domain.DtoModel
 {
     public class VeteranBindingModel
     {
-
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -24,7 +23,6 @@ namespace OurMemory.Domain.DtoModel
         public string Troops { get; set; }
         public string Description { get; set; }
         public int Views { get; set; }
-
         public virtual IEnumerable<ImageVeteranBindingModel> Images { get; set; }
 
         public VeteranBindingModel()

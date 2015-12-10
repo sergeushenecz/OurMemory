@@ -23,10 +23,9 @@ namespace OurMemory.Data.Mapping
             this.Property(x => x.Description);
             this.Property(x => x.Views);
 
-
             this.HasMany(x => x.Images);
 
-//            HasRequired(x => x.User);
+            HasRequired(x => x.User);
         }
     }
 }

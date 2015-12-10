@@ -30,9 +30,10 @@ namespace OurMemory.Controllers
     public class AccountController : BaseController
     {
         private const string LocalLoginProvider = "Local";
-        private ApplicationUserManager _userManager;
+
 
         public AccountController(ApplicationUserManager userManager)
+            : base(userManager)
         {
             UserManager = userManager;
 

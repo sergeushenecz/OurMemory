@@ -11,7 +11,7 @@ namespace OurMemory.Service
 
         private readonly IRepository<Veteran> _veteranRepository;
         private readonly IUnitOfWork _unitOfWork;
-
+       
         public VeteranService(IRepository<Veteran> veteranRepository, IUnitOfWork unitOfWork)
         {
             _veteranRepository = veteranRepository;
@@ -23,18 +23,20 @@ namespace OurMemory.Service
 
         public void Add(Veteran veteran)
         {
-            User user = new User();
-
-            
             _veteranRepository.Add(veteran);
 
-          
             SaveVeteran();
         }
 
         public Veteran GetById(int id)
         {
             return _veteranRepository.GetById(id);
+        }
+
+        public void UpdateVeteran(Veteran veteran)
+        {
+            _veteranRepository.Update(veteran);
+            SaveVeteran();
         }
 
         public IEnumerable<Veteran> GetAll()

@@ -8,6 +8,7 @@ namespace OurMemory.Service.Interfaces
         void Add(Veteran veteran);
         IEnumerable<Veteran> GetAll();
         Veteran GetById(int id);
+        void UpdateVeteran(Veteran veteran);
 
         void SaveVeteran();
     }

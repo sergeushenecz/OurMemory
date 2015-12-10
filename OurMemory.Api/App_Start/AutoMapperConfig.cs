@@ -18,11 +18,7 @@ namespace OurMemory
 
         private void ConfigurateModelToBindingModel()
         {
-            AutoMapper.Mapper.CreateMap<ImageVeteran, ImageVeteranBindingModel>()
-                .ForMember(x=>x.ImageOriginal,opt=>opt.MapFrom(x=>x.ImageOriginal))
-                .ForMember(x=>x.ThumbnailImage,opt=>opt.MapFrom(x=>x.ThumbnailImage));
-
-           
+            AutoMapper.Mapper.CreateMap<ImageVeteran, ImageVeteranBindingModel>();
 
             AutoMapper.Mapper.CreateMap<Veteran, VeteranBindingModel>();
 
@@ -31,6 +27,8 @@ namespace OurMemory
 
         private void ConfigurateBindingModelToModel()
         {
+            AutoMapper.Mapper.CreateMap<ImageVeteranBindingModel, ImageVeteran>();
+
             AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>();
         }
     }

@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
-using System.Runtime.InteropServices;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OurMemory.Data.Mapping;
 using OurMemory.Domain.Entities;
@@ -13,17 +8,19 @@ using OurMemory.Domain.Entities;
 namespace OurMemory.Data
 {
 
-    
+
 
     public class ApplicationDbContext : IdentityDbContext<User>
     {
+     
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
+
         }
+
         public DbSet<Veteran> Veterans { get; set; }
         public DbSet<ImageVeteran> ImageVeterans { get; set; }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -50,6 +47,7 @@ namespace OurMemory.Data
                 .ToTable("AspNetUserRoles");
 
             modelBuilder.Entity<IdentityUserLogin>()
+
                 .HasKey(l => new { l.LoginProvider, l.ProviderKey, l.UserId })
                 .ToTable("AspNetUserLogins");
 
@@ -66,9 +64,9 @@ namespace OurMemory.Data
 
         }
 
-
+        
         public static ApplicationDbContext Create()
-        {
+        {            
             return new ApplicationDbContext();
         }
 
