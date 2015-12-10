@@ -23,6 +23,7 @@ namespace OurMemory.Domain.DtoModel
         public string Troops { get; set; }
         public string Description { get; set; }
         public int Views { get; set; }
+        public string FullName { get; set; }
         public virtual IEnumerable<ImageVeteranBindingModel> Images { get; set; }
 
         public VeteranBindingModel()

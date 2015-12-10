@@ -2,9 +2,13 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Results;
 using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -24,42 +28,17 @@ namespace UnitTestProject1
     [TestClass]
     public class VeteranControllerTest
     {
-        private Fixture _fixture;
+        private readonly Fixture _fixture;
         public VeteranControllerTest()
         {
             _fixture = new Fixture();
         }
 
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
         public void Initialize()
         {
             AutoMapper.Mapper.CreateMap<ImageVeteran, ImageVeteranBindingModel>();
             AutoMapper.Mapper.CreateMap<Veteran, VeteranBindingModel>();
-
             AutoMapper.Mapper.CreateMap<ImageVeteranBindingModel, ImageVeteran>();
-
             AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>();
         }
 
@@ -70,13 +49,39 @@ namespace UnitTestProject1
             //Arrange
             var veteranBindingModel = _fixture.Create<VeteranBindingModel>();
 
-            var veteranService = new Mock<IVeteranService>();
+            var user = new User()
+            {
+                Id = "1",
+            };
 
+
+            var veteranService = new Mock<IVeteranService>();
+            var userService = new Mock<IUserService>();
+            var fakeHttpContext = new Mock<HttpContextBase>();
+            GenericIdentity fakeIdentity = new GenericIdentity("User");
+            GenericPrincipal principal = new GenericPrincipal(fakeIdentity, null);
+
+            var claim = new Claim("test", user.Id);
+            var mockIdentity =
+                Mock.Of<ClaimsIdentity>(ci => ci.FindFirst(It.IsAny<string>()) == claim);
+
+
+
+
+            fakeHttpContext.Setup(x => x.User).Returns(principal);
             veteranService.Setup(x => x.Add(It.IsAny<Veteran>()));
 
-            VeteranController veteranController = new VeteranController(veteranService.Object, null);
-            veteranController.Request = new HttpRequestMessage();
-            veteranController.Configuration = new HttpConfiguration();
+            userService.Setup(x => x.GetById(user.Id)).Returns(user);
+
+            VeteranController veteranController = new VeteranController(veteranService.Object, userService.Object)
+            {
+                Request = new HttpRequestMessage(),
+                Configuration = new HttpConfiguration(),
+                User = Mock.Of<IPrincipal>(ip => ip.Identity == mockIdentity)
+            };
+
+            veteranController.User.Identity.GetUserId(); //returns "IdOfYourChoosing"
+
             IHttpActionResult httpActionResult = veteranController.Post(veteranBindingModel);
 
             var okNegotiatedContentResult = httpActionResult as OkNegotiatedContentResult<VeteranBindingModel>;
@@ -93,7 +98,6 @@ namespace UnitTestProject1
             IList<Veteran> veteran = Mapper.Map<IList<VeteranBindingModel>, IList<Veteran>>(veterans);
 
             veteranService.Setup(x => x.GetAll()).Returns(veteran);
-
 
             VeteranController veteranController = new VeteranController(veteranService.Object, null)
             {

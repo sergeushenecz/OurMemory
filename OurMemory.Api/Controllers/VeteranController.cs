@@ -4,14 +4,13 @@ using System.Net;
 using System.Web.Http;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
-using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
 
 namespace OurMemory.Controllers
 {
-    public class VeteranController : BaseController
+    public class VeteranController : ApiController
     {
         private readonly IVeteranService _veteranService;
         private readonly IUserService _userService;
@@ -19,8 +18,7 @@ namespace OurMemory.Controllers
 
         log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public VeteranController(IVeteranService veteranService, ApplicationUserManager userManager, IUserService userService)
-            : base(userManager)
+        public VeteranController(IVeteranService veteranService, IUserService userService)
         {
             _veteranService = veteranService;
             _userService = userService;
@@ -62,7 +60,6 @@ namespace OurMemory.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             Veteran veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
-
 
             var userId = User.Identity.GetUserId();
             var user = _userService.GetById(userId);
