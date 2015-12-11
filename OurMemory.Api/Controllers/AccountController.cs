@@ -66,6 +66,7 @@ namespace OurMemory.Controllers
 
             return new UserInfoViewModel
             {
+                UserId= User.Identity.GetUserId(),
                 Email = User.Identity.GetUserName(),
                 Role = roleUser[0],
                 HasRegistered = externalLogin == null,

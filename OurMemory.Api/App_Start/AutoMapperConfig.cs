@@ -22,8 +22,10 @@ namespace OurMemory
 
             AutoMapper.Mapper.CreateMap<Veteran, VeteranBindingModel>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(x => x.FirstName
-                    + " " + x.LastName
-                    + " " + x.MiddleName));
+                                                                          + " " + x.LastName
+                                                                          + " " + x.MiddleName))
+                    .ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id));
+
 
 
         }

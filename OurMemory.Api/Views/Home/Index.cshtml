@@ -65,12 +65,13 @@
                 //                data.append("troops", "2");
 
                 $.ajax({
-                    type: "post",
+                    type: "put",
                     url: '/api/Veteran',
                     beforeSend: function (request) {
                         request.setRequestHeader("Authorization", "bearer ICqVO7IlgefpzEQFY5FgCOkt8JzqGJ4540LDOt0tHzM8VFmk7OkkuRk5_lMGeheiJBDPthdbNveIR3Xi8qpHTo3IEp4xrdbssN7_kkIKaLRYEFMhQ6vPKbOr2tNx7zHJ27ahMifdawHoun8ZvK-xBRiGqp2Zo4Apr-al2FjwZi3UajHhEP7U_lbfP8JHhNac7oKya-CLqU28kVGKrET7jCJ43nWNfVxTfHcLZBkk4uAY0_BZ65F6flIZLdBNu-62duk8q8aRWlmHAlOM6BVv2qNpgLyx1Hjzmc1B-hFrOx50B52hTmACujUdwpXfIX_ckeb4EYs5orWmEMHeHTUBw4EOBC0xc8ibQe0pROsxieZXPQLJBmea4Lh8HcxO4uq44nqsnpouW1KGKF6yUn7Wt5DKupkqQkkmHQ0_Pufd2gCu7-1Dt7ZcUGrTTpTFezZtumthPxm1Kb4XMfFcobwWjFMNECMPSaf63Q1zrN39mHeBZ85TBCvPxRR-JjLxFndXpn49bjj3mS2kXLmSrIPb2g");
                     },
                     data: {
+                        id:"26",
                         FirstName: "ssdfsdf"
                     },
                     success: function (result) {

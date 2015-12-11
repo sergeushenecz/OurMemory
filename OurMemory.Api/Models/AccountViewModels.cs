@@ -33,6 +33,7 @@ namespace OurMemory.Models
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }
+        public string UserId { get; set; }
     }
 
     public class UserLoginInfoViewModel

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using OurMemory.Domain.Entities;
 
 namespace OurMemory.Data.Infrastructure
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : IBase
     {
         void Add(T entity);
         void Update(T entity);

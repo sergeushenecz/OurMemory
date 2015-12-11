@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
+using OurMemory.Domain.Entities;
 
 namespace OurMemory.Data.Infrastructure
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class ,IBase
     {
         private ApplicationDbContext dataContext;
         private readonly IDbSet<T> dbset;
@@ -34,8 +36,8 @@ namespace OurMemory.Data.Infrastructure
         }
         public virtual void Update(T entity)
         {
-            dbset.Attach(entity);
-            dataContext.Entry(entity).State = EntityState.Modified;
+            dbset.AddOrUpdate(entity);
+            //            dataContext.Entry(entity).State = EntityState.Modified;
         }
         public virtual void Delete(T entity)
         {
@@ -53,13 +55,15 @@ namespace OurMemory.Data.Infrastructure
         }
         public virtual T GetById(string id)
         {
-            return dbset.Find(id);
+            T find = dbset.Find(id);
+
+            return find.IsDeleted == false ? find : null;
         }
         public virtual IEnumerable<T> GetAll()
         {
-            List<T> enumerable = dbset.ToList();
+            var enumerable = dbset.ToList();
 
-            return enumerable;
+            return enumerable.Where(x => !x.IsDeleted);
         }
 
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)

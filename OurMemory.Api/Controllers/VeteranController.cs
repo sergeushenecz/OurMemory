@@ -86,11 +86,13 @@ namespace OurMemory.Controllers
 
         public IHttpActionResult Put([FromBody]VeteranBindingModel veteranBindingModel)
         {
-            var id = _veteranService.GetById(veteranBindingModel.Id).Id;
+            var veteran = _veteranService.GetById(veteranBindingModel.Id);
 
-            if (ModelState.IsValid && veteranBindingModel.Id == id)
+            if (ModelState.IsValid && veteranBindingModel.Id == veteran.Id)
             {
                 Veteran mapVeteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
+
+                mapVeteran.User = veteran.User;
 
                 _veteranService.UpdateVeteran(mapVeteran);
 
@@ -102,8 +104,12 @@ namespace OurMemory.Controllers
             }
         }
 
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            _veteranService.GetById(id).IsDeleted = true;
+
+            _veteranService.SaveVeteran();
+            return Ok();
         }
     }
 }

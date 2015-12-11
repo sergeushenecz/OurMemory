@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace OurMemory.Domain.Entities
 {
 
-    public class User : IdentityUser
+    public class User : IdentityUser, IBase
     {
         public virtual ICollection<Veteran> Veterans { get; set; }
 
@@ -19,6 +19,8 @@ namespace OurMemory.Domain.Entities
             // Add custom user claims here
             return userIdentity;
         }
+
+        public bool IsDeleted { get; set; }
     }
 
 }

@@ -24,6 +24,7 @@ namespace OurMemory.Domain.DtoModel
         public string Description { get; set; }
         public int Views { get; set; }
         public string FullName { get; set; }
+        public Guid UserId { get; set; }
         public virtual IEnumerable<ImageVeteranBindingModel> Images { get; set; }
 
         public VeteranBindingModel()

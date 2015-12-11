@@ -88,27 +88,27 @@ namespace UnitTestProject1
 
             Assert.IsNotNull(okNegotiatedContentResult);
         }
-        [TestMethod]
-        public void GetAllVeterans()
-        {
-            //Arrange
-            Initialize();
-            var veteranService = new Mock<IVeteranService>();
-            var veterans = _fixture.Create<List<VeteranBindingModel>>();
-            IList<Veteran> veteran = Mapper.Map<IList<VeteranBindingModel>, IList<Veteran>>(veterans);
-
-            veteranService.Setup(x => x.GetAll()).Returns(veteran);
-
-            VeteranController veteranController = new VeteranController(veteranService.Object, null)
-            {
-                Request = new HttpRequestMessage(),
-                Configuration = new HttpConfiguration()
-            };
-
-            IEnumerable<VeteranBindingModel> veteranBindingModels = veteranController.Get();
-
-            Assert.IsNotNull(veteranBindingModels);
-
-        }
+//        [TestMethod]
+//        public void GetAllVeterans()
+//        {
+//            //Arrange
+//            Initialize();
+//            var veteranService = new Mock<IVeteranService>();
+//            var veterans = _fixture.Create<List<VeteranBindingModel>>();
+//            IList<Veteran> veteran = Mapper.Map<IList<VeteranBindingModel>, IList<Veteran>>(veterans);
+//
+//            veteranService.Setup(x => x.GetAll()).Returns(veteran);
+//
+//            VeteranController veteranController = new VeteranController(veteranService.Object, null)
+//            {
+//                Request = new HttpRequestMessage(),
+//                Configuration = new HttpConfiguration()
+//            };
+//
+//            IEnumerable<VeteranBindingModel> veteranBindingModels = veteranController.Get();
+//
+//            Assert.IsNotNull(veteranBindingModels);
+//
+//        }
     }
 }
