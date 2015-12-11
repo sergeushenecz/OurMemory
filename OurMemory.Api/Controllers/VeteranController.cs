@@ -24,13 +24,17 @@ namespace OurMemory.Controllers
             _userService = userService;
         }
 
-        public IEnumerable<VeteranBindingModel> Get()
+        public IHttpActionResult Get()
         {
             IEnumerable<Veteran> veterans = _veteranService.GetAll();
 
             var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
 
-            return veteranBindingModels;
+            return Ok(new
+            {
+                Items = veteranBindingModels,
+                TotalCount = _veteranService.GetAll().Count()
+            });
         }
 
         public VeteranBindingModel Get(int id)
@@ -46,13 +50,17 @@ namespace OurMemory.Controllers
             return veteranBindingModels;
         }
 
-        public IEnumerable<VeteranBindingModel> Get(int pageIndex, int pageSize)
+        public IHttpActionResult Get(int pageIndex, int pageSize)
         {
-            var veterans = _veteranService.GetAll().Skip(pageIndex * pageSize).Take(pageSize);
+            var veterans = _veteranService.GetAll().Reverse().Skip((pageIndex -1) * pageSize).Take(pageSize);
 
             var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
 
-            return veteranBindingModels;
+            return Ok(new
+            {
+                Items = veteranBindingModels,
+                TotalCount = _veteranService.GetAll().Count()
+            });
         }
 
         public IHttpActionResult Post(VeteranBindingModel veteranBindingModel)
