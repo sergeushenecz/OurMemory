@@ -50,9 +50,10 @@ namespace OurMemory.Controllers
             return veteranBindingModels;
         }
 
-        public IHttpActionResult Get(int pageIndex, int pageSize)
+        [Route("api/veteran/{page}/{size}")]
+        public IHttpActionResult Get(int page, int size)
         {
-            var veterans = _veteranService.GetAll().Reverse().Skip((pageIndex -1) * pageSize).Take(pageSize);
+            var veterans = _veteranService.GetAll().Reverse().Skip((page - 1) * size).Take(size);
 
             var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
 

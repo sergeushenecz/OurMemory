@@ -22,9 +22,11 @@ namespace OurMemory
 
             app.UseCors(CorsOptions.AllowAll);
 
-         
+            HttpConfiguration configuration = new HttpConfiguration();
 
-     
+            
+
+
 
             ConfigureAuth(app);
         }
