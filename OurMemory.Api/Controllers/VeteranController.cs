@@ -14,14 +14,16 @@ namespace OurMemory.Controllers
     {
         private readonly IVeteranService _veteranService;
         private readonly IUserService _userService;
+        private readonly IImageVeteranService _imageVeteranService;
 
 
         log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public VeteranController(IVeteranService veteranService, IUserService userService)
+        public VeteranController(IVeteranService veteranService, IUserService userService, IImageVeteranService imageVeteranService)
         {
             _veteranService = veteranService;
             _userService = userService;
+            _imageVeteranService = imageVeteranService;
         }
 
         public IHttpActionResult Get()
@@ -53,7 +55,7 @@ namespace OurMemory.Controllers
         [Route("api/veteran/{page}/{size}")]
         public IHttpActionResult Get(int page, int size)
         {
-            var veterans = _veteranService.GetAll().Reverse().Skip((page - 1) * size).Take(size);
+            var veterans = _veteranService.GetAll().Reverse().Skip((page - 1) * 10).Take(size);
 
             var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
 
@@ -79,8 +81,6 @@ namespace OurMemory.Controllers
 
             veteranBindingModel = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
 
-
-
             return Ok(veteranBindingModel);
         }
 
@@ -90,13 +90,14 @@ namespace OurMemory.Controllers
 
             if (ModelState.IsValid && veteranBindingModel.Id == veteran.Id)
             {
+                _imageVeteranService.DeleteImagesVeteran(veteran.Images);
                 Veteran mapVeteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
+                Mapper.Map<Veteran, Veteran>(mapVeteran, veteran);
+                _veteranService.UpdateVeteran(veteran);
 
-                mapVeteran.User = veteran.User;
+                var veteranModified = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
 
-                _veteranService.UpdateVeteran(mapVeteran);
-
-                return Ok(veteranBindingModel);
+                return Ok(veteranModified);
             }
             else
             {
@@ -106,7 +107,12 @@ namespace OurMemory.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            _veteranService.GetById(id).IsDeleted = true;
+            var veteran = _veteranService.GetById(id);
+
+            if (veteran == null || veteran.Id != id) return BadRequest();
+
+
+            veteran.IsDeleted = true;
 
             _veteranService.SaveVeteran();
             return Ok();

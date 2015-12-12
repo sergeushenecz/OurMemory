@@ -27,6 +27,7 @@ namespace OurMemory
                     .ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id));
 
 
+            Mapper.CreateMap<Veteran, Veteran>().ForMember(dest => dest.User, opt => opt.Ignore());
 
         }
 

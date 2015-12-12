@@ -70,9 +70,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormService.cs" />
+    <Compile Include="ImageVeteranService.cs" />
     <Compile Include="Interfaces\IFormService.cs" />
     <Compile Include="Interfaces\IImageService.cs" />
     <Compile Include="ImageService.cs" />
+    <Compile Include="Interfaces\IImageVeteranService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IVeteranService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

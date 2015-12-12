@@ -36,8 +36,8 @@ namespace OurMemory.Data.Infrastructure
         }
         public virtual void Update(T entity)
         {
-            dbset.AddOrUpdate(entity);
-            //            dataContext.Entry(entity).State = EntityState.Modified;
+            dbset.Attach(entity);
+            dataContext.Entry(entity).State = EntityState.Modified;
         }
         public virtual void Delete(T entity)
         {

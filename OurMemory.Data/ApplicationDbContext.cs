@@ -7,9 +7,6 @@ using OurMemory.Domain.Entities;
 
 namespace OurMemory.Data
 {
-
-
-
     public class ApplicationDbContext : IdentityDbContext<User>
     {
      
