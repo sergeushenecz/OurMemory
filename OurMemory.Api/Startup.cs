@@ -24,9 +24,7 @@ namespace OurMemory
 
             HttpConfiguration configuration = new HttpConfiguration();
 
-            
-
-
+          
 
             ConfigureAuth(app);
         }

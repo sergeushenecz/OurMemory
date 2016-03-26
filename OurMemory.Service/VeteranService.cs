@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
@@ -32,10 +31,7 @@ namespace OurMemory.Service
         {
             Veteran veteran = _veteranRepository.GetById(id);
 
-            if (veteran == null)
-                return null;
-
-            return veteran.IsDeleted == false ? veteran : null;
+            return veteran;
         }
 
         public void UpdateVeteran(Veteran veteran)

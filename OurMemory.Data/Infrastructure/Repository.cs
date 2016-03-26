@@ -5,6 +5,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using OurMemory.Domain.Entities;
+using OurMemory.Service.Specification.Core;
 
 namespace OurMemory.Data.Infrastructure
 {
@@ -12,7 +13,6 @@ namespace OurMemory.Data.Infrastructure
     {
         private ApplicationDbContext dataContext;
         private readonly IDbSet<T> dbset;
-
 
         public Repository(IDatabaseFactory databaseFactory)
         {
@@ -46,12 +46,15 @@ namespace OurMemory.Data.Infrastructure
         public virtual void Delete(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbset.Where<T>(where).AsEnumerable();
+
             foreach (T obj in objects)
                 dbset.Remove(obj);
         }
         public virtual T GetById(long id)
         {
-            return dbset.Find(id);
+            var entity = dbset.Find(id);
+
+            return entity.IsDeleted ? entity : null;
         }
         public virtual T GetById(string id)
         {
@@ -66,10 +69,12 @@ namespace OurMemory.Data.Infrastructure
             return enumerable.Where(x => !x.IsDeleted);
         }
 
-        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
+        public virtual IEnumerable<T> GetSpec(ISpecification<T> specification)
         {
-            return dbset.Where(where).ToList();
+            return dbset.Where(specification.SatisfiedBy()).AsEnumerable<T>();
         }
+
+
         public T Get(Expression<Func<T, bool>> where)
         {
             return dbset.Where(where).FirstOrDefault<T>();

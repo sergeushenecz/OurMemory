@@ -27,6 +27,10 @@ namespace OurMemory
           
             // Configure the application for OAuth based flow
             PublicClientId = "self";
+
+
+
+
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/api/Token"),

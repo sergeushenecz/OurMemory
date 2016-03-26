@@ -42,52 +42,52 @@ namespace UnitTestProject1
             AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>();
         }
 
-        [TestMethod]
-        public void CreateVeteran()
-        {
-            Initialize();
-            //Arrange
-            var veteranBindingModel = _fixture.Create<VeteranBindingModel>();
-
-            var user = new User()
-            {
-                Id = "1",
-            };
-
-
-            var veteranService = new Mock<IVeteranService>();
-            var userService = new Mock<IUserService>();
-            var fakeHttpContext = new Mock<HttpContextBase>();
-            GenericIdentity fakeIdentity = new GenericIdentity("User");
-            GenericPrincipal principal = new GenericPrincipal(fakeIdentity, null);
-
-            var claim = new Claim("test", user.Id);
-            var mockIdentity =
-                Mock.Of<ClaimsIdentity>(ci => ci.FindFirst(It.IsAny<string>()) == claim);
-
-
-
-
-            fakeHttpContext.Setup(x => x.User).Returns(principal);
-            veteranService.Setup(x => x.Add(It.IsAny<Veteran>()));
-
-            userService.Setup(x => x.GetById(user.Id)).Returns(user);
-
-            VeteranController veteranController = new VeteranController(veteranService.Object, userService.Object)
-            {
-                Request = new HttpRequestMessage(),
-                Configuration = new HttpConfiguration(),
-                User = Mock.Of<IPrincipal>(ip => ip.Identity == mockIdentity)
-            };
-
-            veteranController.User.Identity.GetUserId(); //returns "IdOfYourChoosing"
-
-            IHttpActionResult httpActionResult = veteranController.Post(veteranBindingModel);
-
-            var okNegotiatedContentResult = httpActionResult as OkNegotiatedContentResult<VeteranBindingModel>;
-
-            Assert.IsNotNull(okNegotiatedContentResult);
-        }
+//        [TestMethod]
+//        public void CreateVeteran()
+//        {
+//            Initialize();
+//            //Arrange
+//            var veteranBindingModel = _fixture.Create<VeteranBindingModel>();
+//
+//            var user = new User()
+//            {
+//                Id = "1",
+//            };
+//
+//
+//            var veteranService = new Mock<IVeteranService>();
+//            var userService = new Mock<IUserService>();
+//            var fakeHttpContext = new Mock<HttpContextBase>();
+//            GenericIdentity fakeIdentity = new GenericIdentity("User");
+//            GenericPrincipal principal = new GenericPrincipal(fakeIdentity, null);
+//
+//            var claim = new Claim("test", user.Id);
+//            var mockIdentity =
+//                Mock.Of<ClaimsIdentity>(ci => ci.FindFirst(It.IsAny<string>()) == claim);
+//
+//
+//
+//
+//            fakeHttpContext.Setup(x => x.User).Returns(principal);
+//            veteranService.Setup(x => x.Add(It.IsAny<Veteran>()));
+//
+//            userService.Setup(x => x.GetById(user.Id)).Returns(user);
+//
+//            VeteranController veteranController = new VeteranController(veteranService.Object, userService.Object)
+//            {
+//                Request = new HttpRequestMessage(),
+//                Configuration = new HttpConfiguration(),
+//                User = Mock.Of<IPrincipal>(ip => ip.Identity == mockIdentity)
+//            };
+//
+//            veteranController.User.Identity.GetUserId(); //returns "IdOfYourChoosing"
+//
+//            IHttpActionResult httpActionResult = veteranController.Post(veteranBindingModel);
+//
+//            var okNegotiatedContentResult = httpActionResult as OkNegotiatedContentResult<VeteranBindingModel>;
+//
+//            Assert.IsNotNull(okNegotiatedContentResult);
+//        }
 //        [TestMethod]
 //        public void GetAllVeterans()
 //        {

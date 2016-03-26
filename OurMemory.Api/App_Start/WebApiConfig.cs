@@ -14,8 +14,12 @@ namespace OurMemory
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             config.Services.Add(typeof (IExceptionLogger), new WebApiApplication.GlobalExceptionLogger());
-            var cors = new EnableCorsAttribute("http://192.168.1.6:3000", "*", "*");
-            config.EnableCors(cors);
+            //enable cors
+//            var cors = new EnableCorsAttribute("http://192.168.1.6:3000", "*", "*");
+//            config.EnableCors(cors);
+
+            
+
             // Web API routes
             config.MapHttpAttributeRoutes();
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;

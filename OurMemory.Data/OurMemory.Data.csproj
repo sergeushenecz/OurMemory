@@ -66,6 +66,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\VeteranRepository.cs" />
+    <Compile Include="Specification\Core\AndSpecification.cs" />
+    <Compile Include="Specification\Core\ISpecification.cs" />
+    <Compile Include="Specification\Core\NotSpecification.cs" />
+    <Compile Include="Specification\Core\OrSpecification.cs" />
+    <Compile Include="Specification\Core\Specification.cs" />
+    <Compile Include="Specification\Extention\PredicateBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

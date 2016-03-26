@@ -25,7 +25,6 @@ namespace OurMemory.Controllers
 
 
     [Authorize]
-
     [RoutePrefix("api/Account")]
     public class AccountController : BaseController
     {
