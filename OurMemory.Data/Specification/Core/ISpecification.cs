@@ -5,7 +5,6 @@ namespace OurMemory.Service.Specification.Core
 {
     public interface ISpecification<T>
     {
-        Expression<Func<T, bool>> SatisfiedBy();
-
+        Expression<Func<T, bool>> Predicate { get;}
     }
 }

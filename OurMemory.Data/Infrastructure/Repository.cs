@@ -9,7 +9,7 @@ using OurMemory.Service.Specification.Core;
 
 namespace OurMemory.Data.Infrastructure
 {
-    public class Repository<T> : IRepository<T> where T : class ,IBase
+    public class Repository<T> : IRepository<T> where T : DomainObject
     {
         private ApplicationDbContext dataContext;
         private readonly IDbSet<T> dbset;
@@ -69,9 +69,9 @@ namespace OurMemory.Data.Infrastructure
             return enumerable.Where(x => !x.IsDeleted);
         }
 
-        public virtual IEnumerable<T> GetSpec(ISpecification<T> specification)
+        public virtual IEnumerable<T> GetSpec(Expression<Func<T, bool>> specification)
         {
-            return dbset.Where(specification.SatisfiedBy()).AsEnumerable<T>();
+            return dbset.Where(specification).ToList();
         }
 
 

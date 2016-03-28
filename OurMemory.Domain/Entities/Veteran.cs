@@ -5,7 +5,7 @@ using System.Data;
 
 namespace OurMemory.Domain.Entities
 {
-    public class Veteran : Base
+    public class Veteran : DomainObject
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

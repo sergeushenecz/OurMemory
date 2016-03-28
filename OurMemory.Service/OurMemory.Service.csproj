@@ -69,17 +69,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormService.cs" />
-    <Compile Include="ImageVeteranService.cs" />
+    <Compile Include="Services\FormService.cs" />
+    <Compile Include="Services\ImageVeteranService.cs" />
     <Compile Include="Interfaces\IFormService.cs" />
     <Compile Include="Interfaces\IImageService.cs" />
-    <Compile Include="ImageService.cs" />
+    <Compile Include="Services\ImageService.cs" />
     <Compile Include="Interfaces\IImageVeteranService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Interfaces\IVeteranService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserService.cs" />
-    <Compile Include="VeteranService.cs" />
+    <Compile Include="Specification\SpecificationBase.cs" />
+    <Compile Include="Specification\VeteranSpecification.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\VeteranService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OurMemory.Data\OurMemory.Data.csproj">
@@ -95,6 +97,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

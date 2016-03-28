@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace OurMemory.Domain.Entities
 {
-    public class ImageVeteran : Base
+    public class ImageVeteran : DomainObject
     {
         public string ImageOriginal { get; set; }
         public string ThumbnailImage { get; set; }

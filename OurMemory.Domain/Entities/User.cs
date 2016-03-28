@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace OurMemory.Domain.Entities
 {
 
-    public class User : IdentityUser, IBase
+    public class User : IdentityUser, IDomainObject
     {
         public virtual ICollection<Veteran> Veterans { get; set; }
 

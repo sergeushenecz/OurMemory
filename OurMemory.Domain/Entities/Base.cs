@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OurMemory.Domain.Entities
 {
-    public class Base : IBase
+    public class DomainObject : IDomainObject
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,7 +13,7 @@ namespace OurMemory.Domain.Entities
         public bool IsDeleted { get; set; }
     }
 
-    public interface IBase
+    public interface IDomainObject
     {
         bool IsDeleted { get; set; }
 
