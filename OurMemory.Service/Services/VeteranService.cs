@@ -56,7 +56,9 @@ namespace OurMemory.Service.Services
         {
             Specification<Veteran> keyWord = _veteranSpecification.KeyWord(searchVeteranModel);
 
-            var veterans = _veteranRepository.GetSpec(keyWord.Predicate).OrderBy(x => x.FirstName).Pagination(searchVeteranModel.Skip, searchVeteranModel.Size);
+            var veterans = _veteranRepository.GetSpec(keyWord.Predicate)
+                .OrderBy(x => x.FirstName)
+                .Pagination(searchVeteranModel.Skip, searchVeteranModel.Size);
 
             return veterans;
         }

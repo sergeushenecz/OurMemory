@@ -8,10 +8,28 @@ namespace OurMemory.Service.Specification
     {
         public Specification<Veteran> KeyWord(SearchVeteranModel searchVeteranModel)
         {
-            return GetBetweenYears(searchVeteranModel.DateBirthStart, searchVeteranModel.DateBirthEnd)
+            return GetMoreYear(searchVeteranModel.DateBirthStart)
+                .And(GetLessYear(searchVeteranModel.DateBirthEnd))
                 .And(GetByFirstName(searchVeteranModel.FirstName))
                 .And(GetByLastName(searchVeteranModel.LastName))
-                .And(GetByMiddlename(searchVeteranModel.MiddleName));
+                .And(GetByMiddlename(searchVeteranModel.MiddleName))
+                .And(!IsDeleted());
+        }
+
+
+        public Specification<Veteran> GetMoreYear(int? year)
+        {
+            return year.HasValue ? new Specification<Veteran>(x => x.DateBirth.Value.Year >= year.Value) : Empty();
+        }
+
+        public Specification<Veteran> GetLessYear(int? year)
+        {
+            return year.HasValue ? new Specification<Veteran>(x => x.DateBirth.Value.Year <= year.Value) : Empty();
+        }
+
+        public Specification<Veteran> GetYear(int? year)
+        {
+            return year.HasValue ? new Specification<Veteran>(x => x.DateBirth.Value.Year >= year.Value) : Empty();
         }
 
 

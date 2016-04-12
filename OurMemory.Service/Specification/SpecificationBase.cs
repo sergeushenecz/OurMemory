@@ -16,5 +16,10 @@ namespace OurMemory.Service.Specification
                        : Empty();
         }
 
+        protected virtual Specification<TEntity> IsDeleted()
+        {
+            return new Specification<TEntity>(x => x.IsDeleted);
+        }
+
     }
 }

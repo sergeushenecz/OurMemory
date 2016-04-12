@@ -33,62 +33,38 @@
 
 
 <div>
-    <input type="file" multiple name="upload" id="uploadFile" /><br />
-    <button id="submit">Загрузить</button>
+    <label for="fileUpload">Select File to Upload: </label><input id="fileUpload" type="file" />
+
+    <input id="btnUploadFile" type="button" value="Upload File" />
 </div>
-
-
 
 <script type="text/javascript">
 
-    $('#submit').on('click', function (e) {
-        e.preventDefault();
-        var files = document.getElementById('uploadFile').files;
-        if (files.length > 0) {
-            if (window.FormData !== undefined) {
-                var data = new FormData();
-                for (var x = 0; x < files.length; x++) {
-                    data.append("file" + x, files[x]);
-                }
+    $(document).ready(function () {
 
-                //                data.append("awards", "1");
-                //                data.append("birthPlace", "2");
-                //                data.append("called", "2015-12-08T21:00:00.000Z");
-                //                data.append("dateBirth", "2015-12-08T21:00:00.000Z");
-                //                data.append("dateDeath", "2015-12-08T21:00:00.000Z");
-                //                data.append("description", "2");
-                //                data.append("firstName", "2");
-                //                data.append("lastName", "2");
-                //                data.append("latitude", "2");
-                //                data.append("longitude", "2");
-                //                data.append("middleName", "2");
-                //                data.append("troops", "2");
+        $('#btnUploadFile').on('click', function () {
 
-                $.ajax({
-                    type: "put",
-                    url: '/api/Veteran',
-                    beforeSend: function (request) {
-                        request.setRequestHeader("Authorization", "bearer ICqVO7IlgefpzEQFY5FgCOkt8JzqGJ4540LDOt0tHzM8VFmk7OkkuRk5_lMGeheiJBDPthdbNveIR3Xi8qpHTo3IEp4xrdbssN7_kkIKaLRYEFMhQ6vPKbOr2tNx7zHJ27ahMifdawHoun8ZvK-xBRiGqp2Zo4Apr-al2FjwZi3UajHhEP7U_lbfP8JHhNac7oKya-CLqU28kVGKrET7jCJ43nWNfVxTfHcLZBkk4uAY0_BZ65F6flIZLdBNu-62duk8q8aRWlmHAlOM6BVv2qNpgLyx1Hjzmc1B-hFrOx50B52hTmACujUdwpXfIX_ckeb4EYs5orWmEMHeHTUBw4EOBC0xc8ibQe0pROsxieZXPQLJBmea4Lh8HcxO4uq44nqsnpouW1KGKF6yUn7Wt5DKupkqQkkmHQ0_Pufd2gCu7-1Dt7ZcUGrTTpTFezZtumthPxm1Kb4XMfFcobwWjFMNECMPSaf63Q1zrN39mHeBZ85TBCvPxRR-JjLxFndXpn49bjj3mS2kXLmSrIPb2g");
-                    },
-                    data: {
-                        id:"30",
-                        FirstName: "ssdfsdf",
-                        images:[
-                        {
-                            ImageOriginal: "dfsdf",
-                            ThumbnailImage:"fsdfds"
-                        }]
-                    },
-                    success: function (result) {
-                        alert(result);
-                    },
-                    error: function (xhr, status, p3) {
-                        alert(xhr.responseText);
-                    }
-                });
-            } else {
-                alert("Браузер не поддерживает загрузку файлов HTML5!");
+            var data = new FormData();
+
+            var files = $("#fileUpload").get(0).files;
+
+            // Add the uploaded image content to the form data collection
+            if (files.length > 0) {
+                data.append("UploadedImage", files[0]);
             }
-        }
+
+            // Make Ajax request with the contentType = false, and procesDate = false
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: "/api/fileupload/uploadExcell",
+                contentType: false,
+                processData: false,
+                data: data
+            });
+
+            ajaxRequest.done(function (xhr, textStatus) {
+                // Do other operation
+            });
+        });
     });
 </script>

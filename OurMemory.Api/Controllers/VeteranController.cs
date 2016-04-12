@@ -6,7 +6,6 @@ using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
-using OurMemory.Models;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
 
@@ -118,10 +117,8 @@ namespace OurMemory.Controllers
 
                 return Ok(veteranModified);
             }
-            else
-            {
-                return StatusCode(HttpStatusCode.NotModified);
-            }
+
+            return StatusCode(HttpStatusCode.NotModified);
         }
 
         public IHttpActionResult Delete(int id)
@@ -130,10 +127,9 @@ namespace OurMemory.Controllers
 
             if (veteran == null || veteran.Id != id) return BadRequest();
 
-
             veteran.IsDeleted = true;
-
             _veteranService.SaveVeteran();
+
             return Ok();
         }
     }

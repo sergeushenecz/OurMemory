@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using LinqToExcel;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
 
@@ -13,7 +16,8 @@ namespace OurMemory.Controllers
     {
         private readonly IImageService _imageService;
 
-        public FileUploadController(IImageService imageService,ApplicationUserManager userManager):base(userManager)
+        public FileUploadController(IImageService imageService, ApplicationUserManager userManager)
+            : base(userManager)
         {
             _imageService = imageService;
         }
@@ -55,5 +59,29 @@ namespace OurMemory.Controllers
 
         }
 
+        [Route("api/fileUpload/uploadExcell")]
+        public IHttpActionResult UploadExcellFilesPost()
+        {
+
+
+            var httpPostedFile = HttpContext.Current.Request.Files["UploadedImage"];
+
+            var fileName = httpPostedFile.FileName;
+
+            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Files/"), fileName);
+
+            httpPostedFile.SaveAs(path);
+
+            var excel = new ExcelQueryFactory(path);
+            var indianaCompanies = from c in excel.Worksheet<Company>()
+                                   select c;
+
+            return Ok();
+        }
+    }
+
+    public class Company
+    {
+        public string Header { get; set; }
     }
 }
