@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using OurMemory.Domain.Entities;
-using OurMemory.Service.Specification.Core;
 
 namespace OurMemory.Data.Infrastructure
 {
@@ -16,7 +16,6 @@ namespace OurMemory.Data.Infrastructure
         T GetById(string Id);
         T Get(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();
-        IEnumerable<T> GetSpec(Expression<Func<T, bool>> specification);
-
+        IQueryable<T> GetSpec(Expression<Func<T, bool>> specification);
     }
 }

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Reflection;
-using System.Runtime.Remoting.Messaging;
 using System.Web;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
 
-namespace OurMemory.Service
+namespace OurMemory.Service.Services
 {
     public class FormService<T> : IFormService<T> where T : class, new()
     {

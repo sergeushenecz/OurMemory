@@ -22,10 +22,7 @@ namespace OurMemory
         {
             HttpConfiguration configuration = new HttpConfiguration();
 
-            configuration
-    .EnableSwagger(c => c.SingleApiVersion("v1", "A title for your API"))
-    .EnableSwaggerUi();
-
+            configuration.EnableSwagger(c => c.SingleApiVersion("v1", "A title for your API")).EnableSwaggerUi();
 
             AutoMapperConfig mapperConfig = new AutoMapperConfig();
             mapperConfig.Initialization();
@@ -33,7 +30,7 @@ namespace OurMemory
             AreaRegistration.RegisterAllAreas();
             UnityConfig.RegisterComponents();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            
+
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -42,7 +39,7 @@ namespace OurMemory
 
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
 
-         
+
 
         }
 
@@ -54,7 +51,7 @@ namespace OurMemory
 
         public class GlobalExceptionLogger : ExceptionLogger
         {
-            public  log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            public log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
             public override void Log(ExceptionLoggerContext context)
             {

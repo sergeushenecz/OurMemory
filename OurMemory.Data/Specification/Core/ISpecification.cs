@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace OurMemory.Service.Specification.Core
+namespace OurMemory.Data.Specification.Core
 {
     public interface ISpecification<T>
     {

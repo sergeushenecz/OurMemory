@@ -4,7 +4,7 @@ using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
 
-namespace OurMemory.Service
+namespace OurMemory.Service.Services
 {
     public class ImageVeteranService : IImageVeteranService
     {

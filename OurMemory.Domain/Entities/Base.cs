@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OurMemory.Domain.Entities
@@ -16,6 +15,5 @@ namespace OurMemory.Domain.Entities
     public interface IDomainObject
     {
         bool IsDeleted { get; set; }
-
     }
 }

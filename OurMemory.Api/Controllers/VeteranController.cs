@@ -6,7 +6,9 @@ using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
+using OurMemory.Models;
 using OurMemory.Service.Interfaces;
+using OurMemory.Service.Model;
 
 namespace OurMemory.Controllers
 {
@@ -63,6 +65,23 @@ namespace OurMemory.Controllers
             {
                 Items = veteranBindingModels,
                 TotalCount = _veteranService.GetAll().Count()
+            });
+        }
+
+        /// <summary>
+        /// Search Veterans 
+        /// </summary>
+        /// <param name="searchVeteranModel"></param>
+        /// <returns></returns>
+        [Route("api/veteran/search")]
+
+        public IHttpActionResult Get([FromUri]SearchVeteranModel searchVeteranModel)
+        {
+            var searchVeterans = _veteranService.SearchVeterans(searchVeteranModel);
+
+            return Ok(new
+            {
+                Items = searchVeterans
             });
         }
 

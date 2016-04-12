@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace OurMemory.Service.Specification.Extention
+namespace OurMemory.Data.Specification.Extention
 {
     public static class PredicateBuilder
     {

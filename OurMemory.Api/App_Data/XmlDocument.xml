@@ -481,5 +481,12 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:OurMemory.Controllers.VeteranController.Get(OurMemory.Service.Model.SearchVeteranModel)">
+            <summary>
+            Search Veterans 
+            </summary>
+            <param name="searchVeteranModel"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

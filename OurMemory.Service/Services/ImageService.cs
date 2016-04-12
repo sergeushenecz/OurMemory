@@ -8,7 +8,7 @@ using System.Net.Http;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
 
-namespace OurMemory.Service
+namespace OurMemory.Service.Services
 {
     public class ImageService : IImageService
     {

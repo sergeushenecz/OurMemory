@@ -5,11 +5,10 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using OurMemory.Domain.Entities;
-using OurMemory.Service.Specification.Core;
 
 namespace OurMemory.Data.Infrastructure
 {
-    public class Repository<T> : IRepository<T> where T : DomainObject
+    public class Repository<T> : IRepository<T> where T : class
     {
         private ApplicationDbContext dataContext;
         private readonly IDbSet<T> dbset;
@@ -54,24 +53,24 @@ namespace OurMemory.Data.Infrastructure
         {
             var entity = dbset.Find(id);
 
-            return entity.IsDeleted ? entity : null;
+            return entity;
         }
         public virtual T GetById(string id)
         {
             T find = dbset.Find(id);
 
-            return find.IsDeleted == false ? find : null;
+            return find;
         }
         public virtual IEnumerable<T> GetAll()
         {
             var enumerable = dbset.ToList();
 
-            return enumerable.Where(x => !x.IsDeleted);
+            return enumerable;
         }
 
-        public virtual IEnumerable<T> GetSpec(Expression<Func<T, bool>> specification)
+        public virtual IQueryable<T> GetSpec(Expression<Func<T, bool>> specification)
         {
-            return dbset.Where(specification).ToList();
+            return dbset.Where(specification);
         }
 
 

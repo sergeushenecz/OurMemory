@@ -1,6 +1,8 @@
 using System.Data.Entity;
+using System.Linq;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
+using Castle.MicroKernel.Registration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using OurMemory.Controllers;
@@ -9,6 +11,8 @@ using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.Entities;
 using OurMemory.Service;
 using OurMemory.Service.Interfaces;
+using OurMemory.Service.Services;
+using OurMemory.Service.Specification;
 using Unity.WebApi;
 
 namespace OurMemory
@@ -33,6 +37,8 @@ namespace OurMemory
             container.RegisterType<IImageService, ImageService>();
             container.RegisterType(typeof(IFormService<>), typeof(FormService<>));
 
+
+            container.RegisterTypes(AllClasses.FromLoadedAssemblies().Where(t => t.BaseType == typeof(SpecificationBase<>)), WithMappings.FromMatchingInterface, WithName.Default);
 
             // TODO: Register your types here
             container.RegisterType<IUserStore<User>, UserStore<User>>();

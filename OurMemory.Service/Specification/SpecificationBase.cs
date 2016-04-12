@@ -1,9 +1,9 @@
-﻿using OurMemory.Domain.Entities;
-using OurMemory.Service.Specification.Core;
+﻿using OurMemory.Data.Specification.Core;
+using OurMemory.Domain.Entities;
 
 namespace OurMemory.Service.Specification
 {
-    class SpecificationBase<TEntity> where TEntity : DomainObject
+    public class SpecificationBase<TEntity> where TEntity : DomainObject
     {
         public virtual Specification<TEntity> Empty()
         {

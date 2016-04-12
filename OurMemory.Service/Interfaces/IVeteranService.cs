@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using OurMemory.Domain.Entities;
+using OurMemory.Service.Model;
 
 namespace OurMemory.Service.Interfaces
 {
@@ -9,7 +10,7 @@ namespace OurMemory.Service.Interfaces
         IEnumerable<Veteran> GetAll();
         Veteran GetById(int id);
         void UpdateVeteran(Veteran veteran);
-
+        IEnumerable<Veteran> SearchVeterans(SearchVeteranModel searchVeteranModel);
         void SaveVeteran();
     }
 }

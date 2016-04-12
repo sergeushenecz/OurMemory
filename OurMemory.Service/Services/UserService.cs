@@ -2,7 +2,7 @@
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
 
-namespace OurMemory.Service
+namespace OurMemory.Service.Services
 {
     public class UserService : IUserService
     {
@@ -18,8 +18,9 @@ namespace OurMemory.Service
 
         public User GetById(string id)
         {
-            var byId = _userRepository.GetById(id);
-            return byId;
+            var user = _userRepository.GetById(id);
+
+            return !user.IsDeleted ? user : null;
         }
     }
 }
