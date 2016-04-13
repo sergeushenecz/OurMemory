@@ -9,6 +9,7 @@ using System.Web.Http;
 using LinqToExcel;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
+using OurMemory.Service.Services;
 
 namespace OurMemory.Controllers
 {
@@ -62,8 +63,6 @@ namespace OurMemory.Controllers
         [Route("api/fileUpload/uploadExcell")]
         public IHttpActionResult UploadExcellFilesPost()
         {
-
-
             var httpPostedFile = HttpContext.Current.Request.Files["UploadedImage"];
 
             var fileName = httpPostedFile.FileName;
@@ -72,9 +71,9 @@ namespace OurMemory.Controllers
 
             httpPostedFile.SaveAs(path);
 
-            var excel = new ExcelQueryFactory(path);
-            var indianaCompanies = from c in excel.Worksheet<Company>()
-                                   select c;
+            ExcellParser excellParser = new ExcellParser(fileName);
+            excellParser.GetVeterans();
+           
 
             return Ok();
         }
