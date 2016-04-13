@@ -5,8 +5,10 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Web;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
+using OurMemory.Service.Model;
 
 namespace OurMemory.Service.Services
 {
@@ -106,10 +108,33 @@ namespace OurMemory.Service.Services
             return imageFilesVeterans;
         }
 
+        private void SaveImageOriginalAndthumpImage(byte[] imageBytes, string root, string originalFileName,
+            string thumpImageFilename)
+        {
+            using (FileStream fs = new FileStream(root + originalFileName, FileMode.Create))
+            {
+                fs.Write(imageBytes, 0, imageBytes.Length);
+            }
+
+            using (
+                FileStream fs = new FileStream(root + thumpImageFilename,
+                    FileMode.Create))
+            {
+                MemoryStream ms = new MemoryStream(imageBytes);
+                Image image = Image.FromStream(ms);
+
+                Bitmap resizeImage = (Bitmap)ResizeImage(image, new Size(200, 200));
+
+                var imageToByte = ImageToByte(resizeImage);
+
+                fs.Write(imageToByte, 0, imageToByte.Length);
+            }
+        }
+
         private bool ValidateImageType(string filename)
         {
             var extensions = new[] { "png", "bmp", "jpg" };
-           
+
             if (filename.IndexOf('.') < 0)
                 return false;
 
@@ -117,6 +142,35 @@ namespace OurMemory.Service.Services
 
             return extensions.Any(i => i.Equals(extension));
         }
+
+
+        public ImageReference SaveImage(byte[] imageBytes)
+        {
+            ImageReference imageReference = new ImageReference();
+
+            string root = HttpContext.Current.Server.MapPath("~/Content/Files/");
+            var filename = Guid.NewGuid() + ".jpg";
+            var thumpImageFilename = Guid.NewGuid() + ".jpg";
+
+            imageReference.ImageOriginal = root + filename;
+            imageReference.ThumbnailImage = root + thumpImageFilename;
+
+            try
+            {
+                SaveImageOriginalAndthumpImage(imageBytes, root, filename, thumpImageFilename);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return imageReference;
+        }
+
+
+
+
     }
 
 

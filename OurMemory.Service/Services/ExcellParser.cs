@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using AutoMapper;
 using LinqToExcel;
+using OurMemory.Domain.DtoModel;
+using OurMemory.Service.Helper;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
 
@@ -19,31 +24,35 @@ namespace OurMemory.Service.Services
 
         }
 
-        public void GetVeterans()
+        public void GetVeterans(out IEnumerable<VeteranBindingModel> veteran)
         {
-            var rows = (from c in excel.Worksheet<VeteranRow>()
+            var rows = (from c in excel.Worksheet<VeteranMapping>()
                         select c).ToList();
+
+            veteran = Mapper.Map<IEnumerable<VeteranMapping>, IEnumerable<VeteranBindingModel>>(rows);
+
+
 
             foreach (var row in rows)
             {
+                string regex = @"((www\.|(http|https|ftp|news|file)+\:\/\/)[&#95;.a-z0-9-]+\.[a-z0-9\/&#95;:_@=.+?,##%&~-]*[^.|\'|\# |!|\(|?|,| |>|<|;|\)])";
 
+                Regex regex1 = new Regex(regex, RegexOptions.IgnoreCase);
+
+                Match match = regex1.Match(row.UrlImages);
+
+                while (match.Success)
+                {
+                    var downloadData = new WebClient().DownloadData(match.Value);
+
+                    if (downloadData != null)
+                    {
+                        ImageService imageService = new ImageService();
+                        var imageReference = imageService.SaveImage(downloadData);
+                    }
+                }
             }
         }
 
-        private void Map(VeteranMapping veteranMapping)
-        {
-            excel.AddMapping<VeteranRow>(x => x.FirstName, veteranMapping.FirstName);
-            excel.AddMapping<VeteranRow>(x => x.LastName, veteranMapping.LastName);
-            excel.AddMapping<VeteranRow>(x => x.MiddleName, veteranMapping.MiddleName);
-            excel.AddMapping<VeteranRow>(x => x.DateBirth, veteranMapping.DateBirth);
-            excel.AddMapping<VeteranRow>(x => x.DateDeath, veteranMapping.DateDeath);
-            excel.AddMapping<VeteranRow>(x => x.BirthPlace, veteranMapping.BirthPlace);
-            excel.AddMapping<VeteranRow>(x => x.Awards, veteranMapping.Awards);
-            excel.AddMapping<VeteranRow>(x => x.Description, veteranMapping.Description);
-            excel.AddMapping<VeteranRow>(x => x.Troops, veteranMapping.Troops);
-            excel.AddMapping<VeteranRow>(x => x.UrlImages, veteranMapping.UrlImages);
-            excel.AddMapping<VeteranRow>(x => x.Called, veteranMapping.Called);
-            excel.AddMapping<VeteranRow>(x => x.Description, veteranMapping.Description);
-        }
     }
 }

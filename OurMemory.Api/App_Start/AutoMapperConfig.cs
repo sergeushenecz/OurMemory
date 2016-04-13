@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using AutoMapper;
+using OurMemory.AutoMapperConverter;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
+using OurMemory.Service.Model;
 
 namespace OurMemory
 {
@@ -28,7 +32,7 @@ namespace OurMemory
 
 
             Mapper.CreateMap<Veteran, Veteran>().ForMember(dest => dest.User, opt => opt.Ignore());
-
+            Mapper.CreateMap<VeteranMapping, VeteranBindingModel>();
         }
 
         private void ConfigurateBindingModelToModel()

@@ -9,6 +9,7 @@ using System.Web.Http;
 using LinqToExcel;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
+using OurMemory.Service.Model;
 using OurMemory.Service.Services;
 
 namespace OurMemory.Controllers
@@ -67,13 +68,15 @@ namespace OurMemory.Controllers
 
             var fileName = httpPostedFile.FileName;
 
-            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Files/"), fileName);
+            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Temp/"), fileName);
 
             httpPostedFile.SaveAs(path);
 
-            ExcellParser excellParser = new ExcellParser(fileName);
-            excellParser.GetVeterans();
-           
+            ExcellParser excellParser = new ExcellParser(path);
+
+            IEnumerable<VeteranBindingModel> veteranBindingModel;
+            excellParser.GetVeterans(out veteranBindingModel);
+
 
             return Ok();
         }
