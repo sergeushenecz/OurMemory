@@ -36,9 +36,9 @@ namespace UnitTestProject1
 
         public void Initialize()
         {
-            AutoMapper.Mapper.CreateMap<ImageVeteran, ImageVeteranBindingModel>();
+            AutoMapper.Mapper.CreateMap<ImageVeteran, ImageReference>();
             AutoMapper.Mapper.CreateMap<Veteran, VeteranBindingModel>();
-            AutoMapper.Mapper.CreateMap<ImageVeteranBindingModel, ImageVeteran>();
+            AutoMapper.Mapper.CreateMap<ImageReference, ImageVeteran>();
             AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>();
         }
 

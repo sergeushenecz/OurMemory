@@ -6,22 +6,29 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using AutoMapper;
 using LinqToExcel;
+using Microsoft.AspNet.Identity;
 using OurMemory.Domain.DtoModel;
+using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
+using OurMemory.Service.Parsers;
 using OurMemory.Service.Services;
+using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Controllers
 {
     public class FileUploadController : BaseController
     {
         private readonly IImageService _imageService;
+        private readonly VeteranService _veteranService;
 
-        public FileUploadController(IImageService imageService, ApplicationUserManager userManager)
+        public FileUploadController(IImageService imageService, VeteranService veteranService, ApplicationUserManager userManager)
             : base(userManager)
         {
             _imageService = imageService;
+            _veteranService = veteranService;
         }
 
         public async Task<IHttpActionResult> Post()
@@ -45,9 +52,9 @@ namespace OurMemory.Controllers
 
             Dictionary<string, string> errors = new Dictionary<string, string>();
 
-            List<ImageVeteranBindingModel> imageFilesVeterans = _imageService.SaveImages(provider, root, ref errors);
+            List<ImageReference> imageFilesVeterans = _imageService.SaveImages(provider, root, ref errors);
 
-            var imageVeterans = imageFilesVeterans.Select(file => new ImageVeteranBindingModel
+            var imageVeterans = imageFilesVeterans.Select(file => new ImageReference
             {
                 ImageOriginal = imageUrl + @"/" + file.ImageOriginal,
                 ThumbnailImage = imageUrl + @"/" + file.ThumbnailImage
@@ -65,25 +72,29 @@ namespace OurMemory.Controllers
         public IHttpActionResult UploadExcellFilesPost()
         {
             var httpPostedFile = HttpContext.Current.Request.Files["UploadedImage"];
-
             var fileName = httpPostedFile.FileName;
-
             var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Temp/"), fileName);
-
             httpPostedFile.SaveAs(path);
 
             ExcellParser excellParser = new ExcellParser(path);
+            var veteranMappings = excellParser.GetVeterans();
 
-            IEnumerable<VeteranBindingModel> veteranBindingModel;
-            excellParser.GetVeterans(out veteranBindingModel);
+
+            foreach (var veteranMapping in veteranMappings)
+            {
+                var veteranBindingModel = Mapper.Map<VeteranMapping, VeteranBindingModel>(veteranMapping);
+
+                var listParsedUrls = UrlParser.Parse(veteranMapping.UrlImages);
+                veteranBindingModel.Images = UrlParser.DownloadFromUrls(listParsedUrls);
+
+                var veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
+                veteran.User = UserManager.FindById(User.Identity.GetUserId());
+
+                _veteranService.Add(veteran);
+            }
 
 
             return Ok();
         }
-    }
-
-    public class Company
-    {
-        public string Header { get; set; }
     }
 }

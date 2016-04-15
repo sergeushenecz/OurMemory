@@ -56,7 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DtoModel\ImageVeteranBindingModel.cs" />
+    <Compile Include="DtoModel\ImageReference.cs" />
     <Compile Include="DtoModel\VeteranBindingModel.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Base.cs" />

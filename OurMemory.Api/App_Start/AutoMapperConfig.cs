@@ -8,6 +8,7 @@ using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
 using OurMemory.Service.Model;
+using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory
 {
@@ -22,7 +23,7 @@ namespace OurMemory
 
         private void ConfigurateModelToBindingModel()
         {
-            AutoMapper.Mapper.CreateMap<ImageVeteran, ImageVeteranBindingModel>();
+            AutoMapper.Mapper.CreateMap<ImageVeteran, ImageReference>();
 
             AutoMapper.Mapper.CreateMap<Veteran, VeteranBindingModel>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(x => x.FirstName
@@ -37,7 +38,7 @@ namespace OurMemory
 
         private void ConfigurateBindingModelToModel()
         {
-            AutoMapper.Mapper.CreateMap<ImageVeteranBindingModel, ImageVeteran>();
+            AutoMapper.Mapper.CreateMap<ImageReference, ImageVeteran>();
 
             AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>();
         }

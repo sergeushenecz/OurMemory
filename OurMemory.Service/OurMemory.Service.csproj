@@ -91,12 +91,12 @@
     <Compile Include="Extenshions\QueryableExtentions.cs" />
     <Compile Include="Helper\HelperMetaData.cs" />
     <Compile Include="Interfaces\IExcellParser.cs" />
-    <Compile Include="Model\ImageReference.cs" />
     <Compile Include="Model\SearchRequestModelBase.cs" />
     <Compile Include="Model\SearchVeteranModel.cs" />
     <Compile Include="Model\VeteranMapping.cs" />
     <Compile Include="Model\VeteranRow.cs" />
-    <Compile Include="Services\ExcellParser.cs" />
+    <Compile Include="Parsers\ExcellParser.cs" />
+    <Compile Include="Parsers\UrlParser.cs" />
     <Compile Include="Services\FormService.cs" />
     <Compile Include="Services\ImageVeteranService.cs" />
     <Compile Include="Interfaces\IFormService.cs" />
@@ -125,9 +125,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

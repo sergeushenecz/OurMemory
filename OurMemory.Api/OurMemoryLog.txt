@@ -1794,3 +1794,438 @@ Parameter name: input
 2016-04-13 23:45:54,133 [8] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
 2016-04-13 23:45:54,146 [8] WARN  LinqToExcel.Query.ExcelQueryExecutor 'Имя' column that is mapped to the 'LastName' property does not exist in the 'Sheet1' worksheet
 2016-04-13 23:45:54,146 [8] WARN  LinqToExcel.Query.ExcelQueryExecutor 'Описание' column that is mapped to the 'Description' property does not exist in the 'Sheet1' worksheet
+2016-04-15 19:43:43,625 [7] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.IO.DirectoryNotFoundException: Could not find a part of the path 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Web.HttpPostedFile.SaveAs(String filename)
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 73
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 19:43:51,142 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 19:43:51,142 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 19:43:51,212 [6] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 19:49:12,231 [6] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.DataException: 'Sheet1' is not a valid worksheet name in file G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx. Valid worksheet names are: 'Лист1'. Error received: 'Sheet1$' is not a valid name. Make sure that it does not include invalid characters or punctuation and that it is not too long. ---> System.Data.OleDb.OleDbException: 'Sheet1$' is not a valid name. Make sure that it does not include invalid characters or punctuation and that it is not too long.
+   at System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   at System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   at System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   at System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   at System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   at System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.OleDb.OleDbCommand.ExecuteReader()
+   at LinqToExcel.Query.ExcelQueryExecutor.GetDataResults(SqlParts sql, QueryModel queryModel)
+   --- End of inner exception stack trace ---
+   at LinqToExcel.Query.ExcelQueryExecutor.GetDataResults(SqlParts sql, QueryModel queryModel)
+   at LinqToExcel.Query.ExcelQueryExecutor.ExecuteCollection[T](QueryModel queryModel)
+   at Remotion.Data.Linq.Clauses.StreamedData.StreamedSequenceInfo.ExecuteCollectionQueryModel[T](QueryModel queryModel, IQueryExecutor executor)
+   at Remotion.Data.Linq.Clauses.StreamedData.StreamedSequenceInfo.ExecuteQueryModel(QueryModel queryModel, IQueryExecutor executor)
+   at Remotion.Data.Linq.QueryModel.Execute(IQueryExecutor executor)
+   at Remotion.Data.Linq.QueryProviderBase.Execute[TResult](Expression expression)
+   at Remotion.Data.Linq.QueryableBase`1.GetEnumerator()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at OurMemory.Service.Services.ExcellParser.GetVeterans(IEnumerable`1& veteran) in G:\Диплом\OurMemory\OurMemory.Service\Services\ExcellParser.cs:line 29
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 78
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 19:49:22,872 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.NullReferenceException: Object reference not set to an instance of an object.
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 69
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 19:49:36,170 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.NullReferenceException: Object reference not set to an instance of an object.
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 69
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 19:49:48,213 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 19:49:48,213 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 19:49:48,234 [16] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:03:46,552 [18] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:03:46,552 [18] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:03:46,572 [18] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:04:28,260 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:04:28,260 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:04:28,283 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:04:38,274 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:04:38,274 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:04:38,275 [6] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:06:39,646 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:06:39,656 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:06:39,726 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:10:44,673 [13] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:10:44,683 [13] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:10:44,755 [13] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:15:31,479 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:15:31,493 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:15:31,566 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:16:09,151 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:16:09,151 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:16:09,152 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:56:21,440 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:56:21,450 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:56:21,525 [6] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 20:57:35,831 [6] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidCastException: Unable to cast object of type 'System.Collections.Generic.List`1[OurMemory.Service.Model.ImageReference]' to type 'System.Collections.Generic.IEnumerable`1[OurMemory.Domain.DtoModel.ImageVeteranBindingModel]'.
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 88
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 20:59:06,004 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 20:59:06,014 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 20:59:06,086 [7] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:07:36,431 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:07:36,441 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:07:36,514 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:10:26,767 [9] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Infrastructure.DbUpdateException: Entities in 'ApplicationDbContext.Veterans' participate in the 'Veteran_User' relationship. 0 related 'Veteran_User_Target' were found. 1 'Veteran_User_Target' is expected. ---> System.Data.Entity.Core.UpdateException: Entities in 'ApplicationDbContext.Veterans' participate in the 'Veteran_User' relationship. 0 related 'Veteran_User_Target' were found. 1 'Veteran_User_Target' is expected.
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.RelationshipConstraintValidator.ValidateConstraints()
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ProduceCommands()
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at OurMemory.Data.ApplicationDbContext.Commit() in G:\Диплом\OurMemory\OurMemory.Data\ApplicationDbContext.cs:line 73
+   at OurMemory.Data.Infrastructure.UnitOfWork.Commit() in G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\UnitOfWork.cs:line 20
+   at OurMemory.Service.Services.VeteranService.SaveVeteran() in G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:line 67
+   at OurMemory.Service.Services.VeteranService.Add(Veteran veteran) in G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:line 33
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 93
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 21:10:50,243 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:10:50,255 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:10:50,336 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:15:59,778 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:15:59,788 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:15:59,865 [6] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:19:25,999 [6] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Infrastructure.DbUpdateException: Entities in 'ApplicationDbContext.Veterans' participate in the 'Veteran_User' relationship. 0 related 'Veteran_User_Target' were found. 1 'Veteran_User_Target' is expected. ---> System.Data.Entity.Core.UpdateException: Entities in 'ApplicationDbContext.Veterans' participate in the 'Veteran_User' relationship. 0 related 'Veteran_User_Target' were found. 1 'Veteran_User_Target' is expected.
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.RelationshipConstraintValidator.ValidateConstraints()
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ProduceCommands()
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at OurMemory.Data.ApplicationDbContext.Commit()
+   at OurMemory.Data.Infrastructure.UnitOfWork.Commit()
+   at OurMemory.Service.Services.VeteranService.SaveVeteran() in G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:line 67
+   at OurMemory.Service.Services.VeteranService.Add(Veteran veteran) in G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:line 33
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 96
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 21:20:36,715 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:20:36,725 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:20:36,806 [7] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:20:44,826 [7] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: The property 'User' cannot be used as a key property on the entity 'OurMemory.Domain.Entities.Veteran' because the property type is not a valid key type. Only scalar types, string and byte[] are supported key types.
+   at System.Data.Entity.ModelConfiguration.Configuration.Types.EntityTypeConfiguration.Key(PropertyInfo propertyInfo, Nullable`1 overridableConfigurationParts)
+   at System.Data.Entity.ModelConfiguration.Configuration.Types.EntityTypeConfiguration.Key(IEnumerable`1 keyProperties)
+   at System.Data.Entity.ModelConfiguration.EntityTypeConfiguration`1.HasKey[TKey](Expression`1 keyExpression)
+   at OurMemory.Data.Mapping.VeteranMap..ctor() in G:\Диплом\OurMemory\OurMemory.Data\Mapping\VeteranMap.cs:line 28
+   at OurMemory.Data.ApplicationDbContext.OnModelCreating(DbModelBuilder modelBuilder) in G:\Диплом\OurMemory\OurMemory.Data\ApplicationDbContext.cs:line 24
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModelBuilder()
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.FindAsync(CancellationToken cancellationToken, Object[] keyValues)
+   at System.Data.Entity.DbSet`1.FindAsync(CancellationToken cancellationToken, Object[] keyValues)
+   at System.Data.Entity.DbSet`1.FindAsync(Object[] keyValues)
+   at Microsoft.AspNet.Identity.EntityFramework.EntityStore`1.GetByIdAsync(Object id)
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6.<GetUserAggregateAsync>d__6c.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.AspNet.Identity.AsyncHelper.RunSync[TResult](Func`1 func)
+   at Microsoft.AspNet.Identity.UserManagerExtensions.FindById[TUser,TKey](UserManager`2 manager, TKey userId)
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 92
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 21:20:49,106 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:20:49,107 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:20:49,107 [6] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:24:38,268 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:24:38,279 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:24:38,357 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:25:57,073 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:25:57,084 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:25:57,157 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:26:59,155 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while saving entities that do not expose foreign key properties for their relationships. The EntityEntries property will return null because a single entity cannot be identified as the source of the exception. Handling of exceptions while saving can be made easier by exposing foreign key properties in your entity types. See the InnerException for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'dbo.ImageVeterans'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at OurMemory.Data.ApplicationDbContext.Commit() in G:\Диплом\OurMemory\OurMemory.Data\ApplicationDbContext.cs:line 73
+   at OurMemory.Data.Infrastructure.UnitOfWork.Commit() in G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\UnitOfWork.cs:line 20
+   at OurMemory.Service.Services.VeteranService.SaveVeteran() in G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:line 67
+   at OurMemory.Service.Services.VeteranService.Add(Veteran veteran) in G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:line 33
+   at OurMemory.Controllers.FileUploadController.UploadExcellFilesPost() in G:\Диплом\OurMemory\OurMemory.Api\Controllers\FileUploadController.cs:line 96
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-15 21:27:04,718 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:27:04,718 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:27:04,718 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:37:25,590 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:37:25,601 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:37:25,679 [6] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:39:18,350 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:39:18,360 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:39:18,437 [8] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:40:31,993 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:40:32,006 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:40:32,080 [7] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-15 21:45:28,285 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-15 21:45:28,296 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-15 21:45:28,368 [7] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];

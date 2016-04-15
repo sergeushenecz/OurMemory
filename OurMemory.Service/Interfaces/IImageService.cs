@@ -10,6 +10,6 @@ namespace OurMemory.Service.Interfaces
         Image ResizeImage(Image image, Size size, bool preserveAspectRatio = true);
         byte[] ImageToByte(Image img);
 
-        List<ImageVeteranBindingModel> SaveImages(MultipartMemoryStreamProvider provider, string root, ref Dictionary<string, string> errors);
+        List<ImageReference> SaveImages(MultipartMemoryStreamProvider provider, string root, ref Dictionary<string, string> errors);
     }
 }

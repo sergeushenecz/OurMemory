@@ -9,6 +9,7 @@ using System.Web;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
+using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Service.Services
 {
@@ -56,9 +57,9 @@ namespace OurMemory.Service.Services
             return byteArray;
         }
 
-        public List<ImageVeteranBindingModel> SaveImages(MultipartMemoryStreamProvider provider, string root, ref  Dictionary<string, string> errors)
+        public List<ImageReference> SaveImages(MultipartMemoryStreamProvider provider, string root, ref Dictionary<string, string> errors)
         {
-            List<ImageVeteranBindingModel> imageFilesVeterans = new List<ImageVeteranBindingModel>();
+            List<ImageReference> imageFilesVeterans = new List<ImageReference>();
 
             foreach (HttpContent file in provider.Contents)
             {
@@ -71,7 +72,7 @@ namespace OurMemory.Service.Services
                     continue;
                 }
 
-                var filesVeteran = new ImageVeteranBindingModel();
+                var filesVeteran = new ImageReference();
 
                 filename = Guid.NewGuid() + ".jpg";
                 var thumpImageFilename = Guid.NewGuid() + ".jpg";
@@ -149,11 +150,16 @@ namespace OurMemory.Service.Services
             ImageReference imageReference = new ImageReference();
 
             string root = HttpContext.Current.Server.MapPath("~/Content/Files/");
+
+//            var imageUrl = HttpContext.Current.Request.ApplicationPath + "Content/Files/";
+
+            string imageUrl = VirtualPathUtility.ToAbsolute("~/Content/Files/");
+
             var filename = Guid.NewGuid() + ".jpg";
             var thumpImageFilename = Guid.NewGuid() + ".jpg";
 
-            imageReference.ImageOriginal = root + filename;
-            imageReference.ThumbnailImage = root + thumpImageFilename;
+            imageReference.ImageOriginal = imageUrl + filename;
+            imageReference.ThumbnailImage = imageUrl + thumpImageFilename;
 
             try
             {
@@ -162,7 +168,7 @@ namespace OurMemory.Service.Services
             catch (Exception)
             {
 
-                throw;
+                throw new Exception("Not Save Image");
             }
 
             return imageReference;

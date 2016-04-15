@@ -10,6 +10,6 @@ namespace OurMemory.Service.Interfaces
 {
     public interface IExcellParser
     {
-        void GetVeterans(out IEnumerable<VeteranBindingModel> veteranBindingModel);
+        List<VeteranMapping> GetVeterans();
     }
 }
