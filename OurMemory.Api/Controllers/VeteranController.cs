@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
+using OurMemory.Service.Extenshions;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
 
@@ -76,11 +77,17 @@ namespace OurMemory.Controllers
 
         public IHttpActionResult Get([FromUri]SearchVeteranModel searchVeteranModel)
         {
-            var searchVeterans = _veteranService.SearchVeterans(searchVeteranModel);
+            var allCountSearchVeterans = _veteranService.SearchVeterans(searchVeteranModel).Count();
+            var searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).Pagination(searchVeteranModel.Skip, searchVeteranModel.Size);
+
+
+
+            var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(searchVeterans);
 
             return Ok(new
             {
-                Items = searchVeterans
+                Items = veteranBindingModels,
+                Count = allCountSearchVeterans
             });
         }
 

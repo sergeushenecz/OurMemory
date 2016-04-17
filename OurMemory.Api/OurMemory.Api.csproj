@@ -302,7 +302,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\defaul-image-veteran.jpg" />
-    <Content Include="Content\Files\HtmlPage1.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -361,6 +360,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Common\" />
+    <Folder Include="Content\Files\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

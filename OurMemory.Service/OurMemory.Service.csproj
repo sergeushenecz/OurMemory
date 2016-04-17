@@ -40,6 +40,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GoogleMaps.LocationServices, Version=0.1.5926.26040, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMaps.LocationServices.0.9.8.6\lib\net40\GoogleMaps.LocationServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LinqToExcel, Version=1.10.1.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=x86">
       <HintPath>..\packages\LinqToExcel.1.10.1\lib\LinqToExcel.dll</HintPath>
       <Private>True</Private>
@@ -91,6 +95,7 @@
     <Compile Include="Extenshions\QueryableExtentions.cs" />
     <Compile Include="Helper\HelperMetaData.cs" />
     <Compile Include="Interfaces\IExcellParser.cs" />
+    <Compile Include="Model\LatLng.cs" />
     <Compile Include="Model\SearchRequestModelBase.cs" />
     <Compile Include="Model\SearchVeteranModel.cs" />
     <Compile Include="Model\VeteranMapping.cs" />
@@ -98,6 +103,7 @@
     <Compile Include="Parsers\ExcellParser.cs" />
     <Compile Include="Parsers\UrlParser.cs" />
     <Compile Include="Services\FormService.cs" />
+    <Compile Include="Services\GoogleMapsService.cs" />
     <Compile Include="Services\ImageVeteranService.cs" />
     <Compile Include="Interfaces\IFormService.cs" />
     <Compile Include="Interfaces\IImageService.cs" />
@@ -125,7 +131,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="GoogleMaps.LocationServices.readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

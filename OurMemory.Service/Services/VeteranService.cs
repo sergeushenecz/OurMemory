@@ -51,13 +51,13 @@ namespace OurMemory.Service.Services
             return _veteranRepository.GetAll().Where(x => !x.IsDeleted);
         }
 
-        public IEnumerable<Veteran> SearchVeterans(SearchVeteranModel searchVeteranModel)
+        public IQueryable<Veteran> SearchVeterans(SearchVeteranModel searchVeteranModel)
         {
             Specification<Veteran> keyWord = _veteranSpecification.KeyWord(searchVeteranModel);
 
             var veterans = _veteranRepository.GetSpec(keyWord.Predicate)
-                .OrderBy(x => x.FirstName)
-                .Pagination(searchVeteranModel.Skip, searchVeteranModel.Size);
+                .OrderBy(x => x.FirstName);
+               
 
             return veterans;
         }

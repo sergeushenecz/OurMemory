@@ -25,7 +25,8 @@ namespace OurMemory.Data.Mapping
 
             this.HasMany(x => x.Images);
 
-            this.HasOptional(x => x.User).WithOptionalPrincipal();
+            //this.HasRequired(x => x.User);
+            this.HasOptional(x => x.User).WithRequired();
         }
     }
 }

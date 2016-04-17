@@ -144,6 +144,8 @@ namespace OurMemory.Service.Services
             return extensions.Any(i => i.Equals(extension));
         }
 
+        
+
 
         public ImageReference SaveImage(byte[] imageBytes)
         {

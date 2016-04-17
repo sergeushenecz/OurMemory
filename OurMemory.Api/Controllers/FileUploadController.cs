@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -69,30 +70,76 @@ namespace OurMemory.Controllers
         }
 
         [Route("api/fileUpload/uploadExcell")]
-        public IHttpActionResult UploadExcellFilesPost()
+        public async Task<IHttpActionResult> UploadExcellFilesPost()
         {
-            var httpPostedFile = HttpContext.Current.Request.Files["UploadedImage"];
-            var fileName = httpPostedFile.FileName;
-            var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Temp/"), fileName);
-            httpPostedFile.SaveAs(path);
+            string path = null;
 
-            ExcellParser excellParser = new ExcellParser(path);
-            var veteranMappings = excellParser.GetVeterans();
-
-
-            foreach (var veteranMapping in veteranMappings)
+            if (!Request.Content.IsMimeMultipartContent())
             {
-                var veteranBindingModel = Mapper.Map<VeteranMapping, VeteranBindingModel>(veteranMapping);
-
-                var listParsedUrls = UrlParser.Parse(veteranMapping.UrlImages);
-                veteranBindingModel.Images = UrlParser.DownloadFromUrls(listParsedUrls);
-
-                var veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
-                veteran.User = UserManager.FindById(User.Identity.GetUserId());
-
-                _veteranService.Add(veteran);
+                return BadRequest();
             }
 
+            var provider = new MultipartMemoryStreamProvider();
+            await Request.Content.ReadAsMultipartAsync(provider);
+
+            var file = provider.Contents[0];
+
+            var filename = file.Headers.ContentDisposition.FileName.Replace("\"", string.Empty);
+            filename += Guid.NewGuid().ToString() + ".xlsx";
+
+
+            byte[] fileArray = file.ReadAsByteArrayAsync().Result;
+
+            path = Path.Combine(HttpContext.Current.Server.MapPath("~/Temp/"), filename);
+
+            using (FileStream fs = new FileStream(path, FileMode.Create))
+            {
+                fs.Write(fileArray, 0, fileArray.Length);
+            }
+
+            try
+            {
+                ExcellParser excellParser = new ExcellParser(path);
+                var veteranMappings = excellParser.GetVeterans();
+
+
+                foreach (var veteranMapping in veteranMappings)
+                {
+                    var veteranBindingModel = Mapper.Map<VeteranMapping, VeteranBindingModel>(veteranMapping);
+
+                    var listParsedUrls = UrlParser.Parse(veteranMapping.UrlImages);
+                    veteranBindingModel.Images = UrlParser.DownloadFromUrls(listParsedUrls);
+
+                    var veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
+                    veteran.User = UserManager.FindById(User.Identity.GetUserId());
+
+                    var googleMapsService = new GoogleMapsService(string.Empty);
+                    var latLng = googleMapsService.GetLatLng(veteran.BirthPlace);
+                    veteran.Latitude = latLng.Latitude;
+                    veteran.Longitude = latLng.Longitude;
+
+                    _veteranService.Add(veteran);
+                }
+            }
+            catch (Exception exception)
+            {
+                var resp = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    Content = new StringContent("Problems with parsing the file"),
+                    ReasonPhrase = "File Not Parsed"
+                };
+
+                throw new HttpResponseException(resp);
+            }
+            finally
+            {
+                if (File.Exists(path))
+                {
+
+                    File.Delete(path);
+                }
+
+            }
 
             return Ok();
         }
