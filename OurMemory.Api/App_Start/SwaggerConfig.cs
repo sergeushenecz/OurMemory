@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -19,7 +20,7 @@ namespace OurMemory
             GlobalConfiguration.Configuration
                 .EnableSwagger(c =>
                     {
-                        
+
                         // By default, the service root url is inferred from the request used to access the docs.
                         // However, there may be situations (e.g. proxy and load-balanced environments) where this does not
                         // resolve correctly. You can workaround this by providing your own code to determine the root URL.
@@ -57,24 +58,24 @@ namespace OurMemory
                         // you'll need to implement a custom IDocumentFilter and/or IOperationFilter to set these properties
                         // according to your specific authorization implementation
                         //
-//                        c.BasicAuth("basic")
-//                            .Description("Basic HTTP Authentication");
+                        //                        c.BasicAuth("basic")
+                        //                            .Description("Basic HTTP Authentication");
                         //
-//                        c.ApiKey("apiKey")
-//                            .Description("API Key Authentication")
-//                            .Name("apiKey")
-//                            .In("header");
+                        //                        c.ApiKey("apiKey")
+                        //                            .Description("API Key Authentication")
+                        //                            .Name("apiKey")
+                        //                            .In("header");
                         //
-                        //c.OAuth2("oauth2")
-                        //    .Description("OAuth2 Implicit Grant")
-                        //    .Flow("implicit")
-                        //    .AuthorizationUrl("http://petstore.swagger.wordnik.com/api/oauth/dialog")
-                        //    //.TokenUrl("https://tempuri.org/token")
-                        //    .Scopes(scopes =>
-                        //    {
-                        //        scopes.Add("read", "Read access to protected resources");
-                        //        scopes.Add("write", "Write access to protected resources");
-                        //    });
+                        c.OAuth2("oauth2")
+                            .Description("OAuth2 Implicit Grant")
+                            .Flow("implicit")
+                            .AuthorizationUrl("http://localhost:7410/Home/Index")
+                            .TokenUrl("http://localhost:7410/api/Token")
+                            .Scopes(scopes =>
+                            {
+                                scopes.Add("read", "Read access to protected resources");
+                                scopes.Add("write", "Write access to protected resources");
+                            });
 
                         // Set this flag to omit descriptions for any actions decorated with the Obsolete attribute
                         //c.IgnoreObsoleteActions();
@@ -135,8 +136,8 @@ namespace OurMemory
                         // You can change the serializer behavior by configuring the StringToEnumConverter globally or for a given
                         // enum type. Swashbuckle will honor this change out-of-the-box. However, if you use a different
                         // approach to serialize enums as strings, you can also force Swashbuckle to describe them as strings.
-                        // 
-                        //c.DescribeAllEnumsAsStrings();
+
+                        c.DescribeAllEnumsAsStrings();
 
                         // Similar to Schema filters, Swashbuckle also supports Operation and Document filters:
                         //
@@ -149,7 +150,7 @@ namespace OurMemory
                         // to inspect some attribute on each action and infer which (if any) OAuth2 scopes are required
                         // to execute the operation
                         //
-                        //c.OperationFilter<AssignOAuth2SecurityRequirements>();
+                        c.OperationFilter<AssignOAuth2SecurityRequirements>();
 
                         // Post-modify the entire Swagger document by wiring up one or more Document filters.
                         // This gives full control to modify the final SwaggerDocument. You should have a good understanding of
@@ -220,11 +221,35 @@ namespace OurMemory
                         // If your API supports the OAuth2 Implicit flow, and you've described it correctly, according to
                         // the Swagger 2.0 specification, you can enable UI support as shown below.
                         //
-                        //c.EnableOAuth2Support("test-client-id", "test-realm", "Swagger UI");
+                        c.EnableOAuth2Support("test-client-id", "test-realm", "Swagger UI");
                     });
         }
     }
 
+    public class AssignOAuth2SecurityRequirements : IOperationFilter
+    {
+        public void Apply(Operation operation, SchemaRegistry schemaRegistry, ApiDescription apiDescription)
+        {
+            // Determine if the operation has the Authorize attribute
+            var authorizeAttributes = apiDescription
+                .ActionDescriptor.GetCustomAttributes<AuthorizeAttribute>();
+
+            if (!authorizeAttributes.Any())
+                return;
+
+            // Initialize the operation.security property
+            if (operation.security == null)
+                operation.security = new List<IDictionary<string, IEnumerable<string>>>();
+
+            // Add the appropriate security definition to the operation
+            var oAuthRequirements = new Dictionary<string, IEnumerable<string>>
+            {
+                { "oauth2", Enumerable.Empty<string>() }
+            };
+
+            operation.security.Add(oAuthRequirements);
+        }
+    }
 
 
     //public class MultipleOperationsWithSameVerbFilter : IOperationFilter
