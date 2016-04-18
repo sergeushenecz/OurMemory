@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Web;
 using AutoMapper;
 using OurMemory.AutoMapperConverter;
 using OurMemory.Domain.DtoModel;
@@ -34,6 +35,13 @@ namespace OurMemory
 
             Mapper.CreateMap<Veteran, Veteran>().ForMember(dest => dest.User, opt => opt.Ignore());
             Mapper.CreateMap<VeteranMapping, VeteranBindingModel>();
+
+            
+
+            Mapper.CreateMap<Veteran, VeteranMapping>()
+                .ForMember(dest => dest.UrlImages, opt => opt.MapFrom(src => string.Join(", ", src.Images
+                                                    .Select(x => HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority + x.ImageOriginal ))));
+
         }
 
         private void ConfigurateBindingModelToModel()
@@ -41,6 +49,8 @@ namespace OurMemory
             AutoMapper.Mapper.CreateMap<ImageReference, ImageVeteran>();
 
             AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>();
+
+           
         }
     }
 }

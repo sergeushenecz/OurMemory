@@ -18,6 +18,7 @@ namespace OurMemory.Service.Specification
                 .And(GetByLastName(searchVeteranModel.LastName))
                 .And(GetByMiddlename(searchVeteranModel.MiddleName))
                 .And(GetByBirthPlace(searchVeteranModel.BirthPlace))
+                .And(GetByTroops(searchVeteranModel.Troops))
                 .And(!IsDeleted());
         }
 
@@ -82,6 +83,11 @@ namespace OurMemory.Service.Specification
         public Specification<Veteran> GetByBirthPlace(string name)
         {
             return name == null ? Empty() : new Specification<Veteran>(x => x.BirthPlace.Contains(name));
+        }
+
+        public Specification<Veteran> GetByTroops(string name)
+        {
+            return name == null ? Empty() : new Specification<Veteran>(x => x.Troops.Contains(name));
         }
     }
 }

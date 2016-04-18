@@ -40,6 +40,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.0.5\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GoogleMaps.LocationServices, Version=0.1.5926.26040, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GoogleMaps.LocationServices.0.9.8.6\lib\net40\GoogleMaps.LocationServices.dll</HintPath>
       <Private>True</Private>
@@ -118,6 +122,10 @@
     <Compile Include="Services\VeteranService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OurMemory.Common\OurMemory.Common.csproj">
+      <Project>{7C8440EA-39A7-4D73-BF6E-C20A6789F50C}</Project>
+      <Name>OurMemory.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OurMemory.Data\OurMemory.Data.csproj">
       <Project>{4ccde6d8-d107-4682-a4d8-61ca6beb35a8}</Project>
       <Name>OurMemory.Data</Name>

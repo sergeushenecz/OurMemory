@@ -271,7 +271,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VeteranController.cs" />
     <Compile Include="Global.asax.cs">
@@ -373,6 +373,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OurMemory.Common\OurMemory.Common.csproj">
+      <Project>{7C8440EA-39A7-4D73-BF6E-C20A6789F50C}</Project>
+      <Name>OurMemory.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OurMemory.Data\OurMemory.Data.csproj">
       <Project>{4ccde6d8-d107-4682-a4d8-61ca6beb35a8}</Project>
       <Name>OurMemory.Data</Name>

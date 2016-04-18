@@ -19,7 +19,7 @@ namespace OurMemory.Controllers
         private readonly IImageVeteranService _imageVeteranService;
 
 
-        log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public VeteranController(IVeteranService veteranService, IUserService userService, IImageVeteranService imageVeteranService)
         {
@@ -28,18 +28,6 @@ namespace OurMemory.Controllers
             _imageVeteranService = imageVeteranService;
         }
 
-        public IHttpActionResult Get()
-        {
-            IEnumerable<Veteran> veterans = _veteranService.GetAll();
-
-            var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
-
-            return Ok(new
-            {
-                Items = veteranBindingModels,
-                TotalCount = _veteranService.GetAll().Count()
-            });
-        }
 
         public VeteranBindingModel Get(int id)
         {
@@ -54,43 +42,37 @@ namespace OurMemory.Controllers
             return veteranBindingModels;
         }
 
-        [Route("api/veteran/{page}/{size}")]
-        public IHttpActionResult Get(int page, int size)
+        /// <summary>
+        /// Search Veterans 
+        /// </summary>
+        /// <param name="searchVeteranModel"></param>
+        /// <returns></returns>
+        [Route("api/veteran")]
+        public IHttpActionResult Get([FromUri]SearchVeteranModel searchVeteranModel)
         {
-            var veterans = _veteranService.GetAll().Reverse().Skip((page - 1) * 10).Take(size);
+            IEnumerable<Veteran> veterans = null;
+            int allCount = 0;
+
+            if (searchVeteranModel == null)
+            {
+                veterans = _veteranService.GetAll();
+                allCount = _veteranService.GetAll().Count();
+            }
+            else
+            {
+                allCount = _veteranService.SearchVeterans(searchVeteranModel).Count();
+                veterans = _veteranService.SearchVeterans(searchVeteranModel).Pagination((searchVeteranModel.Page - 1) * searchVeteranModel.Size, searchVeteranModel.Size).ToList();
+            }
 
             var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
 
             return Ok(new
             {
                 Items = veteranBindingModels,
-                TotalCount = _veteranService.GetAll().Count()
+                TotalCount = allCount
             });
         }
-
-        /// <summary>
-        /// Search Veterans 
-        /// </summary>
-        /// <param name="searchVeteranModel"></param>
-        /// <returns></returns>
-        [Route("api/veteran/search")]
-
-        public IHttpActionResult Get([FromUri]SearchVeteranModel searchVeteranModel)
-        {
-            var allCountSearchVeterans = _veteranService.SearchVeterans(searchVeteranModel).Count();
-            var searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).Pagination(searchVeteranModel.Skip, searchVeteranModel.Size);
-
-
-
-            var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(searchVeterans);
-
-            return Ok(new
-            {
-                Items = veteranBindingModels,
-                Count = allCountSearchVeterans
-            });
-        }
-
+        [Route("api/veteran")]
         public IHttpActionResult Post(VeteranBindingModel veteranBindingModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);

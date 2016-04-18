@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
 using AutoMapper;
 using LinqToExcel;
 using Microsoft.AspNet.Identity;
+using OurMemory.Common;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Interfaces;
@@ -20,18 +24,44 @@ using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Controllers
 {
-    public class FileUploadController : BaseController
+    public class FilesController : BaseController
     {
         private readonly IImageService _imageService;
         private readonly VeteranService _veteranService;
 
-        public FileUploadController(IImageService imageService, VeteranService veteranService, ApplicationUserManager userManager)
+        log4net.ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public FilesController(IImageService imageService, VeteranService veteranService, ApplicationUserManager userManager)
             : base(userManager)
         {
             _imageService = imageService;
             _veteranService = veteranService;
         }
 
+
+        /// <summary>
+        /// Get excell a  file which contains information about veterans
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult GetReportExcellFiles([FromUri]SearchVeteranModel searchVeteranModel)
+        {
+            List<Veteran> searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).ToList();
+            var veteranMappings = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranMapping>>(searchVeterans);
+
+            var fileName = ExcellParser.GenerateReport(veteranMappings.ToList());
+
+
+
+            return Ok(new
+            {
+                PathToFile = fileName
+            });
+        }
+
+        /// <summary>
+        /// Upload image on server
+        /// </summary>
+        /// <returns></returns>
         public async Task<IHttpActionResult> Post()
         {
             if (!Request.Content.IsMimeMultipartContent())
@@ -45,11 +75,12 @@ namespace OurMemory.Controllers
 
 
 
-            var imageUrl = HttpContext.Current.Request.Url.Scheme +
-                "://"
-                + HttpContext.Current.Request.Url.Authority
-                + HttpContext.Current.Request.ApplicationPath + "Content/Files";
+            var imageUrl = HttpContext.Current.Request.ApplicationPath + "Content/Files";
 
+            if (!Directory.Exists(root))
+            {
+                Directory.CreateDirectory(root);
+            }
 
             Dictionary<string, string> errors = new Dictionary<string, string>();
 
@@ -69,7 +100,12 @@ namespace OurMemory.Controllers
 
         }
 
-        [Route("api/fileUpload/uploadExcell")]
+        /// <summary>
+        /// Upload Excell File on server
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="HttpResponseException"></exception>
+        [Route("api/files/uploadExcell")]
         public async Task<IHttpActionResult> UploadExcellFilesPost()
         {
             string path = null;
@@ -90,7 +126,7 @@ namespace OurMemory.Controllers
 
             byte[] fileArray = file.ReadAsByteArrayAsync().Result;
 
-            path = Path.Combine(HttpContext.Current.Server.MapPath("~/Temp/"), filename);
+            path = Path.Combine(HttpContext.Current.Server.MapPath("~" + ConfigurationSettingsModule.GetItem("Temp")), filename);
 
             using (FileStream fs = new FileStream(path, FileMode.Create))
             {
@@ -129,6 +165,8 @@ namespace OurMemory.Controllers
                     ReasonPhrase = "File Not Parsed"
                 };
 
+                _logger.Error(exception);
+
                 throw new HttpResponseException(resp);
             }
             finally
@@ -138,7 +176,6 @@ namespace OurMemory.Controllers
 
                     File.Delete(path);
                 }
-
             }
 
             return Ok();

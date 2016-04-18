@@ -25,7 +25,6 @@ namespace OurMemory.Data
             modelBuilder.Configurations.Add(new ImageVeteranMap());
 
 
-
             // Needed to ensure subclasses share the same table
             var user = modelBuilder.Entity<User>().ToTable("AspNetUsers");
             user.HasMany(u => u.Roles).WithRequired().HasForeignKey(ur => ur.UserId);

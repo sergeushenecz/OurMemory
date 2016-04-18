@@ -35,7 +35,9 @@
 <div>
     <label for="fileUpload">Select File to Upload: </label><input id="fileUpload" type="file" />
 
-    <input id="btnUploadFile" type="button" value="Upload File" />
+    <input id="btnUploadFile" type="button" value="Upload File"/>
+
+    <input id="btnGetReport" type="button" value="Generate Report" />
 </div>
 
 <script type="text/javascript">
@@ -56,10 +58,22 @@
             // Make Ajax request with the contentType = false, and procesDate = false
             var ajaxRequest = $.ajax({
                 type: "POST",
-                url: "/api/fileupload/uploadExcell",
+                url: "/api/files",
                 contentType: false,
                 processData: false,
                 data: data
+            });
+
+            ajaxRequest.done(function (xhr, textStatus) {
+                // Do other operation
+            });
+        });
+
+        $('#btnGetReport').on('click', function () {
+            // Make Ajax request with the contentType = false, and procesDate = false
+            var ajaxRequest = $.ajax({
+                type: "Get",
+                url: "/api/files"
             });
 
             ajaxRequest.done(function (xhr, textStatus) {
