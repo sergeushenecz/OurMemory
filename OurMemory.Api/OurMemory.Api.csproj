@@ -385,6 +385,10 @@
       <Project>{e5bd802a-051c-45f9-ae9a-9533aacbee18}</Project>
       <Name>OurMemory.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OurMemory.Resource\OurMemory.Resource.csproj">
+      <Project>{3370B89A-758C-4292-9579-38879E397706}</Project>
+      <Name>OurMemory.Resource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OurMemory.Service\OurMemory.Service.csproj">
       <Project>{8698481e-2877-4df9-a53c-6ac71504c22e}</Project>
       <Name>OurMemory.Service</Name>

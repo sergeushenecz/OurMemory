@@ -8,6 +8,7 @@ using LinqToExcel;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using OurMemory.Common;
+using OurMemory.Resource;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
 
@@ -38,7 +39,6 @@ namespace OurMemory.Service.Parsers
             var fileName = "Report-" + DateTime.Now.ToString("yyyy-MM-dd--hh-mm-ss") + ".xlsx";
             var outputDir = HttpContext.Current.Server.MapPath(ConfigurationSettingsModule.GetItem("Temp"));
             var virtualPath = ConfigurationSettingsModule.GetItem("Temp");
-            byte[] fileBytes;
 
             if (!Directory.Exists(outputDir))
             {
@@ -78,21 +78,23 @@ namespace OurMemory.Service.Parsers
             excelWorksheet.Cells["A1:K1"].Style.Font.Bold = true;
             excelWorksheet.Cells["A1:K1"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             excelWorksheet.Column(11).Width = 150;
+
+
         }
 
         private static void AddHeader(ExcelWorksheet excelWorksheet)
         {
-            excelWorksheet.Cells[1, 1].Value = "Фамилия";
-            excelWorksheet.Cells[1, 2].Value = "Имя";
-            excelWorksheet.Cells[1, 3].Value = "Отчество";
-            excelWorksheet.Cells[1, 4].Value = "Дата рождения";
-            excelWorksheet.Cells[1, 5].Value = "Место рождения";
-            excelWorksheet.Cells[1, 6].Value = "Дата смерти";
-            excelWorksheet.Cells[1, 7].Value = "Дата призыва";
-            excelWorksheet.Cells[1, 8].Value = "Награды";
-            excelWorksheet.Cells[1, 9].Value = "Войска";
-            excelWorksheet.Cells[1, 10].Value = "Описание";
-            excelWorksheet.Cells[1, 11].Value = "Ссылки на изображения";
+            excelWorksheet.Cells[1, 1].Value = OurMemoryResource.Excell_Header_FirstName;
+            excelWorksheet.Cells[1, 2].Value = OurMemoryResource.Excell_Header_LastName;
+            excelWorksheet.Cells[1, 3].Value = OurMemoryResource.Excell_Header_Url_MiddleName;
+            excelWorksheet.Cells[1, 4].Value = OurMemoryResource.Excell_Header_DateBirth;
+            excelWorksheet.Cells[1, 5].Value = OurMemoryResource.Excell_Header_BirthPlace;
+            excelWorksheet.Cells[1, 6].Value = OurMemoryResource.Excell_Header_DateDeath;
+            excelWorksheet.Cells[1, 7].Value = OurMemoryResource.Excell_Header_Called;
+            excelWorksheet.Cells[1, 8].Value = OurMemoryResource.Excell_Header_Awards;
+            excelWorksheet.Cells[1, 9].Value = OurMemoryResource.Excell_Header_Troops;
+            excelWorksheet.Cells[1, 10].Value = OurMemoryResource.Excell_Header_Description;
+            excelWorksheet.Cells[1, 11].Value = OurMemoryResource.Excell_Header_Url_Images;
         }
 
         private static void AddData(ExcelWorksheet excelWorksheet, List<VeteranMapping> veteranMapping)

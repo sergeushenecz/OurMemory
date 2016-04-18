@@ -1,6 +1,7 @@
 ﻿
 
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -28,6 +29,14 @@ namespace OurMemory.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        [System.Web.Http.NonAction]
+        public string GenerateAbsolutePath(string virtualPath)
+        {
+            return HttpContext.Current.Request.Url.Scheme +
+                           "://"
+                           + HttpContext.Current.Request.Url.Authority + virtualPath;
         }
     }
 }

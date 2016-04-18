@@ -38,7 +38,7 @@ namespace OurMemory.Controllers
             _veteranService = veteranService;
         }
 
-
+        [Route("api/files")]
         /// <summary>
         /// Get excell a  file which contains information about veterans
         /// </summary>
@@ -50,14 +50,15 @@ namespace OurMemory.Controllers
 
             var fileName = ExcellParser.GenerateReport(veteranMappings.ToList());
 
-
+            var generateAbsolutePath = GenerateAbsolutePath(fileName);
 
             return Ok(new
             {
-                PathToFile = fileName
+                PathToFile = generateAbsolutePath
             });
         }
 
+        [Route("api/files")]
         /// <summary>
         /// Upload image on server
         /// </summary>
@@ -73,9 +74,8 @@ namespace OurMemory.Controllers
             var provider = new MultipartMemoryStreamProvider();
             await Request.Content.ReadAsMultipartAsync(provider);
 
+            var imageUrl = GenerateAbsolutePath(HttpContext.Current.Request.ApplicationPath + ConfigurationSettingsModule.GetItem("PathImages"));
 
-
-            var imageUrl = HttpContext.Current.Request.ApplicationPath + "Content/Files";
 
             if (!Directory.Exists(root))
             {
@@ -106,25 +106,24 @@ namespace OurMemory.Controllers
         /// <returns></returns>
         /// <exception cref="HttpResponseException"></exception>
         [Route("api/files/uploadExcell")]
-        public async Task<IHttpActionResult> UploadExcellFilesPost()
+        public async Task<IHttpActionResult> PostUploadExcellFiles()
         {
-            string path = null;
-
             if (!Request.Content.IsMimeMultipartContent())
             {
                 return BadRequest();
             }
 
+            string path = null;
+
             var provider = new MultipartMemoryStreamProvider();
             await Request.Content.ReadAsMultipartAsync(provider);
 
             var file = provider.Contents[0];
+            byte[] fileArray = file.ReadAsByteArrayAsync().Result;
 
             var filename = file.Headers.ContentDisposition.FileName.Replace("\"", string.Empty);
-            filename += Guid.NewGuid().ToString() + ".xlsx";
-
-
-            byte[] fileArray = file.ReadAsByteArrayAsync().Result;
+            filename += Guid.NewGuid() + ".xlsx";
+          
 
             path = Path.Combine(HttpContext.Current.Server.MapPath("~" + ConfigurationSettingsModule.GetItem("Temp")), filename);
 
@@ -137,7 +136,6 @@ namespace OurMemory.Controllers
             {
                 ExcellParser excellParser = new ExcellParser(path);
                 var veteranMappings = excellParser.GetVeterans();
-
 
                 foreach (var veteranMapping in veteranMappings)
                 {

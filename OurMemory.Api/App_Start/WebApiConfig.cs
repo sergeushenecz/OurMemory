@@ -2,6 +2,7 @@
 using System.Web.Http.Cors;
 using System.Web.Http.ExceptionHandling;
 using Microsoft.Owin.Security.OAuth;
+using OurMemory.Resource;
 
 namespace OurMemory
 {
@@ -13,15 +14,16 @@ namespace OurMemory
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-            config.Services.Add(typeof (IExceptionLogger), new WebApiApplication.GlobalExceptionLogger());
+            config.Services.Add(typeof(IExceptionLogger), new WebApiApplication.GlobalExceptionLogger());
             //enable cors
-//            var cors = new EnableCorsAttribute("http://192.168.1.6:3000", "*", "*");
-//            config.EnableCors(cors);
+            //            var cors = new EnableCorsAttribute("http://192.168.1.6:3000", "*", "*");
+            //            config.EnableCors(cors);
 
-            
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.MessageHandlers.Add(new LanguageMessageHandler());
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -30,7 +32,7 @@ namespace OurMemory
             );
 
 
-                    
+
         }
     }
 }

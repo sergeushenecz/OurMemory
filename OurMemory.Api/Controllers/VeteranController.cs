@@ -18,9 +18,6 @@ namespace OurMemory.Controllers
         private readonly IUserService _userService;
         private readonly IImageVeteranService _imageVeteranService;
 
-
-        //log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         public VeteranController(IVeteranService veteranService, IUserService userService, IImageVeteranService imageVeteranService)
         {
             _veteranService = veteranService;
@@ -28,10 +25,15 @@ namespace OurMemory.Controllers
             _imageVeteranService = imageVeteranService;
         }
 
-
-        public VeteranBindingModel Get(int id)
+        [Route("api/veteran/{id}")]
+        public IHttpActionResult Get(int id)
         {
             var veteran = _veteranService.GetById(id);
+
+            if (veteran == null)
+            {
+                return NotFound();
+            }
 
             veteran.Views++;
 
@@ -39,14 +41,8 @@ namespace OurMemory.Controllers
 
             var veteranBindingModels = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
 
-            return veteranBindingModels;
+            return Ok(veteranBindingModels);
         }
-
-        /// <summary>
-        /// Search Veterans 
-        /// </summary>
-        /// <param name="searchVeteranModel"></param>
-        /// <returns></returns>
         [Route("api/veteran")]
         public IHttpActionResult Get([FromUri]SearchVeteranModel searchVeteranModel)
         {
@@ -80,6 +76,12 @@ namespace OurMemory.Controllers
             Veteran veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
 
             var userId = User.Identity.GetUserId();
+
+            if (userId == null)
+            {
+                return BadRequest("User Not Found");
+            }
+
             var user = _userService.GetById(userId);
 
             veteran.User = user;
@@ -90,7 +92,7 @@ namespace OurMemory.Controllers
 
             return Ok(veteranBindingModel);
         }
-
+        [Route("api/veteran")]
         public IHttpActionResult Put([FromBody]VeteranBindingModel veteranBindingModel)
         {
             var veteran = _veteranService.GetById(veteranBindingModel.Id);
@@ -109,7 +111,7 @@ namespace OurMemory.Controllers
 
             return StatusCode(HttpStatusCode.NotModified);
         }
-
+        [Route("api/veteran")]
         public IHttpActionResult Delete(int id)
         {
             var veteran = _veteranService.GetById(id);

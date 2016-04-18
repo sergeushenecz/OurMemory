@@ -481,31 +481,12 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="M:OurMemory.Controllers.FilesController.GetReportExcellFiles(OurMemory.Service.Model.SearchVeteranModel)">
-            <summary>
-            Get excell a  file which contains information about veterans
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:OurMemory.Controllers.FilesController.Post">
-            <summary>
-            Upload image on server
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:OurMemory.Controllers.FilesController.UploadExcellFilesPost">
+        <member name="M:OurMemory.Controllers.FilesController.PostUploadExcellFiles">
             <summary>
             Upload Excell File on server
             </summary>
             <returns></returns>
             <exception cref="T:System.Web.Http.HttpResponseException"></exception>
-        </member>
-        <member name="M:OurMemory.Controllers.VeteranController.Get(OurMemory.Service.Model.SearchVeteranModel)">
-            <summary>
-            Search Veterans 
-            </summary>
-            <param name="searchVeteranModel"></param>
-            <returns></returns>
         </member>
     </members>
 </doc>

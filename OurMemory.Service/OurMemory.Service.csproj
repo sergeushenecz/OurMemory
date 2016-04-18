@@ -134,6 +134,10 @@
       <Project>{e5bd802a-051c-45f9-ae9a-9533aacbee18}</Project>
       <Name>OurMemory.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OurMemory.Resource\OurMemory.Resource.csproj">
+      <Project>{3370b89a-758c-4292-9579-38879e397706}</Project>
+      <Name>OurMemory.Resource</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
