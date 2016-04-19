@@ -15,11 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OurMemory.Test", "OurMemory
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OurMemory.Common", "OurMemory.Common\OurMemory.Common.csproj", "{7C8440EA-39A7-4D73-BF6E-C20A6789F50C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F99FC76D-CF2B-4806-8028-31B5B30B770F}"
-	ProjectSection(SolutionItems) = preProject
-		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OurMemory.Resource", "OurMemory.Resource\OurMemory.Resource.csproj", "{3370B89A-758C-4292-9579-38879E397706}"
 EndProject
 Global

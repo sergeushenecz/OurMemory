@@ -20,10 +20,6 @@ namespace OurMemory
 
         protected void Application_Start()
         {
-            HttpConfiguration configuration = new HttpConfiguration();
-
-            configuration.EnableSwagger(c => c.SingleApiVersion("v1", "A title for your API")).EnableSwaggerUi();
-
             AutoMapperConfig mapperConfig = new AutoMapperConfig();
             mapperConfig.Initialization();
 

@@ -12,7 +12,7 @@ using OurMemory.Service.Model;
 
 namespace OurMemory.Controllers
 {
-    
+    [Authorize(Roles = "User")]
     public class VeteranController : ApiController
     {
         private readonly IVeteranService _veteranService;
@@ -25,7 +25,6 @@ namespace OurMemory.Controllers
             _userService = userService;
             _imageVeteranService = imageVeteranService;
         }
-        [Authorize(Roles = "User")]
         [Route("api/veteran/{id}")]
         public IHttpActionResult Get(int id)
         {

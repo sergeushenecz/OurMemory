@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Neptune.DataAccess.Specification.Utils;
 
 namespace OurMemory.Data.Specification.Core
 {

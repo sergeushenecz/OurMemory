@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Neptune.DataAccess.Specification.Utils
+namespace OurMemory.Data.Specification.Core
 {
 	/// <summary>
 	/// Utility class for combining expressions.
