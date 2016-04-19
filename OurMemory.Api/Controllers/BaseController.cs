@@ -1,10 +1,6 @@
-﻿
-
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace OurMemory.Controllers

@@ -30,7 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>App_Data/XmlDocument.xml</DocumentationFile>
+    <DocumentationFile>bin\XmlDocument.xml</DocumentationFile>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -364,7 +364,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Common\" />
     <Folder Include="Content\Files\" />
-    <Folder Include="CustomContent\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

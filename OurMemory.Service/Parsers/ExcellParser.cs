@@ -26,6 +26,8 @@ namespace OurMemory.Service.Parsers
 
         public List<VeteranMapping> GetVeterans()
         {
+
+            Map();
             var rows = (from c in excel.Worksheet<VeteranMapping>()
                         select c).ToList();
 
@@ -68,6 +70,21 @@ namespace OurMemory.Service.Parsers
             return virtualPath + fileName;
         }
 
+
+        private void Map()
+        {
+            excel.AddMapping<VeteranMapping>(x => x.FirstName, OurMemoryResource.Excell_Header_FirstName);
+            excel.AddMapping<VeteranMapping>(x => x.LastName, OurMemoryResource.Excell_Header_LastName);
+            excel.AddMapping<VeteranMapping>(x => x.MiddleName, OurMemoryResource.Excell_Header_Url_MiddleName);
+            excel.AddMapping<VeteranMapping>(x => x.DateBirth, OurMemoryResource.Excell_Header_DateBirth);
+            excel.AddMapping<VeteranMapping>(x => x.BirthPlace, OurMemoryResource.Excell_Header_BirthPlace);
+            excel.AddMapping<VeteranMapping>(x => x.DateDeath, OurMemoryResource.Excell_Header_DateDeath);
+            excel.AddMapping<VeteranMapping>(x => x.Called, OurMemoryResource.Excell_Header_Called);
+            excel.AddMapping<VeteranMapping>(x => x.Awards, OurMemoryResource.Excell_Header_Awards);
+            excel.AddMapping<VeteranMapping>(x => x.Troops, OurMemoryResource.Excell_Header_Troops);
+            excel.AddMapping<VeteranMapping>(x => x.Description, OurMemoryResource.Excell_Header_Description);
+            excel.AddMapping<VeteranMapping>(x => x.UrlImages, OurMemoryResource.Excell_Header_Url_Images);
+        }
 
         private static void AddFormating(ExcelWorksheet excelWorksheet)
         {

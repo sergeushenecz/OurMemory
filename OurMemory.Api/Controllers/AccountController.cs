@@ -55,6 +55,10 @@ namespace OurMemory.Controllers
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo
+        /// <summary>
+        /// Get user info 
+        /// </summary>
+        /// <returns></returns>
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
@@ -74,6 +78,10 @@ namespace OurMemory.Controllers
         }
 
         // POST api/Account/Logout
+        /// <summary>
+        /// Logout a user
+        /// </summary>
+        /// <returns></returns>
         [Route("Logout")]
         public IHttpActionResult Logout()
         {
@@ -81,7 +89,6 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-        // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
@@ -121,7 +128,11 @@ namespace OurMemory.Controllers
             };
         }
 
-        // POST api/Account/ChangePassword
+        /// <summary>
+        /// Change password a user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
@@ -141,7 +152,11 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-        // POST api/Account/SetPassword
+        /// <summary>
+        /// Set password
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
@@ -160,7 +175,11 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-        // POST api/Account/AddExternalLogin
+        /// <summary>
+        /// Add external login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
@@ -198,7 +217,11 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-        // POST api/Account/RemoveLogin
+        /// <summary>
+        /// Remove login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
@@ -227,7 +250,12 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-        // GET api/Account/ExternalLogin
+        /// <summary>
+        /// Get external login 
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
@@ -284,7 +312,12 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-        // GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// Get external logins
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="generateState"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("ExternalLogins")]
         public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
@@ -325,7 +358,11 @@ namespace OurMemory.Controllers
             return logins;
         }
 
-        // POST api/Account/Register
+        /// <summary>
+        /// Register a user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -350,7 +387,11 @@ namespace OurMemory.Controllers
             return !addRoleResult.Succeeded ? GetErrorResult(addRoleResult) : Ok();
         }
 
-        // POST api/Account/RegisterExternal
+        /// <summary>
+        /// Register external
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]

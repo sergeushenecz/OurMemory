@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Web.Http;
+using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Domain.DtoModel;
@@ -12,6 +13,9 @@ using OurMemory.Service.Model;
 
 namespace OurMemory.Controllers
 {
+    /// <summary>
+    /// Work with veterans entity
+    /// </summary>
     [Authorize(Roles = "User")]
     public class VeteranController : ApiController
     {
@@ -25,7 +29,15 @@ namespace OurMemory.Controllers
             _userService = userService;
             _imageVeteranService = imageVeteranService;
         }
+
+        /// <summary>
+        /// Get a veteran by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("api/veteran/{id}")]
+        [ResponseType(typeof(VeteranBindingModel))]
+        [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
             var veteran = _veteranService.GetById(id);
@@ -41,9 +53,21 @@ namespace OurMemory.Controllers
 
             var veteranBindingModels = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
 
-            return Ok(veteranBindingModels);
+            return Ok(new
+            {
+                Veteran = veteranBindingModels,
+                Message = OurMemory.Resource.OurMemoryResource.Excell_Header_Awards
+            });
         }
+
+        /// <summary>
+        /// Get veterans by conditional or get all veterans
+        /// </summary>
+        /// <param name="searchVeteranModel"></param>
+        /// <returns></returns>
         [Route("api/veteran")]
+        [ResponseType(typeof(VeteranBindingModel))]
+        [AllowAnonymous]
         public IHttpActionResult Get([FromUri]SearchVeteranModel searchVeteranModel)
         {
             IEnumerable<Veteran> veterans = null;
@@ -68,7 +92,14 @@ namespace OurMemory.Controllers
                 TotalCount = allCount
             });
         }
+
+        /// <summary>
+        /// Add a veteran
+        /// </summary>
+        /// <param name="veteranBindingModel"></param>
+        /// <returns></returns>
         [Route("api/veteran")]
+        [ResponseType(typeof(VeteranBindingModel))]
         public IHttpActionResult Post(VeteranBindingModel veteranBindingModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -92,7 +123,14 @@ namespace OurMemory.Controllers
 
             return Ok(veteranBindingModel);
         }
+
+        /// <summary>
+        /// Update a veteran
+        /// </summary>
+        /// <param name="veteranBindingModel"></param>
+        /// <returns></returns>
         [Route("api/veteran")]
+        [ResponseType(typeof(VeteranBindingModel))]
         public IHttpActionResult Put([FromBody]VeteranBindingModel veteranBindingModel)
         {
             var veteran = _veteranService.GetById(veteranBindingModel.Id);
@@ -111,6 +149,12 @@ namespace OurMemory.Controllers
 
             return StatusCode(HttpStatusCode.NotModified);
         }
+
+        /// <summary>
+        /// Delete a veteran by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("api/veteran")]
         public IHttpActionResult Delete(int id)
         {

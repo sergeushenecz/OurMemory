@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LanguageMessageHandler.cs" />
+    <Compile Include="OurMemoryResource.en-GB1.Designer.cs">
+      <DependentUpon>OurMemoryResource.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OurMemoryResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -49,6 +54,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="OurMemoryResource.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OurMemoryResource.en-GB1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="OurMemoryResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>OurMemoryResource.Designer.cs</LastGenOutput>

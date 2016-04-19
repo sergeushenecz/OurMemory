@@ -12,8 +12,9 @@ namespace OurMemory.Resource
     {
         private const string LangdeRu = "ru-RU";
         private const string LangenGB = "en-GB";
+        private const string LangenFR = "fr-Fr";
 
-        private readonly List<string> _supportedLanguages = new List<string> { LangdeRu, LangenGB };
+        private readonly List<string> _supportedLanguages = new List<string> { LangdeRu, LangenGB, LangenFR };
 
         private bool SetHeaderIfAcceptLanguageMatchesSupportedLanguage(HttpRequestMessage request)
         {

@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.Results;
 using AutoMapper;
-using LinqToExcel;
 using Microsoft.AspNet.Identity;
 using OurMemory.Common;
 using OurMemory.Domain.DtoModel;
@@ -24,13 +20,22 @@ using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Controllers
 {
+    /// <summary>
+    /// Work with files 
+    /// </summary>
     public class FilesController : BaseController
     {
         private readonly IImageService _imageService;
         private readonly VeteranService _veteranService;
 
-        log4net.ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        readonly log4net.ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        /// <summary>
+        /// Work with files 
+        /// </summary>
+        /// <param name="imageService"></param>
+        /// <param name="veteranService"></param>
+        /// <param name="userManager"></param>
         public FilesController(IImageService imageService, VeteranService veteranService, ApplicationUserManager userManager)
             : base(userManager)
         {
@@ -38,11 +43,12 @@ namespace OurMemory.Controllers
             _veteranService = veteranService;
         }
 
-        [Route("api/files")]
         /// <summary>
-        /// Get excell a  file which contains information about veterans
+        /// Get report excell file 
         /// </summary>
+        /// <param name="searchVeteranModel"></param>
         /// <returns></returns>
+        [Route("api/files")]
         public IHttpActionResult GetReportExcellFiles([FromUri]SearchVeteranModel searchVeteranModel)
         {
             List<Veteran> searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).ToList();
@@ -58,11 +64,11 @@ namespace OurMemory.Controllers
             });
         }
 
-        [Route("api/files")]
         /// <summary>
-        /// Upload image on server
+        /// Upload a image files
         /// </summary>
         /// <returns></returns>
+        [Route("api/files")]
         public async Task<IHttpActionResult> Post()
         {
             if (!Request.Content.IsMimeMultipartContent())
@@ -101,7 +107,7 @@ namespace OurMemory.Controllers
         }
 
         /// <summary>
-        /// Upload Excell File on server
+        /// Upload excell file on server
         /// </summary>
         /// <returns></returns>
         /// <exception cref="HttpResponseException"></exception>
