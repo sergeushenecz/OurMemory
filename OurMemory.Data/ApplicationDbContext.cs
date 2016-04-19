@@ -18,11 +18,13 @@ namespace OurMemory.Data
 
         public DbSet<Veteran> Veterans { get; set; }
         public DbSet<ImageVeteran> ImageVeterans { get; set; }
+        public DbSet<Arcticle> Arcticles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new VeteranMap());
             modelBuilder.Configurations.Add(new ImageVeteranMap());
+            modelBuilder.Configurations.Add(new ArticleMap());
 
 
             // Needed to ensure subclasses share the same table

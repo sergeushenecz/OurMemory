@@ -295,6 +295,10 @@
     <Compile Include="Migrations\201604191502058_ChangeStructureDb.Designer.cs">
       <DependentUpon>201604191502058_ChangeStructureDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604191615592_AddArticleTable.cs" />
+    <Compile Include="Migrations\201604191615592_AddArticleTable.Designer.cs">
+      <DependentUpon>201604191615592_AddArticleTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -336,6 +340,9 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <EmbeddedResource Include="Migrations\201604191502058_ChangeStructureDb.resx">
       <DependentUpon>201604191502058_ChangeStructureDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604191615592_AddArticleTable.resx">
+      <DependentUpon>201604191615592_AddArticleTable.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
