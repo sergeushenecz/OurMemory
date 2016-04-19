@@ -12,6 +12,6 @@ namespace OurMemory.Service.Interfaces
         Veteran GetById(int id);
         void UpdateVeteran(Veteran veteran);
         IQueryable<Veteran> SearchVeterans(SearchVeteranModel searchVeteranModel);
-        void SaveVeteran();
+        void SaveArticle();
     }
 }

@@ -30,6 +30,7 @@ namespace OurMemory
             container.RegisterType<IVeteranService, VeteranService>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
             container.RegisterType<IImageVeteranService, ImageVeteranService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IArticleService, ArticleService>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IDatabaseFactory, DatabaseFactory>(new HierarchicalLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());

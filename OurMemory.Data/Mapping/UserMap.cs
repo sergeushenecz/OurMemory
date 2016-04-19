@@ -9,9 +9,7 @@ namespace OurMemory.Data.Mapping
         public UserMap()
         {
             this.HasMany(x => x.Veterans);
-
-            //this.HasMany(x => x.Veterans).WithOptional();
-            //this.HasMany(x => x.Veterans);
+            this.HasMany(x => x.Arcticles);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OurMemory.Domain.Entities
@@ -10,6 +11,8 @@ namespace OurMemory.Domain.Entities
         public int Id { get; set; }
 
         public bool IsDeleted { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        public DateTime UpdatedDateTime { get; set; }
     }
 
     public interface IDomainObject

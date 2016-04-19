@@ -30,7 +30,7 @@ namespace OurMemory.Service.Services
         {
             _veteranRepository.Add(veteran);
 
-            SaveVeteran();
+            SaveArticle();
         }
 
         public Veteran GetById(int id)
@@ -43,7 +43,7 @@ namespace OurMemory.Service.Services
         public void UpdateVeteran(Veteran veteran)
         {
             _veteranRepository.Update(veteran);
-            SaveVeteran();
+            SaveArticle();
         }
 
         public IEnumerable<Veteran> GetAll()
@@ -62,7 +62,7 @@ namespace OurMemory.Service.Services
             return veterans;
         }
 
-        public void SaveVeteran()
+        public void SaveArticle()
         {
             _unitOfWork.Commit();
         }

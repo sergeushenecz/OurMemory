@@ -49,7 +49,7 @@ namespace OurMemory.Controllers
 
             veteran.Views++;
 
-            _veteranService.SaveVeteran();
+            _veteranService.SaveArticle();
 
             var veteranBindingModels = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
 
@@ -163,7 +163,7 @@ namespace OurMemory.Controllers
             if (veteran == null || veteran.Id != id) return BadRequest();
 
             veteran.IsDeleted = true;
-            _veteranService.SaveVeteran();
+            _veteranService.SaveArticle();
 
             return Ok();
         }

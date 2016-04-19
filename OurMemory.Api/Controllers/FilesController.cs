@@ -20,6 +20,8 @@ using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Controllers
 {
+
+    [Authorize(Roles = "User")]
     /// <summary>
     /// Work with files 
     /// </summary>
@@ -49,6 +51,7 @@ namespace OurMemory.Controllers
         /// <param name="searchVeteranModel"></param>
         /// <returns></returns>
         [Route("api/files")]
+        [AllowAnonymous]
         public IHttpActionResult GetReportExcellFiles([FromUri]SearchVeteranModel searchVeteranModel)
         {
             List<Veteran> searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).ToList();
@@ -129,7 +132,7 @@ namespace OurMemory.Controllers
 
             var filename = file.Headers.ContentDisposition.FileName.Replace("\"", string.Empty);
             filename += Guid.NewGuid() + ".xlsx";
-          
+
 
             path = Path.Combine(HttpContext.Current.Server.MapPath("~" + ConfigurationSettingsModule.GetItem("Temp")), filename);
 
