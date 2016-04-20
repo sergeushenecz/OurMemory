@@ -26,14 +26,14 @@ namespace OurMemory
         {
             AutoMapper.Mapper.CreateMap<ImageVeteran, ImageReference>();
 
-            AutoMapper.Mapper.CreateMap<Veteran, VeteranBindingModel>()
+            Mapper.CreateMap<Veteran, VeteranBindingModel>()
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(x => x.FirstName
                                                                           + " " + x.LastName
                                                                           + " " + x.MiddleName))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id));
 
 
-            AutoMapper.Mapper.CreateMap<Veteran, VeteranBindingModel>()
+            Mapper.CreateMap<Veteran, VeteranBindingModel>()
                 .AfterMap((veteranImages, veteranBindingImages) =>
                 {
                     for (int i = 0; i < veteranImages.Images.Count; i++)
@@ -44,20 +44,20 @@ namespace OurMemory
                     }
 
                 });
-
             Mapper.CreateMap<Veteran, Veteran>().ForMember(dest => dest.User, opt => opt.Ignore());
             Mapper.CreateMap<VeteranMapping, VeteranBindingModel>();
             Mapper.CreateMap<Veteran, VeteranMapping>()
                 .ForMember(dest => dest.UrlImages, opt => opt.MapFrom(src => string.Join(", ", src.Images
                                                     .Select(x => GetDomain + x.ImageOriginal))));
 
+            Mapper.CreateMap<Article, ArticleBindingModel>().ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id));
         }
 
         private void ConfigurateBindingModelToModel()
         {
-            AutoMapper.Mapper.CreateMap<ImageReference, ImageVeteran>();
-            AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>();
-            AutoMapper.Mapper.CreateMap<VeteranBindingModel, Veteran>()
+            Mapper.CreateMap<ImageReference, ImageVeteran>();
+            Mapper.CreateMap<VeteranBindingModel, Veteran>();
+            Mapper.CreateMap<VeteranBindingModel, Veteran>()
             .AfterMap((veteranBindingImages, veteranImages) =>
             {
                 for (int i = 0; i < veteranImages.Images.Count; i++)
@@ -67,7 +67,11 @@ namespace OurMemory
                 }
 
             });
+
+            Mapper.CreateMap<ArticleBindingModel, Article>();
         }
+        
+
 
         private static string GetDomain
         {

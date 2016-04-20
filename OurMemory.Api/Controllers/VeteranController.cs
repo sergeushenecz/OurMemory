@@ -56,7 +56,6 @@ namespace OurMemory.Controllers
             return Ok(new
             {
                 Veteran = veteranBindingModels,
-                Message = OurMemory.Resource.OurMemoryResource.Excell_Header_Awards
             });
         }
 

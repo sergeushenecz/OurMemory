@@ -18,7 +18,7 @@ namespace OurMemory.Data
 
         public DbSet<Veteran> Veterans { get; set; }
         public DbSet<ImageVeteran> ImageVeterans { get; set; }
-        public DbSet<Arcticle> Arcticles { get; set; }
+        public DbSet<Article> Arcticles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

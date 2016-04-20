@@ -1,9 +1,20 @@
-﻿using OurMemory.Domain.Entities;
+﻿using OurMemory.Data.Specification.Core;
+using OurMemory.Domain.Entities;
+using OurMemory.Service.Model;
 
 namespace OurMemory.Service.Specification
 {
-    public class ArticleSpecification : SpecificationBase<Arcticle>
+    public class ArticleSpecification : SpecificationBase<Article>
     {
+        public Specification<Article> KeyWord(SearchArticleModel searchArticleModel)
+        {
+            return GetByName(searchArticleModel.Name);
+        }
 
+        public Specification<Article> GetByName(string name)
+        {
+            return name == null ? Empty() : new Specification<Article>(x => x.Name.Contains(name));
+
+        }
     }
 }

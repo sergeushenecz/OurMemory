@@ -20,6 +20,5 @@ namespace OurMemory.Service.Specification
         {
             return new Specification<TEntity>(x => x.IsDeleted);
         }
-
     }
 }

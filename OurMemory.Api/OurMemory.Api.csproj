@@ -299,6 +299,18 @@
     <Compile Include="Migrations\201604191615592_AddArticleTable.Designer.cs">
       <DependentUpon>201604191615592_AddArticleTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604201001103_AddFieldViewsToArticleTable.cs" />
+    <Compile Include="Migrations\201604201001103_AddFieldViewsToArticleTable.Designer.cs">
+      <DependentUpon>201604201001103_AddFieldViewsToArticleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604201002494_ChangeTypeViewsForArticleTable.cs" />
+    <Compile Include="Migrations\201604201002494_ChangeTypeViewsForArticleTable.Designer.cs">
+      <DependentUpon>201604201002494_ChangeTypeViewsForArticleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604201134389_ChangeNameTableArticle.cs" />
+    <Compile Include="Migrations\201604201134389_ChangeNameTableArticle.Designer.cs">
+      <DependentUpon>201604201134389_ChangeNameTableArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -343,6 +355,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604191615592_AddArticleTable.resx">
       <DependentUpon>201604191615592_AddArticleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201001103_AddFieldViewsToArticleTable.resx">
+      <DependentUpon>201604201001103_AddFieldViewsToArticleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201002494_ChangeTypeViewsForArticleTable.resx">
+      <DependentUpon>201604201002494_ChangeTypeViewsForArticleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604201134389_ChangeNameTableArticle.resx">
+      <DependentUpon>201604201134389_ChangeNameTableArticle.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
