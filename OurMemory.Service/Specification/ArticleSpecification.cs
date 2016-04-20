@@ -8,7 +8,7 @@ namespace OurMemory.Service.Specification
     {
         public Specification<Article> KeyWord(SearchArticleModel searchArticleModel)
         {
-            return GetByName(searchArticleModel.Name);
+            return GetByName(searchArticleModel.Name).And(!IsDeleted());
         }
 
         public Specification<Article> GetByName(string name)

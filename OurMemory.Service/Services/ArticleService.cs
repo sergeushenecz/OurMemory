@@ -30,10 +30,10 @@ namespace OurMemory.Service.Services
 
         public Article GetById(int id)
         {
-            return null;
+            Article article = _articleRepository.GetById(id);
+
+            return article;
         }
-
-
 
         public IQueryable<Article> SearchArcticles(SearchArticleModel searchVeteranModel)
         {
@@ -58,7 +58,7 @@ namespace OurMemory.Service.Services
 
         public IEnumerable<Article> GetAll()
         {
-            return null;
+            return _articleRepository.GetAll().Where(x => !x.IsDeleted);
         }
 
         public void SaveArticle()

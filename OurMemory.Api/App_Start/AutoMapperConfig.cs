@@ -20,18 +20,38 @@ namespace OurMemory
         {
             ConfigurateModelToBindingModel();
             ConfigurateBindingModelToModel();
+
+            ConfigurateModelToViewModel();
+        }
+
+        private void ConfigurateModelToViewModel()
+        {
+            Mapper.CreateMap<Veteran, VeteranViewModel>()
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(x => x.FirstName
+                                                                          + " " + x.LastName
+                                                                          + " " + x.MiddleName))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id));
+
+
+            Mapper.CreateMap<Veteran, VeteranViewModel>()
+              .AfterMap((veteranImages, veteranBindingImages) =>
+              {
+                  for (int i = 0; i < veteranImages.Images.Count; i++)
+                  {
+                      veteranBindingImages.Images.ToList()[i].ImageOriginal = veteranImages.Images.ToList()[i].ImageOriginal.Insert(0, GetDomain);
+
+                      veteranBindingImages.Images.ToList()[i].ThumbnailImage = veteranImages.Images.ToList()[i].ThumbnailImage.Insert(0, GetDomain);
+                  }
+
+              });
+
         }
 
         private void ConfigurateModelToBindingModel()
         {
             AutoMapper.Mapper.CreateMap<ImageVeteran, ImageReference>();
 
-            Mapper.CreateMap<Veteran, VeteranBindingModel>()
-                .ForMember(dest => dest.FullName, opt => opt.MapFrom(x => x.FirstName
-                                                                          + " " + x.LastName
-                                                                          + " " + x.MiddleName))
-                .ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id));
-
+            Mapper.CreateMap<Veteran, VeteranBindingModel>();
 
             Mapper.CreateMap<Veteran, VeteranBindingModel>()
                 .AfterMap((veteranImages, veteranBindingImages) =>
@@ -44,13 +64,14 @@ namespace OurMemory
                     }
 
                 });
+
             Mapper.CreateMap<Veteran, Veteran>().ForMember(dest => dest.User, opt => opt.Ignore());
             Mapper.CreateMap<VeteranMapping, VeteranBindingModel>();
             Mapper.CreateMap<Veteran, VeteranMapping>()
                 .ForMember(dest => dest.UrlImages, opt => opt.MapFrom(src => string.Join(", ", src.Images
                                                     .Select(x => GetDomain + x.ImageOriginal))));
 
-            Mapper.CreateMap<Article, ArticleBindingModel>().ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id));
+            Mapper.CreateMap<Article, ArticleBindingModel>();
         }
 
         private void ConfigurateBindingModelToModel()
@@ -70,7 +91,7 @@ namespace OurMemory
 
             Mapper.CreateMap<ArticleBindingModel, Article>();
         }
-        
+
 
 
         private static string GetDomain

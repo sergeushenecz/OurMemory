@@ -59,6 +59,8 @@
     <Compile Include="DtoModel\ArticleBindingModel.cs" />
     <Compile Include="DtoModel\ImageReference.cs" />
     <Compile Include="DtoModel\VeteranBindingModel.cs" />
+    <Compile Include="DtoModel\ViewModel\ArticleViewModel.cs" />
+    <Compile Include="DtoModel\ViewModel\VeteranViewModel.cs" />
     <Compile Include="Entities\Article.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\DomainObject.cs" />

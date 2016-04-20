@@ -114,9 +114,6 @@ namespace OurMemory.Controllers
             var user = _userService.GetById(userId);
             article.User = user;
 
-            article.CreatedDateTime = DateTime.Now.ToUniversalTime();
-            article.UpdatedDateTime = DateTime.Now.ToUniversalTime();
-
             _articleService.Add(article);
             articleBindingModel = Mapper.Map<Article, ArticleBindingModel>(article);
 

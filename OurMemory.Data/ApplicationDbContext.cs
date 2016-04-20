@@ -9,11 +9,9 @@ namespace OurMemory.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
-     
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
-
         }
 
         public DbSet<Veteran> Veterans { get; set; }
@@ -62,12 +60,11 @@ namespace OurMemory.Data
 
         }
 
-        
+
         public static ApplicationDbContext Create()
-        {            
+        {
             return new ApplicationDbContext();
         }
-
 
         public void Commit()
         {

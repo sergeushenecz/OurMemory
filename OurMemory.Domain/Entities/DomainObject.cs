@@ -11,7 +11,10 @@ namespace OurMemory.Domain.Entities
         public int Id { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreatedDateTime { get; set; }
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime UpdatedDateTime { get; set; }
     }
 

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OurMemory.Domain.DtoModel
 {
-    public class VeteranBindingModel
+    public class VeteranViewModel
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -22,10 +22,12 @@ namespace OurMemory.Domain.DtoModel
         public string Awards { get; set; }
         public string Troops { get; set; }
         public string Description { get; set; }
+        public int Views { get; set; }
         public string FullName { get; set; }
+        public Guid UserId { get; set; }
         public virtual IEnumerable<ImageReference> Images { get; set; }
 
-        public VeteranBindingModel()
+        public VeteranViewModel()
         {
             Images = new List<ImageReference>();
         }

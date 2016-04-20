@@ -8,9 +8,9 @@ namespace OurMemory.Controllers
     public class BaseController : ApiController
     {
         protected ApplicationUserManager _userManager;
-        public BaseController(ApplicationUserManager userManager)
+        public BaseController()
         {
-            _userManager = userManager;
+           
         }
 
         public ApplicationUserManager UserManager

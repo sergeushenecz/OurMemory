@@ -32,7 +32,6 @@ namespace OurMemory.Controllers
 
 
         public AccountController(ApplicationUserManager userManager)
-            : base(userManager)
         {
             UserManager = userManager;
 
