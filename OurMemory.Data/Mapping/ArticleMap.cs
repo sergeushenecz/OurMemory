@@ -10,9 +10,8 @@ namespace OurMemory.Data.Mapping
             this.HasKey(x => x.Id);
             this.Property(x => x.Name);
             this.Property(x => x.Description);
-            this.Property(x => x.CreatedDateTime).HasColumnType("datetime");
-            this.Property(x => x.UpdatedDateTime).HasColumnType("datetime"); ;
             this.HasOptional(x => x.User);
+            this.HasMany(x => x.Comments);
         }
     }
 }
