@@ -9,16 +9,15 @@ namespace OurMemory.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
-     
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
-
         }
 
         public DbSet<Veteran> Veterans { get; set; }
         public DbSet<ImageVeteran> ImageVeterans { get; set; }
-        public DbSet<Arcticle> Arcticles { get; set; }
+        public DbSet<Article> Arcticles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -62,12 +61,11 @@ namespace OurMemory.Data
 
         }
 
-        
+
         public static ApplicationDbContext Create()
-        {            
+        {
             return new ApplicationDbContext();
         }
-
 
         public void Commit()
         {

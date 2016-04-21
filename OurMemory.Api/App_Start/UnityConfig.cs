@@ -5,14 +5,17 @@ using System.Web.Http;
 using Castle.MicroKernel.Registration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.SignalR;
 using OurMemory.Controllers;
 using OurMemory.Data;
 using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.Entities;
+using OurMemory.Hubs;
 using OurMemory.Service;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Services;
 using OurMemory.Service.Specification;
+using OurMemory.UnityResolvers;
 using Unity.WebApi;
 
 namespace OurMemory
@@ -50,6 +53,22 @@ namespace OurMemory
             container.RegisterType<AccountController>(new InjectionConstructor(typeof(ApplicationUserManager)));
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+            GlobalHost.DependencyResolver = new SignalRUnityDependencyResolver(container);
+
+            container.RegisterType<CommentHub>(new InjectionFactory(CreateCommentHub));
+
+
+
+        }
+
+
+
+
+        private static object CreateCommentHub(IUnityContainer p)
+        {
+            var myHub = new CommentHub(p.Resolve<IArticleService>());
+
+            return myHub;
         }
     }
 }

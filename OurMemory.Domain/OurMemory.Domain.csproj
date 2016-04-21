@@ -56,9 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DtoModel\ArticleBindingModel.cs" />
     <Compile Include="DtoModel\ImageReference.cs" />
     <Compile Include="DtoModel\VeteranBindingModel.cs" />
-    <Compile Include="Entities\Arcticle.cs" />
+    <Compile Include="DtoModel\ViewModel\ArticleViewModel.cs" />
+    <Compile Include="DtoModel\ViewModel\CommentViewModel.cs" />
+    <Compile Include="DtoModel\ViewModel\VeteranViewModel.cs" />
+    <Compile Include="Entities\Article.cs" />
+    <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\DomainObject.cs" />
     <Compile Include="Entities\ImageVeteran.cs" />

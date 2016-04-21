@@ -25,10 +25,11 @@ namespace OurMemory.Controllers
     /// <summary>
     /// Work with files 
     /// </summary>
-    public class FilesController : BaseController
+    public class FilesController : ApiController
     {
         private readonly IImageService _imageService;
         private readonly VeteranService _veteranService;
+        private readonly IUserService _userService;
 
         readonly log4net.ILog _logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -38,11 +39,11 @@ namespace OurMemory.Controllers
         /// <param name="imageService"></param>
         /// <param name="veteranService"></param>
         /// <param name="userManager"></param>
-        public FilesController(IImageService imageService, VeteranService veteranService, ApplicationUserManager userManager)
-            : base(userManager)
+        public FilesController(IImageService imageService, VeteranService veteranService, IUserService userService)
         {
             _imageService = imageService;
             _veteranService = veteranService;
+            _userService = userService;
         }
 
         /// <summary>
@@ -54,7 +55,17 @@ namespace OurMemory.Controllers
         [AllowAnonymous]
         public IHttpActionResult GetReportExcellFiles([FromUri]SearchVeteranModel searchVeteranModel)
         {
-            List<Veteran> searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).ToList();
+            List<Veteran> searchVeterans;
+
+            if (searchVeteranModel == null)
+            {
+                searchVeterans = _veteranService.GetAll().ToList();
+            }
+            else
+            {
+                searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).ToList();
+            }
+
             var veteranMappings = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranMapping>>(searchVeterans);
 
             var fileName = ExcellParser.GenerateReport(veteranMappings.ToList());
@@ -154,7 +165,7 @@ namespace OurMemory.Controllers
                     veteranBindingModel.Images = UrlParser.DownloadFromUrls(listParsedUrls);
 
                     var veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
-                    veteran.User = UserManager.FindById(User.Identity.GetUserId());
+                    veteran.User = _userService.GetById(User.Identity.GetUserId());
 
                     var googleMapsService = new GoogleMapsService(string.Empty);
                     var latLng = googleMapsService.GetLatLng(veteran.BirthPlace);
@@ -186,6 +197,13 @@ namespace OurMemory.Controllers
             }
 
             return Ok();
+        }
+        [System.Web.Http.NonAction]
+        public string GenerateAbsolutePath(string virtualPath)
+        {
+            return HttpContext.Current.Request.Url.Scheme +
+                           "://"
+                           + HttpContext.Current.Request.Url.Authority + virtualPath;
         }
     }
 }

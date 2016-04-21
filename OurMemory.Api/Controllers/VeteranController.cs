@@ -36,7 +36,7 @@ namespace OurMemory.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("api/veteran/{id}")]
-        [ResponseType(typeof(VeteranBindingModel))]
+        [ResponseType(typeof(VeteranViewModel))]
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
@@ -51,11 +51,15 @@ namespace OurMemory.Controllers
 
             _veteranService.SaveArticle();
 
-            var veteranBindingModels = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
+            var veteranViewModel = Mapper.Map<Veteran, VeteranViewModel>(veteran);
 
             return Ok(new
             {
+<<<<<<< HEAD
                 Veteran = veteranBindingModels,
+=======
+                Veteran = veteranViewModel,
+>>>>>>> 0531a75fc31da1f3eaecc2534ad952fbe90cc1e8
             });
         }
 
@@ -65,7 +69,7 @@ namespace OurMemory.Controllers
         /// <param name="searchVeteranModel"></param>
         /// <returns></returns>
         [Route("api/veteran")]
-        [ResponseType(typeof(VeteranBindingModel))]
+        [ResponseType(typeof(VeteranViewModel))]
         [AllowAnonymous]
         public IHttpActionResult Get([FromUri]SearchVeteranModel searchVeteranModel)
         {
@@ -83,7 +87,7 @@ namespace OurMemory.Controllers
                 veterans = _veteranService.SearchVeterans(searchVeteranModel).Pagination((searchVeteranModel.Page - 1) * searchVeteranModel.Size, searchVeteranModel.Size).ToList();
             }
 
-            var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranBindingModel>>(veterans);
+            var veteranBindingModels = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranViewModel>>(veterans);
 
             return Ok(new
             {
@@ -98,7 +102,7 @@ namespace OurMemory.Controllers
         /// <param name="veteranBindingModel"></param>
         /// <returns></returns>
         [Route("api/veteran")]
-        [ResponseType(typeof(VeteranBindingModel))]
+        [ResponseType(typeof(VeteranViewModel))]
         public IHttpActionResult Post(VeteranBindingModel veteranBindingModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -118,9 +122,9 @@ namespace OurMemory.Controllers
 
             _veteranService.Add(veteran);
 
-            veteranBindingModel = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
+            var veteranViewModel = Mapper.Map<Veteran, VeteranViewModel>(veteran);
 
-            return Ok(veteranBindingModel);
+            return Ok(veteranViewModel);
         }
 
         /// <summary>
@@ -129,7 +133,7 @@ namespace OurMemory.Controllers
         /// <param name="veteranBindingModel"></param>
         /// <returns></returns>
         [Route("api/veteran")]
-        [ResponseType(typeof(VeteranBindingModel))]
+        [ResponseType(typeof(VeteranViewModel))]
         public IHttpActionResult Put([FromBody]VeteranBindingModel veteranBindingModel)
         {
             var veteran = _veteranService.GetById(veteranBindingModel.Id);
@@ -141,7 +145,7 @@ namespace OurMemory.Controllers
                 Mapper.Map<Veteran, Veteran>(mapVeteran, veteran);
                 _veteranService.UpdateVeteran(veteran);
 
-                var veteranModified = Mapper.Map<Veteran, VeteranBindingModel>(veteran);
+                var veteranModified = Mapper.Map<Veteran, VeteranViewModel>(veteran);
 
                 return Ok(veteranModified);
             }

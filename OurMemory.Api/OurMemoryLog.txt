@@ -2588,3 +2588,1465 @@ Source value:
 2016-04-19 17:09:48,103 [10] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx64af1441-2e2e-4e54-829c-9cceb8350477.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
 2016-04-19 17:09:48,114 [10] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx64af1441-2e2e-4e54-829c-9cceb8350477.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
 2016-04-19 17:09:48,189 [10] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 14:14:07,587 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'dbo.Articles'.
+   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   в System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   в System.Data.SqlClient.SqlDataReader.get_MetaData()
+   в System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   в System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   в System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   в System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   в System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   в System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   в System.Linq.Queryable.Count[TSource](IQueryable`1 source)
+   в OurMemory.Controllers.ArticleController.Get(SearchArticleModel searchArticleModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\ArticleController.cs:строка 75
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 14:16:57,311 [9] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'dbo.Articles'.
+   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   в System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   в System.Data.SqlClient.SqlDataReader.get_MetaData()
+   в System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   в System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   в System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   в System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   в System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   в System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   в System.Linq.Queryable.Count[TSource](IQueryable`1 source)
+   в OurMemory.Controllers.ArticleController.Get(SearchArticleModel searchArticleModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\ArticleController.cs:строка 75
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 14:17:07,096 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'dbo.Articles'.
+   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   в System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   в System.Data.SqlClient.SqlDataReader.get_MetaData()
+   в System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   в System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   в System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   в System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   в System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   в System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   в System.Linq.Queryable.Count[TSource](IQueryable`1 source)
+   в OurMemory.Controllers.ArticleController.Get(SearchArticleModel searchArticleModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\ArticleController.cs:строка 75
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 14:20:29,432 [12] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'dbo.Articles'.
+   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   в System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   в System.Data.SqlClient.SqlDataReader.get_MetaData()
+   в System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   в System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   в System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   в System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   в System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   в System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   в System.Linq.Queryable.Count[TSource](IQueryable`1 source)
+   в OurMemory.Controllers.ArticleController.Get(SearchArticleModel searchArticleModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\ArticleController.cs:строка 75
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 14:22:06,786 [7] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.NotSupportedException: The method 'Skip' is only supported for sorted input in LINQ to Entities. The method 'OrderBy' must be called before the method 'Skip'.
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.OrderByLifter.PassthroughOrderByLifter.Skip(DbExpression k)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.OrderByLifter.Skip(DbExpressionBinding input, DbExpression skipCount)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Skip(DbExpressionBinding input, DbExpression skipCount)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SkipTranslator.TranslatePagingOperator(ExpressionConverter parent, DbExpression operand, DbExpression count)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.PagingTranslator.TranslateUnary(ExpressionConverter parent, DbExpression operand, MethodCallExpression call)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.UnarySequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.UnarySequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   в System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   в System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   в System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   в System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   в OurMemory.Controllers.ArticleController.Get(SearchArticleModel searchArticleModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\ArticleController.cs:строка 76
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 15:02:49,211 [9] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while saving entities that do not expose foreign key properties for their relationships. The EntityEntries property will return null because a single entity cannot be identified as the source of the exception. Handling of exceptions while saving can be made easier by exposing foreign key properties in your entity types. See the InnerException for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+   в System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   в System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   в System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   в System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   в System.Data.SqlClient.SqlDataReader.get_MetaData()
+   в System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   в System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   в System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   в System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   в System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   в System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   в System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   в System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   в System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в OurMemory.Data.ApplicationDbContext.Commit() в G:\Диплом\OurMemory\OurMemory.Data\ApplicationDbContext.cs:строка 74
+   в OurMemory.Data.Infrastructure.UnitOfWork.Commit() в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\UnitOfWork.cs:строка 20
+   в OurMemory.Service.Services.ArticleService.SaveArticle() в G:\Диплом\OurMemory\OurMemory.Service\Services\ArticleService.cs:строка 68
+   в OurMemory.Service.Services.ArticleService.Add(Article veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\ArticleService.cs:строка 58
+   в OurMemory.Controllers.ArticleController.Post(ArticleBindingModel articleBindingModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\ArticleController.cs:строка 115
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 16:11:27,283 [9] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.ArgumentException: Count must have a non-negative value.
+Имя параметра: count
+   в System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.Skip(DbExpressionBinding input, IEnumerable`1 sortOrder, DbExpression count)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.OrderByLifter.OrderByLifterBase.ApplySortOrderToSkip(DbExpression input, DbSortExpression sort, DbExpression k)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.OrderByLifter.SortLifter.Skip(DbExpression k)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.OrderByLifter.Skip(DbExpressionBinding input, DbExpression skipCount)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Skip(DbExpressionBinding input, DbExpression skipCount)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SkipTranslator.TranslatePagingOperator(ExpressionConverter parent, DbExpression operand, DbExpression count)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.PagingTranslator.TranslateUnary(ExpressionConverter parent, DbExpression operand, MethodCallExpression call)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.UnarySequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.UnarySequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   в System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   в System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   в System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   в System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   в System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   в OurMemory.Controllers.VeteranController.Get(SearchVeteranModel searchVeteranModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\VeteranController.cs:строка 83
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 16:16:19,888 [22] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в OurMemory.Service.Specification.VeteranSpecification.KeyWord(SearchVeteranModel searchVeteranModel) в G:\Диплом\OurMemory\OurMemory.Service\Specification\VeteranSpecification.cs:строка 11
+   в OurMemory.Service.Services.VeteranService.SearchVeterans(SearchVeteranModel searchVeteranModel) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 56
+   в OurMemory.Controllers.FilesController.GetReportExcellFiles(SearchVeteranModel searchVeteranModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 57
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 16:21:01,301 [34] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в OurMemory.Service.Specification.VeteranSpecification.KeyWord(SearchVeteranModel searchVeteranModel) в G:\Диплом\OurMemory\OurMemory.Service\Specification\VeteranSpecification.cs:строка 11
+   в OurMemory.Service.Services.VeteranService.SearchVeterans(SearchVeteranModel searchVeteranModel) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 56
+   в OurMemory.Controllers.FilesController.GetReportExcellFiles(SearchVeteranModel searchVeteranModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 57
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 16:27:43,010 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx6f307f15-8e8c-4097-8846-dae1cd17f45a.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:27:43,026 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx6f307f15-8e8c-4097-8846-dae1cd17f45a.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:27:43,112 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:27:45,516 [11] ERROR OurMemory.Controllers.FilesController System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+2016-04-20 16:29:06,376 [18] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxd57fa9d0-30c0-4188-997e-49decaf5fbd6.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:29:06,377 [18] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxd57fa9d0-30c0-4188-997e-49decaf5fbd6.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:29:06,378 [18] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:31:20,711 [18] ERROR OurMemory.Controllers.FilesController System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+2016-04-20 16:31:33,679 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx0b81f742-05c8-4101-9cc7-51a0b3616d2b.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:31:33,679 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx0b81f742-05c8-4101-9cc7-51a0b3616d2b.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:31:33,680 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:32:40,334 [11] ERROR OurMemory.Controllers.FilesController System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+2016-04-20 16:33:07,755 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx2fb7e1ff-b422-4100-ad93-b21462183daa.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:33:07,755 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx2fb7e1ff-b422-4100-ad93-b21462183daa.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:33:07,755 [16] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:33:26,535 [16] ERROR OurMemory.Controllers.FilesController System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+2016-04-20 16:33:34,790 [12] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx5a6c5001-df60-4728-837a-ee57dd3f634e.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:33:34,790 [12] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx5a6c5001-df60-4728-837a-ee57dd3f634e.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:33:34,791 [12] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:34:30,260 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx52d6e61b-860d-471a-a267-c49b7eabc699.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:34:30,272 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx52d6e61b-860d-471a-a267-c49b7eabc699.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:34:30,355 [8] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:36:18,317 [8] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 16:36:22,835 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxc42bcf73-30ed-442d-9828-cd029b3dde12.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:36:22,835 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxc42bcf73-30ed-442d-9828-cd029b3dde12.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:36:22,835 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:39:46,484 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 16:41:25,498 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx7cb3f155-2aa5-4e7a-b38b-6b7e90998d32.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:41:25,499 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx7cb3f155-2aa5-4e7a-b38b-6b7e90998d32.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:41:25,499 [16] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:58:13,675 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx5a063234-5e35-4d13-be85-5b9289a29bf7.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 16:58:13,687 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx5a063234-5e35-4d13-be85-5b9289a29bf7.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 16:58:13,768 [8] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 16:58:35,672 [8] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:13:45,434 [10] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxcdd35667-a884-4ad2-8dfa-40a1fb6c211e.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:13:45,446 [10] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxcdd35667-a884-4ad2-8dfa-40a1fb6c211e.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:13:45,525 [10] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:14:08,180 [10] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:23:24,378 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx97c4801d-6c81-4212-9dad-81261d2e9276.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:23:24,390 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx97c4801d-6c81-4212-9dad-81261d2e9276.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:23:24,472 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:23:31,350 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:24:36,358 [14] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx6c0325db-3f92-4845-8213-da879deaccdf.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:24:36,359 [14] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx6c0325db-3f92-4845-8213-da879deaccdf.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:24:36,359 [14] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:24:40,482 [14] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:25:33,242 [9] ERROR OurMemory.WebApiApplication System.ArgumentNullException: Value cannot be null.
+Parameter name: context
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`6..ctor(DbContext context)
+   at Microsoft.AspNet.Identity.EntityFramework.UserStore`1..ctor(DbContext context)
+   at OurMemory.ApplicationUserManager.Create(IdentityFactoryOptions`1 options, IOwinContext context) in G:\Диплом\OurMemory\OurMemory.Api\App_Start\IdentityConfig.cs:line 21
+   at Microsoft.AspNet.Identity.Owin.IdentityFactoryProvider`1.Create(IdentityFactoryOptions`1 options, IOwinContext context)
+   at Microsoft.AspNet.Identity.Owin.IdentityFactoryMiddleware`2.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.AspNet.Identity.Owin.IdentityFactoryMiddleware`2.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Cors.CorsMiddleware.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Owin.Host.SystemWeb.Infrastructure.ErrorState.Rethrow()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2016-04-20 17:27:14,401 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxedb140b6-bee4-4214-86f2-5f83c4f864ac.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:27:14,413 [7] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxedb140b6-bee4-4214-86f2-5f83c4f864ac.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:27:14,492 [7] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:27:53,460 [7] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:31:14,265 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx9e4b4d79-6414-4199-a8de-eb4b10dad367.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:31:14,276 [6] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx9e4b4d79-6414-4199-a8de-eb4b10dad367.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:31:14,355 [6] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:31:22,408 [6] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:33:02,353 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx94aef8c4-12c4-4f4a-aa75-98194232fe0b.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:33:02,354 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx94aef8c4-12c4-4f4a-aa75-98194232fe0b.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:33:02,354 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:33:29,073 [9] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:34:16,997 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxd9441c57-33b2-4191-9eb8-a97cdf24d56a.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:34:17,010 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxd9441c57-33b2-4191-9eb8-a97cdf24d56a.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:34:17,089 [8] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:34:21,303 [8] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:35:47,930 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx9dc102bd-f263-49cd-bd5b-392c604b7d4d.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:35:47,930 [16] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx9dc102bd-f263-49cd-bd5b-392c604b7d4d.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:35:47,931 [16] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:35:49,950 [16] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:35:58,968 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx7a75c07c-e798-4883-a799-117bfab01c11.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:35:58,969 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx7a75c07c-e798-4883-a799-117bfab01c11.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:35:58,969 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:36:01,353 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:37:30,924 [21] ERROR OurMemory.WebApiApplication System.NullReferenceException: Object reference not set to an instance of an object.
+   at OurMemory.Providers.ApplicationOAuthProvider.<GrantResourceOwnerCredentials>d__2.MoveNext() in G:\Диплом\OurMemory\OurMemory.Api\Providers\ApplicationOAuthProvider.cs:line 33
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Security.OAuth.OAuthAuthorizationServerHandler.<InvokeTokenEndpointResourceOwnerPasswordCredentialsGrantAsync>d__3f.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.Owin.Security.OAuth.OAuthAuthorizationServerHandler.<InvokeTokenEndpointAsync>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Security.OAuth.OAuthAuthorizationServerHandler.<InvokeAsync>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Microsoft.Owin.Security.Infrastructure.AuthenticationMiddleware`1.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Cors.CorsMiddleware.<Invoke>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContextStage.<RunApp>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.<DoFinalWork>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.Owin.Host.SystemWeb.Infrastructure.ErrorState.Rethrow()
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.StageAsyncResult.End(IAsyncResult ar)
+   at Microsoft.Owin.Host.SystemWeb.IntegratedPipeline.IntegratedPipelineContext.EndFinalWork(IAsyncResult ar)
+   at System.Web.HttpApplication.AsyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2016-04-20 17:39:37,290 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxf38f0949-dd74-42ed-8989-f6692904598c.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:39:37,303 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxf38f0949-dd74-42ed-8989-f6692904598c.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:39:37,383 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:39:41,924 [9] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 174
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 17:41:38,841 [18] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxfc5b1461-804e-477f-a1c8-27c268582159.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 17:41:38,841 [18] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxfc5b1461-804e-477f-a1c8-27c268582159.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 17:41:38,842 [18] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 17:48:57,877 [13] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An error occurred when trying to create a controller of type 'FilesController'. Make sure that the controller has a parameterless public constructor. ---> Microsoft.Practices.Unity.ResolutionFailedException: Resolution of the dependency failed, type = "OurMemory.Controllers.FilesController", name = "(none)".
+Exception occurred while: while resolving.
+Exception is: InvalidOperationException - The current type, System.Data.Common.DbConnection, is an abstract class and cannot be constructed. Are you missing a type mapping?
+-----------------------------------------------
+At the time of the exception, the container was:
+
+  Resolving OurMemory.Controllers.FilesController,(none)
+  Resolving parameter "userManager" of constructor OurMemory.Controllers.FilesController(OurMemory.Service.Interfaces.IImageService imageService, OurMemory.Service.Services.VeteranService veteranService, OurMemory.ApplicationUserManager userManager)
+    Resolving OurMemory.ApplicationUserManager,(none)
+    Resolving parameter "store" of constructor OurMemory.ApplicationUserManager(Microsoft.AspNet.Identity.IUserStore`1[[OurMemory.Domain.Entities.User, OurMemory.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] store)
+      Resolving Microsoft.AspNet.Identity.EntityFramework.UserStore`1[OurMemory.Domain.Entities.User],(none) (mapped from Microsoft.AspNet.Identity.IUserStore`1[OurMemory.Domain.Entities.User], (none))
+      Resolving parameter "context" of constructor Microsoft.AspNet.Identity.EntityFramework.UserStore`1[[OurMemory.Domain.Entities.User, OurMemory.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]](System.Data.Entity.DbContext context)
+        Resolving System.Data.Entity.DbContext,(none)
+        Resolving parameter "existingConnection" of constructor System.Data.Entity.DbContext(System.Data.Common.DbConnection existingConnection, System.Data.Entity.Infrastructure.DbCompiledModel model, System.Boolean contextOwnsConnection)
+          Resolving System.Data.Common.DbConnection,(none)
+ ---> System.InvalidOperationException: The current type, System.Data.Common.DbConnection, is an abstract class and cannot be constructed. Are you missing a type mapping?
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodConstructorStrategy.ThrowForAttemptingToConstructAbstractClass(IBuilderContext context)
+   в lambda_method(Closure , IBuilderContext )
+   в Microsoft.Practices.ObjectBuilder2.DynamicBuildPlanGenerationContext.<>c__DisplayClass1.<GetBuildMethod>b__0(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlan.BuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuilderContext.NewBuildUp(NamedTypeBuildKey newBuildKey)
+   в Microsoft.Practices.Unity.ObjectBuilder.NamedTypeDependencyResolverPolicy.Resolve(IBuilderContext context)
+   в lambda_method(Closure , IBuilderContext )
+   в Microsoft.Practices.ObjectBuilder2.DynamicBuildPlanGenerationContext.<>c__DisplayClass1.<GetBuildMethod>b__0(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlan.BuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuilderContext.NewBuildUp(NamedTypeBuildKey newBuildKey)
+   в Microsoft.Practices.Unity.ObjectBuilder.NamedTypeDependencyResolverPolicy.Resolve(IBuilderContext context)
+   в lambda_method(Closure , IBuilderContext )
+   в Microsoft.Practices.ObjectBuilder2.DynamicBuildPlanGenerationContext.<>c__DisplayClass1.<GetBuildMethod>b__0(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlan.BuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuilderContext.NewBuildUp(NamedTypeBuildKey newBuildKey)
+   в Microsoft.Practices.Unity.ObjectBuilder.NamedTypeDependencyResolverPolicy.Resolve(IBuilderContext context)
+   в lambda_method(Closure , IBuilderContext )
+   в Microsoft.Practices.ObjectBuilder2.DynamicBuildPlanGenerationContext.<>c__DisplayClass1.<GetBuildMethod>b__0(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlan.BuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuilderContext.NewBuildUp(NamedTypeBuildKey newBuildKey)
+   в Microsoft.Practices.Unity.ObjectBuilder.NamedTypeDependencyResolverPolicy.Resolve(IBuilderContext context)
+   в lambda_method(Closure , IBuilderContext )
+   в Microsoft.Practices.ObjectBuilder2.DynamicBuildPlanGenerationContext.<>c__DisplayClass1.<GetBuildMethod>b__0(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlan.BuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   в Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, Object existing, String name, IEnumerable`1 resolverOverrides)
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, Object existing, String name, IEnumerable`1 resolverOverrides)
+   в Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, String name, IEnumerable`1 resolverOverrides)
+   в Microsoft.Practices.Unity.UnityContainer.Resolve(Type t, String name, ResolverOverride[] resolverOverrides)
+   в Microsoft.Practices.Unity.UnityContainerExtensions.Resolve(IUnityContainer container, Type t, ResolverOverride[] overrides)
+   в Unity.WebApi.UnityDependencyScope.GetService(Type serviceType)
+   в System.Web.Http.Dispatcher.DefaultHttpControllerActivator.GetInstanceOrActivator(HttpRequestMessage request, Type controllerType, Func`1& activator)
+   в System.Web.Http.Dispatcher.DefaultHttpControllerActivator.Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Web.Http.Dispatcher.DefaultHttpControllerActivator.Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
+   в System.Web.Http.Controllers.HttpControllerDescriptor.CreateController(HttpRequestMessage request)
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 18:07:21,739 [12] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxb31d9d33-3789-4711-9ccf-e12aeae9b1dd.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 18:07:21,752 [12] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsxb31d9d33-3789-4711-9ccf-e12aeae9b1dd.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 18:07:21,833 [12] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-20 18:07:43,404 [12] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+   в System.Data.Entity.Core.Objects.ObjectContext.VerifyContextForAddOrAttach(IEntityWrapper wrappedEntity)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddSingleObject(EntitySet entitySet, IEntityWrapper wrappedEntity, String argumentName)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference.AddEntityToObjectStateManager(IEntityWrapper wrappedEntity, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.AddGraphToObjectStateManager(IEntityWrapper wrappedEntity, Boolean relationshipAlreadyExists, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.IncludeEntity(IEntityWrapper wrappedEntity, Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.EntityReference`1.Include(Boolean addRelationshipAsUnchanged, Boolean doAttach)
+   в System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.AddRelatedEntitiesToObjectStateManager(Boolean doAttach)
+   в System.Data.Entity.Core.Objects.ObjectContext.AddObject(String entitySetName, Object entity)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.<>c__DisplayClassd.<Add>b__c()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.ActOnSet(Action action, EntityState newState, Object entity, String methodName)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Add(Object entity)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в OurMemory.Data.Infrastructure.Repository`1.Add(T entity) в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\Repository.cs:строка 34
+   в OurMemory.Service.Services.VeteranService.Add(Veteran veteran) в G:\Диплом\OurMemory\OurMemory.Service\Services\VeteranService.cs:строка 31
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__6.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 173
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-20 18:11:45,761 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx2a0b7de9-3868-4079-8595-e3dfa8364ede.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-20 18:11:45,774 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx2a0b7de9-3868-4079-8595-e3dfa8364ede.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-20 18:11:45,856 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-21 19:46:33,673 [8] ERROR OurMemory.WebApiApplication System.Web.HttpException (0x80004005): The controller for path '/__browserLink/requestData/0fc7a0908d0d444a915ebb1e03e7d839' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

@@ -14,11 +14,11 @@ namespace OurMemory.Service.Services
     public class ArticleService : IArticleService
     {
 
-        private readonly IRepository<Arcticle> _articleRepository;
+        private readonly IRepository<Article> _articleRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ArticleSpecification _articleSpecification;
 
-        public ArticleService(IRepository<Arcticle> articleRepository, IUnitOfWork unitOfWork, ArticleSpecification articleSpecification)
+        public ArticleService(IRepository<Article> articleRepository, IUnitOfWork unitOfWork, ArticleSpecification articleSpecification)
         {
             _articleRepository = articleRepository;
             _unitOfWork = unitOfWork;
@@ -28,29 +28,37 @@ namespace OurMemory.Service.Services
 
         #region ArticleService Members
 
-        public Arcticle GetById(int id)
+        public Article GetById(int id)
         {
-            return null;
+            Article article = _articleRepository.GetById(id);
+
+            return article;
         }
 
-        public void UpdateArticle(Arcticle veteran)
+        public IQueryable<Article> SearchArcticles(SearchArticleModel searchVeteranModel)
         {
-            throw new NotImplementedException();
+            var keyWord = _articleSpecification.KeyWord(searchVeteranModel);
+            var arcticles = _articleRepository.GetSpec(keyWord.Predicate).OrderBy(x => x.Name);
+
+            return arcticles;
         }
 
-        public void UpdateVeteran(Veteran veteran)
+        public void UpdateArticle(Article article)
         {
-          
+            _articleRepository.Update(article);
+            SaveArticle();
         }
 
-        public void Add(Arcticle veteran)
+        public void Add(Article veteran)
         {
-            throw new NotImplementedException();
+            _articleRepository.Add(veteran);
+
+            SaveArticle();
         }
 
-        public IEnumerable<Arcticle> GetAll()
+        public IEnumerable<Article> GetAll()
         {
-            return null;
+            return _articleRepository.GetAll().Where(x => !x.IsDeleted);
         }
 
         public void SaveArticle()

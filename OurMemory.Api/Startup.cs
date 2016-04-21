@@ -1,9 +1,12 @@
 ﻿using System.Web.Http;
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using OurMemory;
+using OurMemory.Hubs;
+using OurMemory.Service.Services;
 using Owin;
 
 [assembly: OwinStartup(typeof(Startup))]
@@ -23,6 +26,9 @@ namespace OurMemory
             app.UseCors(CorsOptions.AllowAll);
 
             ConfigureAuth(app);
+            app.MapSignalR();
+
+
         }
     }
 }

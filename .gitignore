@@ -195,3 +195,9 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 /OurMemory.Api/Content/Files
+/OurMemory.Api/Temp/Report-2016-04-18--02-57-26.xlsx
+/OurMemory.Api/Temp/Report-2016-04-18--05-34-06.xlsx
+/OurMemory.Api/Temp/Report-2016-04-18--05-44-46.xlsx
+/OurMemory.Api/Temp/Report-2016-04-18--05-45-12.xlsx
+/OurMemory.Api/Temp/Report-2016-04-19--05-09-11.xlsx
+/OurMemory.Api/Temp/template.xlsx
