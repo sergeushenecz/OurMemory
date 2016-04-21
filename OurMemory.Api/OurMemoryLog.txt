@@ -4041,3 +4041,12 @@ At the time of the exception, the container was:
 2016-04-20 18:11:45,761 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx2a0b7de9-3868-4079-8595-e3dfa8364ede.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
 2016-04-20 18:11:45,774 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx2a0b7de9-3868-4079-8595-e3dfa8364ede.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
 2016-04-20 18:11:45,856 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-21 19:46:33,673 [8] ERROR OurMemory.WebApiApplication System.Web.HttpException (0x80004005): The controller for path '/__browserLink/requestData/0fc7a0908d0d444a915ebb1e03e7d839' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

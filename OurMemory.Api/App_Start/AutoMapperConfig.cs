@@ -6,6 +6,7 @@ using System.Web;
 using AutoMapper;
 using OurMemory.AutoMapperConverter;
 using OurMemory.Domain.DtoModel;
+using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
 using OurMemory.Service.Model;
@@ -44,6 +45,12 @@ namespace OurMemory
                   }
 
               });
+
+
+            Mapper.CreateMap<Comment, CommentViewModel>()
+                .ForMember(x => x.UserId, y => y.MapFrom(x => x.User.Id))
+                .ForMember(x => x.UserName, y => y.MapFrom(x => x.User.UserName));
+
 
         }
 

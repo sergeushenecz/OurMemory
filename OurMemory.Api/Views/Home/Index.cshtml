@@ -1,83 +1,79 @@
 ﻿<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p>
+        <a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+    </p>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-            a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-            is an ideal platform for building RESTful applications on the .NET Framework.
-        </p>
-        <p>
-            <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p>
-            <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a>
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p>
-            <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a>
-        </p>
-    </div>
+
+<style type="text/css">
+    .container {
+        background-color: #99CCFF;
+        border: thick solid #808080;
+        padding: 20px;
+        margin: 20px;
+    }
+
+  
+ 
+</style>
+
+<div class="container">
+    <label>Room Id</label>
+    <input type="text" id="roomId"/>
+    <label >Comment</label>
+    <input type="text" id="message"/>
+    <input type="button" id="sendmessage" value="Send"/>
+    <input type="button" id="connect" value="Connect" />
+    <input type="hidden" id="displayname"/>
+    <ul id="discussion"></ul>
 </div>
 
 
-<div>
-    <label for="fileUpload">Select File to Upload: </label><input id="fileUpload" type="file" />
 
-    <input id="btnUploadFile" type="button" value="Upload File"/>
 
-    <input id="btnGetReport" type="button" value="Generate Report" />
-</div>
 
 <script type="text/javascript">
 
     $(document).ready(function () {
 
-        $('#btnUploadFile').on('click', function () {
+        var chat = $.connection.commentHub;
 
-            var data = new FormData();
 
-            var files = $("#fileUpload").get(0).files;
-
-            // Add the uploaded image content to the form data collection
-            if (files.length > 0) {
-                data.append("UploadedImage", files[0]);
+        chat.client.getAllComments = function (data) {
+            debugger;
+            for (var i = 0; i < data.length; i++) {
+                var encodedMsg = $('<div />').text(data[i].Message).html();
+                // Add the message to the page.
+                $('#discussion').append('&nbsp;&nbsp;' + encodedMsg + '</li>');
             }
+          
 
-            // Make Ajax request with the contentType = false, and procesDate = false
-            var ajaxRequest = $.ajax({
-                type: "POST",
-                url: "/api/files/uploadExcell",
-                contentType: false,
-                processData: false,
-                data: data
+        };
+
+        chat.client.getComment = function (data) {
+            debugger;
+            var encodedMsg = $('<div />').text(data.Message).html();
+            // Add the message to the page.
+            $('#discussion').append('&nbsp;&nbsp;' + encodedMsg + '</li>');
+
+        };
+
+       
+
+
+        $.connection.hub.logging = true;
+        $.connection.hub.start().done(function () {
+            $('#connect').click(function () {
+                var Id = parseInt($('#roomId').val());
+                chat.server.joinRoom(Id);
             });
 
-            ajaxRequest.done(function (xhr, textStatus) {
-                // Do other operation
-            });
-        });
+            $('#sendmessage').click(function () {
+                debugger;
+             
+                chat.server.sendComment(parseInt($('#roomId').val()), $('#message').val());
 
-        $('#btnGetReport').on('click', function () {
-            // Make Ajax request with the contentType = false, and procesDate = false
-            var ajaxRequest = $.ajax({
-                type: "Get",
-                url: "/api/files"
-            });
-
-            ajaxRequest.done(function (xhr, textStatus) {
-                // Do other operation
             });
         });
     });
