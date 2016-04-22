@@ -4110,3 +4110,82 @@ At the time of the exception, the container was:
    в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
    в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-22 16:09:28,960 [12] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.IO.DirectoryNotFoundException: Не удалось найти часть пути "G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx8e594866-6e92-421f-9565-435b8976baab.xlsx".
+   в System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   в System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   в System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   в System.IO.FileStream..ctor(String path, FileMode mode)
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__7.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 150
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-22 16:12:44,026 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx6500dd62-daee-4c97-8db9-abc20318c8b9.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-22 16:12:44,075 [11] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx6500dd62-daee-4c97-8db9-abc20318c8b9.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-22 16:12:44,151 [11] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-22 16:12:44,527 [11] ERROR OurMemory.Controllers.FilesController AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+VeteranMapping -> VeteranBindingModel
+OurMemory.Service.Model.VeteranMapping -> OurMemory.Domain.DtoModel.VeteranBindingModel
+
+Destination path:
+VeteranBindingModel
+
+Source value:
+OurMemory.Service.Model.VeteranMapping
+   в AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   в AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options)
+   в AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   в AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   в AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__7.MoveNext() в G:\Диплом\OurMemory\OurMemory.Api\Controllers\FilesController.cs:строка 168
+2016-04-22 16:12:55,404 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx62cca72e-22d4-4516-bbbe-532c21ac8b91.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-22 16:12:55,404 [8] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx62cca72e-22d4-4516-bbbe-532c21ac8b91.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-22 16:12:55,404 [8] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];
+2016-04-22 16:14:34,886 [8] ERROR OurMemory.Controllers.FilesController AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+VeteranMapping -> VeteranBindingModel
+OurMemory.Service.Model.VeteranMapping -> OurMemory.Domain.DtoModel.VeteranBindingModel
+
+Destination path:
+VeteranBindingModel
+
+Source value:
+OurMemory.Service.Model.VeteranMapping
+   в AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)
+   в AutoMapper.MappingEngine.MapCore(Object source, Type sourceType, Type destinationType, MappingOperationOptions options)
+   в AutoMapper.MappingEngine.Map(Object source, Type sourceType, Type destinationType, Action`1 opts)
+   в AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source)
+   в AutoMapper.Mapper.Map[TSource,TDestination](TSource source)
+   в OurMemory.Controllers.FilesController.<PostUploadExcellFiles>d__7.MoveNext()
+2016-04-22 16:16:05,721 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor ExcelQueryArgs = FileName: 'G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx80389b7c-7233-4881-9cf2-be78ec3a37be.xlsx'; WorksheetName: ''; WorksheetIndex: ; StartRange: ; EndRange: ; Named Range: ; NoHeader: False; ColumnMappings: [FirstName = 'Фамилия'] [LastName = 'Имя'] [MiddleName = 'Отчество'] [DateBirth = 'Дата рождения'] [BirthPlace = 'Место рождения'] [DateDeath = 'Дата смерти'] [Called = 'Дата призыва'] [Awards = 'Награды'] [Troops = 'Войска'] [Description = 'Описание'] [UrlImages = 'Ссылки на изображения'] ; Transformations: , StrictMapping: None, UsePersistentConnection: False, TrimSpaces: None
+2016-04-22 16:16:05,732 [9] DEBUG LinqToExcel.Query.ExcelQueryExecutor Connection String: Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Диплом\OurMemory\OurMemory.Api\Temp\template.xlsx80389b7c-7233-4881-9cf2-be78ec3a37be.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1"
+2016-04-22 16:16:05,803 [9] DEBUG LinqToExcel.SQL SELECT * FROM [Sheet1$];

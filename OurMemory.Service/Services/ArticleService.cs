@@ -45,7 +45,7 @@ namespace OurMemory.Service.Services
         public IQueryable<Article> SearchArcticles(SearchArticleModel searchVeteranModel)
         {
             var keyWord = _articleSpecification.KeyWord(searchVeteranModel);
-            var arcticles = _articleRepository.GetSpec(keyWord.Predicate).OrderBy(x => x.Name);
+            var arcticles = _articleRepository.GetSpec(keyWord.Predicate).OrderBy(x => x.CreatedDateTime);
 
             return arcticles;
         }
