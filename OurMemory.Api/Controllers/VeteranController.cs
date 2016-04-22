@@ -5,7 +5,6 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
-using Microsoft.Practices.Unity;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Extenshions;

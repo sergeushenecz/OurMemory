@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 using OurMemory.Common;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
+using OurMemory.Service.Extenshions;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
 using OurMemory.Service.Parsers;
@@ -63,7 +64,7 @@ namespace OurMemory.Controllers
             }
             else
             {
-                searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).ToList();
+                searchVeterans = _veteranService.SearchVeterans(searchVeteranModel).Pagination((searchVeteranModel.Page - 1) * searchVeteranModel.Size, searchVeteranModel.Size).ToList(); ;
             }
 
             var veteranMappings = Mapper.Map<IEnumerable<Veteran>, IEnumerable<VeteranMapping>>(searchVeterans);
@@ -146,6 +147,12 @@ namespace OurMemory.Controllers
 
 
             path = Path.Combine(HttpContext.Current.Server.MapPath("~" + ConfigurationSettingsModule.GetItem("Temp")), filename);
+
+            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~" + ConfigurationSettingsModule.GetItem("Temp"))))
+            {
+                Directory.CreateDirectory(
+                  HttpContext.Current.Server.MapPath("~" + ConfigurationSettingsModule.GetItem("Temp")));
+            }
 
             using (FileStream fs = new FileStream(path, FileMode.Create))
             {

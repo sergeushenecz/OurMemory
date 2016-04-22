@@ -35,6 +35,8 @@ namespace OurMemory.AutomapperProfiles
 
             Mapper.CreateMap<VeteranBindingModel, Veteran>();
 
+            Mapper.CreateMap<VeteranMapping, VeteranBindingModel>();
+
             Mapper.CreateMap<Veteran, VeteranMapping>()
                 .ForMember(dest => dest.UrlImages, opt => opt.MapFrom(src => string.Join(", ", src.Images
                                                     .Select(x => GetDomain + x.ImageOriginal))));
