@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
+using Microsoft.Practices.Unity;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
@@ -13,23 +15,27 @@ namespace OurMemory.Hubs
 {
     public class CommentHub : Hub
     {
-        private readonly IArticleService _articleService;
+        private readonly IUnityContainer _container;
 
-        public CommentHub(IArticleService articleService)
+        private UnityContainer _unityContainer;
+
+        public CommentHub(IUnityContainer container)
         {
-            _articleService = articleService;
+            _container = container;
         }
 
-        public Task JoinRoom(int Id)
+        public Task JoinRoom(int id, string commentType)
         {
-            Groups.Add(Context.ConnectionId, Id.ToString());
-            ICollection<Comment> comments = _articleService.GetById(Id)?.Comments;
+            var roomName = GetNameRoom(id, commentType);
 
+
+            Groups.Add(Context.ConnectionId, roomName);
+            var commentService = GetService(commentType);
+            ICollection<Comment> comments = commentService.GetComments(id);
             var commentsViewModel = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentViewModel>>(comments);
 
             return Clients.Caller.getAllComments(commentsViewModel);
 
-            
         }
 
         public Task LeaveRoom(string roomName)
@@ -37,39 +43,25 @@ namespace OurMemory.Hubs
             return Groups.Remove(Context.ConnectionId, roomName);
         }
 
-        public Task SendComment(int Id, string message)
+        public Task SendComment(int id, string commentType, string message)
         {
-            var article = _articleService.GetById(Id);
+            var roomName = GetNameRoom(id, commentType);
 
-            var userId = Context.User.Identity.GetUserId();
+            var commentService = GetService(commentType);
+            var comment = commentService.AddComment(id, message, Context.User.Identity.GetUserId());
 
-            var comment = new Comment()
-            {
-                Article = article,
-                User = null,
-                Message = message,
-                UpdatedDateTime = DateTime.UtcNow
-            };
+            var commentViewModel = Mapper.Map<Comment, CommentViewModel>(comment);
 
-            article.Comments.Add(comment);
-            _articleService.UpdateArticle(article);
-
-            var commentsViewModel = Mapper.Map<Comment, CommentViewModel>(comment);
-
-            return Clients.Group(Id.ToString()).getComment(commentsViewModel);
+            return Clients.Group(roomName).getComment(commentViewModel);
         }
 
         public override Task OnDisconnected(bool stopCalled)
         {
-
-            var a = 1;
             return base.OnDisconnected(stopCalled);
         }
 
         public override Task OnConnected()
         {
-
-            var a = 1;
             return base.OnConnected();
         }
 
@@ -80,6 +72,19 @@ namespace OurMemory.Hubs
             // user as offline after a period of inactivity; in that case 
             // mark the user as online again.
             return base.OnReconnected();
+        }
+
+
+
+        private ICommentService GetService(string type)
+        {
+            return _container.Resolve<ICommentService>(type);
+        }
+
+
+        private string GetNameRoom(int id, string type)
+        {
+            return id + type;
         }
     }
 }

@@ -13,19 +13,16 @@
         padding: 20px;
         margin: 20px;
     }
-
-  
- 
 </style>
 
 <div class="container">
     <label>Room Id</label>
-    <input type="text" id="roomId"/>
-    <label >Comment</label>
-    <input type="text" id="message"/>
-    <input type="button" id="sendmessage" value="Send"/>
+    <input type="text" id="roomId" />
+    <label>Comment</label>
+    <input type="text" id="message" />
+    <input type="button" id="sendmessage" value="Send" />
     <input type="button" id="connect" value="Connect" />
-    <input type="hidden" id="displayname"/>
+    <input type="hidden" id="displayname" />
     <ul id="discussion"></ul>
 </div>
 
@@ -41,38 +38,36 @@
 
 
         chat.client.getAllComments = function (data) {
-            debugger;
             for (var i = 0; i < data.length; i++) {
                 var encodedMsg = $('<div />').text(data[i].Message).html();
                 // Add the message to the page.
                 $('#discussion').append('&nbsp;&nbsp;' + encodedMsg + '</li>');
             }
-          
+
 
         };
 
         chat.client.getComment = function (data) {
-            debugger;
             var encodedMsg = $('<div />').text(data.Message).html();
             // Add the message to the page.
             $('#discussion').append('&nbsp;&nbsp;' + encodedMsg + '</li>');
 
         };
 
-       
+
 
 
         $.connection.hub.logging = true;
         $.connection.hub.start().done(function () {
             $('#connect').click(function () {
                 var Id = parseInt($('#roomId').val());
-                chat.server.joinRoom(Id);
+                chat.server.joinRoom(Id, "ArticleServiceComment");
             });
 
             $('#sendmessage').click(function () {
                 debugger;
-             
-                chat.server.sendComment(parseInt($('#roomId').val()), $('#message').val());
+
+                chat.server.sendComment(parseInt($('#roomId').val()), "ArticleServiceComment", $('#message').val());
 
             });
         });

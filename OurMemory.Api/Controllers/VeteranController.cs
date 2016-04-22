@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
+using Microsoft.Practices.Unity;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Extenshions;
@@ -53,14 +54,7 @@ namespace OurMemory.Controllers
 
             var veteranViewModel = Mapper.Map<Veteran, VeteranViewModel>(veteran);
 
-            return Ok(new
-            {
-<<<<<<< HEAD
-                Veteran = veteranBindingModels,
-=======
-                Veteran = veteranViewModel,
->>>>>>> 0531a75fc31da1f3eaecc2534ad952fbe90cc1e8
-            });
+            return Ok(veteranViewModel);
         }
 
         /// <summary>
@@ -108,7 +102,7 @@ namespace OurMemory.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             Veteran veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
-
+            
             var userId = User.Identity.GetUserId();
 
             if (userId == null)

@@ -26,14 +26,11 @@ namespace OurMemory
         {
             var container = new UnityContainer();
 
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-
-            // e.g. container.RegisterType<ITestService, TestService>();
-            container.RegisterType<IVeteranService, VeteranService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IVeteranService, VeteranService>();
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
             container.RegisterType<IImageVeteranService, ImageVeteranService>(new HierarchicalLifetimeManager());
-            container.RegisterType<IArticleService, ArticleService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IArticleService, ArticleService>();
+            container.RegisterType<ICommentService, ArticleService>("ArticleServiceComment");
 
             container.RegisterType<IDatabaseFactory, DatabaseFactory>(new HierarchicalLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());
@@ -42,7 +39,9 @@ namespace OurMemory
             container.RegisterType(typeof(IFormService<>), typeof(FormService<>));
 
 
-            container.RegisterTypes(AllClasses.FromLoadedAssemblies().Where(t => t.BaseType == typeof(SpecificationBase<>)), WithMappings.FromMatchingInterface, WithName.Default);
+            container.RegisterTypes(AllClasses.FromLoadedAssemblies().Where(t => t.BaseType == typeof(SpecificationBase<>)),
+                WithMappings.FromMatchingInterface,
+                WithName.Default);
 
             // TODO: Register your types here
             container.RegisterType<IUserStore<User>, UserStore<User>>();
@@ -57,16 +56,11 @@ namespace OurMemory
 
             container.RegisterType<CommentHub>(new InjectionFactory(CreateCommentHub));
 
-
-
         }
-
-
-
 
         private static object CreateCommentHub(IUnityContainer p)
         {
-            var myHub = new CommentHub(p.Resolve<IArticleService>());
+            var myHub = new CommentHub(p);
 
             return myHub;
         }

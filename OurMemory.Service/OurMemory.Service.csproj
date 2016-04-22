@@ -99,6 +99,7 @@
     <Compile Include="Extenshions\QueryableExtentions.cs" />
     <Compile Include="Helper\HelperMetaData.cs" />
     <Compile Include="Interfaces\IArticleService.cs" />
+    <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\IExcellParser.cs" />
     <Compile Include="Model\LatLng.cs" />
     <Compile Include="Model\SearchArticleModel.cs" />

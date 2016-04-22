@@ -245,6 +245,10 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\AutoMapperConverter\StringToDateTimeConverter.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\ArticleProfile.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\CommentProfile.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\ImageProfile.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\VeteranProfile.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

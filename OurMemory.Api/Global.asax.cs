@@ -21,7 +21,7 @@ namespace OurMemory
         protected void Application_Start()
         {
             AutoMapperConfig mapperConfig = new AutoMapperConfig();
-            mapperConfig.Initialization();
+            mapperConfig.Initialize();
 
             AreaRegistration.RegisterAllAreas();
             UnityConfig.RegisterComponents();
