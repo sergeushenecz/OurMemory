@@ -11,7 +11,7 @@ namespace OurMemory.Domain.Entities
     {
         public virtual ICollection<Veteran> Veterans { get; set; }
         public virtual ICollection<Article> Arcticles { get; set; }
-
+        public virtual ICollection<PhotoAlbum> PhotoAlbums { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

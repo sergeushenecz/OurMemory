@@ -3,7 +3,7 @@ using OurMemory.Domain.Entities;
 
 namespace OurMemory.Data.Mapping
 {
-    public class ImageVeteranMap : EntityTypeConfiguration<ImageVeteran>
+    public class ImageVeteranMap : EntityTypeConfiguration<Image>
     {
         public ImageVeteranMap()
         {

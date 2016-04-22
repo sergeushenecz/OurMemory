@@ -8,16 +8,16 @@ namespace OurMemory.Service.Services
 {
     public class ImageVeteranService : IImageVeteranService
     {
-        private readonly IRepository<ImageVeteran> _imageVeteran;
+        private readonly IRepository<Image> _imageVeteran;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ImageVeteranService(IRepository<ImageVeteran> imageVeteran, IUnitOfWork unitOfWork)
+        public ImageVeteranService(IRepository<Image> imageVeteran, IUnitOfWork unitOfWork)
         {
             _imageVeteran = imageVeteran;
             _unitOfWork = unitOfWork;
         }
 
-        public void DeleteImagesVeteran(IEnumerable<ImageVeteran> imageVeterans)
+        public void DeleteImagesVeteran(IEnumerable<Image> imageVeterans)
         {
             var veterans = imageVeterans.ToList();
 

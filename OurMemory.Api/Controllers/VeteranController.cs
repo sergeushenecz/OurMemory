@@ -55,7 +55,6 @@ namespace OurMemory.Controllers
 
             return Ok(veteranViewModel);
         }
-
         /// <summary>
         /// Get veterans by conditional or get all veterans
         /// </summary>
@@ -101,7 +100,7 @@ namespace OurMemory.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             Veteran veteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
-            
+
             var userId = User.Identity.GetUserId();
 
             if (userId == null)

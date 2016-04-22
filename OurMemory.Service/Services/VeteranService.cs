@@ -17,11 +17,11 @@ namespace OurMemory.Service.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly VeteranSpecification _veteranSpecification;
 
-        public VeteranService(IRepository<Veteran> veteranRepository, IUnitOfWork unitOfWork, VeteranSpecification veteranSpecification1)
+        public VeteranService(IRepository<Veteran> veteranRepository, IUnitOfWork unitOfWork, VeteranSpecification veteranSpecification)
         {
             _veteranRepository = veteranRepository;
             _unitOfWork = unitOfWork;
-            _veteranSpecification = veteranSpecification1;
+            _veteranSpecification = veteranSpecification;
         }
 
 

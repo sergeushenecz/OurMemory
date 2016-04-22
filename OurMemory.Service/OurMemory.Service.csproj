@@ -101,7 +101,9 @@
     <Compile Include="Interfaces\IArticleService.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\IExcellParser.cs" />
+    <Compile Include="Interfaces\IPhotoAlbumService.cs" />
     <Compile Include="Model\LatLng.cs" />
+    <Compile Include="Model\SearchPhotoAlbumModel.cs" />
     <Compile Include="Model\SearchArticleModel.cs" />
     <Compile Include="Model\SearchRequestModelBase.cs" />
     <Compile Include="Model\SearchVeteranModel.cs" />
@@ -120,8 +122,10 @@
     <Compile Include="Interfaces\IVeteranService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ArticleService.cs" />
+    <Compile Include="Services\PhotoAlbumService.cs" />
     <Compile Include="Specification\ArticleSpecification.cs" />
     <Compile Include="Specification\SpecificationBase.cs" />
+    <Compile Include="Specification\PhotoAlbumSpecification .cs" />
     <Compile Include="Specification\VeteranSpecification.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\VeteranService.cs" />

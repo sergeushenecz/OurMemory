@@ -22,14 +22,14 @@ namespace OurMemory.Domain.Entities
 
         public int Views { get; set; }
 
-        public virtual ICollection<ImageVeteran> Images { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
 
         public virtual User User { get; set; }
 
 
         public Veteran()
         {
-            Images = new List<ImageVeteran>();
+            Images = new List<Image>();
         }
     }
 }

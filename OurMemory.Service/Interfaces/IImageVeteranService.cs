@@ -5,6 +5,6 @@ namespace OurMemory.Service.Interfaces
 {
     public interface IImageVeteranService
     {
-        void DeleteImagesVeteran(IEnumerable<ImageVeteran> id);
+        void DeleteImagesVeteran(IEnumerable<Image> id);
     }
 }

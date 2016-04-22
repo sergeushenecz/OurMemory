@@ -246,8 +246,10 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\AutoMapperConverter\StringToDateTimeConverter.cs" />
     <Compile Include="App_Start\AutomapperProfiles\ArticleProfile.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\BaseProfile.cs" />
     <Compile Include="App_Start\AutomapperProfiles\CommentProfile.cs" />
     <Compile Include="App_Start\AutomapperProfiles\ImageProfile.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\PhotoAlbumProfile.cs" />
     <Compile Include="App_Start\AutomapperProfiles\VeteranProfile.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -292,6 +294,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhotoAlbumController.cs" />
     <Compile Include="Controllers\VeteranController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -336,6 +339,10 @@
     <Compile Include="Migrations\201604211330056_AddTableComments.cs" />
     <Compile Include="Migrations\201604211330056_AddTableComments.Designer.cs">
       <DependentUpon>201604211330056_AddTableComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604221522342_RenameTableImageVeteranToVeteran.cs" />
+    <Compile Include="Migrations\201604221522342_RenameTableImageVeteranToVeteran.Designer.cs">
+      <DependentUpon>201604221522342_RenameTableImageVeteranToVeteran.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -396,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604211330056_AddTableComments.resx">
       <DependentUpon>201604211330056_AddTableComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604221522342_RenameTableImageVeteranToVeteran.resx">
+      <DependentUpon>201604221522342_RenameTableImageVeteranToVeteran.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
