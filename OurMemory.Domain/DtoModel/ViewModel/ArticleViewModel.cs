@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace OurMemory.Domain.DtoModel
+namespace OurMemory.Domain.DtoModel.ViewModel
 {
-    public class ArticleViewModel
+    public class ArticleViewModel: BaseBindingModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

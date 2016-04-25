@@ -2,6 +2,7 @@
 using System.Web;
 using AutoMapper;
 using OurMemory.Domain.DtoModel;
+using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Model;
 
@@ -18,6 +19,9 @@ namespace OurMemory.AutomapperProfiles
                                                                          + " " + x.LastName
                                                                          + " " + x.MiddleName))
                .ForMember(dest => dest.UserId, opt => opt.MapFrom(x => x.User.Id))
+               .ForMember(dest => dest.Called, opt => opt.MapFrom(x => x.Called.HasValue ? x.Called.Value.ToString("yyyy-MM-dd") : ""))
+               .ForMember(dest => dest.DateBirth, opt => opt.MapFrom(x => x.DateBirth.HasValue ? x.DateBirth.Value.ToString("yyyy-MM-dd") : ""))
+               .ForMember(dest => dest.DateDeath, opt => opt.MapFrom(x => x.DateDeath.HasValue ? x.DateDeath.Value.ToString("yyyy-MM-dd") : ""))
                .AfterMap((veteranImages, veteranBindingImages) =>
                {
                    for (int i = 0; i < veteranImages.Images.Count; i++)

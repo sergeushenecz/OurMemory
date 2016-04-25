@@ -30,7 +30,7 @@ namespace OurMemory.Controllers
             _imageVeteranService = imageVeteranService;
         }
 
-        [Route("api/photoAlbum")]
+        [Route("api/photoAlbum/{id}")]
         [ResponseType(typeof(PhotoAlbumViewModel))]
         public IHttpActionResult Get(int id)
         {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace OurMemory.Domain.DtoModel
+namespace OurMemory.Domain.DtoModel.ViewModel
 {
     public class VeteranViewModel
     {
@@ -10,15 +9,12 @@ namespace OurMemory.Domain.DtoModel
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime? DateBirth { get; set; }
+        public string DateBirth { get; set; }
         public string BirthPlace { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime? DateDeath { get; set; }
+        public string DateDeath { get; set; }
         public Double Latitude { get; set; }
         public Double Longitude { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime? Called { get; set; }
+        public string Called { get; set; }
         public string Awards { get; set; }
         public string Troops { get; set; }
         public string Description { get; set; }

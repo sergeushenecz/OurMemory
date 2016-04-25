@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using AutoMapper;
-using OurMemory.App_Start.AutomapperProfiles;
 using OurMemory.AutomapperProfiles;
 using OurMemory.AutoMapperConverter;
 using OurMemory.Domain.DtoModel;

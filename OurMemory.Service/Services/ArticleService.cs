@@ -39,7 +39,7 @@ namespace OurMemory.Service.Services
         {
             Article article = _articleRepository.GetById(id);
 
-            return article;
+            return article.IsDeleted == false ? article : null;
         }
 
         public IQueryable<Article> SearchArcticles(SearchArticleModel searchVeteranModel)

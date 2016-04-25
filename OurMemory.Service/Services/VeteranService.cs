@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqToExcel.Extensions;
 using OurMemory.Data.Infrastructure;
 using OurMemory.Data.Specification.Core;
 using OurMemory.Domain.Entities;
@@ -37,7 +38,7 @@ namespace OurMemory.Service.Services
         {
             Veteran veteran = _veteranRepository.GetById(id);
 
-            return veteran;
+            return !veteran.IsDeleted ? veteran : null;
         }
 
         public void UpdateVeteran(Veteran veteran)
@@ -57,7 +58,7 @@ namespace OurMemory.Service.Services
 
             var veterans = _veteranRepository.GetSpec(keyWord.Predicate)
                 .OrderBy(x => x.FirstName);
-               
+
 
             return veterans;
         }

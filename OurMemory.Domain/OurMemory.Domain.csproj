@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DtoModel\ArticleBindingModel.cs" />
+    <Compile Include="DtoModel\ViewModel\BaseViewModel.cs" />
     <Compile Include="DtoModel\ImageReference.cs" />
     <Compile Include="DtoModel\PhotoAlbumBindingModel.cs" />
     <Compile Include="DtoModel\VeteranBindingModel.cs" />

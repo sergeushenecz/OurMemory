@@ -344,6 +344,10 @@
     <Compile Include="Migrations\201604221522342_RenameTableImageVeteranToVeteran.Designer.cs">
       <DependentUpon>201604221522342_RenameTableImageVeteranToVeteran.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604250842562_AddTablePhotoAlbums.cs" />
+    <Compile Include="Migrations\201604250842562_AddTablePhotoAlbums.Designer.cs">
+      <DependentUpon>201604250842562_AddTablePhotoAlbums.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -406,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604221522342_RenameTableImageVeteranToVeteran.resx">
       <DependentUpon>201604221522342_RenameTableImageVeteranToVeteran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604250842562_AddTablePhotoAlbums.resx">
+      <DependentUpon>201604250842562_AddTablePhotoAlbums.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -7,6 +7,7 @@ using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Domain.DtoModel;
+using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Extenshions;
 using OurMemory.Service.Interfaces;
@@ -32,7 +33,7 @@ namespace OurMemory.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("api/article/{id}")]
-        [ResponseType(typeof(ArticleBindingModel))]
+        [ResponseType(typeof(ArticleViewModel))]
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
@@ -46,11 +47,9 @@ namespace OurMemory.Controllers
             article.Views++;
             _articleService.SaveArticle();
 
-            var articleBindingModel = Mapper.Map<Article, ArticleBindingModel>(article);
-            return Ok(new
-            {
-                Article = articleBindingModel
-            });
+            var articleBindingModel = Mapper.Map<Article, ArticleViewModel>(article);
+
+            return Ok(articleBindingModel);
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace OurMemory.Controllers
         /// <param name="searchArticleModel"></param>
         /// <returns></returns>
         [Route("api/article")]
-        [ResponseType(typeof(ArticleBindingModel))]
+        [ResponseType(typeof(ArticleViewModel))]
         [AllowAnonymous]
         public IHttpActionResult Get([FromUri]SearchArticleModel searchArticleModel)
         {
@@ -82,7 +81,7 @@ namespace OurMemory.Controllers
                 return NotFound();
             }
 
-            var articlesBindingModel = Mapper.Map<IEnumerable<Article>, IEnumerable<ArticleBindingModel>>(arcticles);
+            var articlesBindingModel = Mapper.Map<IEnumerable<Article>, IEnumerable<ArticleViewModel>>(arcticles);
 
             return Ok(new
             {
@@ -97,7 +96,7 @@ namespace OurMemory.Controllers
         /// <param name="veteranBindingModel"></param>
         /// <returns></returns>
         [Route("api/article")]
-        [ResponseType(typeof(ArticleBindingModel))]
+        [ResponseType(typeof(ArticleViewModel))]
         public IHttpActionResult Post(ArticleBindingModel articleBindingModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -108,16 +107,16 @@ namespace OurMemory.Controllers
 
             if (userId == null)
             {
-                return BadRequest("User Not Found");
+                return BadRequest();
             }
 
             var user = _userService.GetById(userId);
             article.User = user;
 
             _articleService.Add(article);
-            articleBindingModel = Mapper.Map<Article, ArticleBindingModel>(article);
+            var articleViewModel = Mapper.Map<Article, ArticleViewModel>(article);
 
-            return Ok(articleBindingModel);
+            return Ok(articleViewModel);
         }
 
         /// <summary>
@@ -126,18 +125,19 @@ namespace OurMemory.Controllers
         /// <param name="veteranBindingModel"></param>
         /// <returns></returns>
         [Route("api/article")]
-        [ResponseType(typeof(ArticleBindingModel))]
+        [ResponseType(typeof(ArticleViewModel))]
         public IHttpActionResult Put([FromBody]ArticleBindingModel articleBindingModel)
         {
             var arcticle = _articleService.GetById(articleBindingModel.Id);
+            var userId = User.Identity.GetUserId();
 
-            if (ModelState.IsValid && articleBindingModel.Id == arcticle.Id)
+            if (ModelState.IsValid && articleBindingModel.Id == arcticle.Id && userId == arcticle.User.Id)
             {
                 Article mapVeteran = Mapper.Map<ArticleBindingModel, Article>(articleBindingModel);
                 Mapper.Map(mapVeteran, arcticle);
                 _articleService.UpdateArticle(arcticle);
 
-                var articleModified = Mapper.Map<Article, ArticleBindingModel>(arcticle);
+                var articleModified = Mapper.Map<Article, ArticleViewModel>(arcticle);
 
                 return Ok(articleModified);
             }
@@ -154,8 +154,9 @@ namespace OurMemory.Controllers
         public IHttpActionResult Delete(int id)
         {
             var article = _articleService.GetById(id);
+            var userId = User.Identity.GetUserId();
 
-            if (article == null || article.Id != id) return BadRequest();
+            if (article == null || article.Id != id || article.User.Id != userId) return BadRequest();
 
             article.IsDeleted = true;
             _articleService.SaveArticle();

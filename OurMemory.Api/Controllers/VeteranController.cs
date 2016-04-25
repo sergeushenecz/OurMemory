@@ -6,6 +6,7 @@ using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Domain.DtoModel;
+using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Service.Extenshions;
 using OurMemory.Service.Interfaces;
@@ -105,7 +106,7 @@ namespace OurMemory.Controllers
 
             if (userId == null)
             {
-                return BadRequest("User Not Found");
+                return BadRequest();
             }
 
             var user = _userService.GetById(userId);
@@ -130,7 +131,9 @@ namespace OurMemory.Controllers
         {
             var veteran = _veteranService.GetById(veteranBindingModel.Id);
 
-            if (ModelState.IsValid && veteranBindingModel.Id == veteran.Id)
+            var userId = User.Identity.GetUserId();
+
+            if (ModelState.IsValid && veteranBindingModel.Id == veteran.Id && userId == veteran.User.Id)
             {
                 _imageVeteranService.DeleteImagesVeteran(veteran.Images);
                 Veteran mapVeteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
@@ -155,7 +158,9 @@ namespace OurMemory.Controllers
         {
             var veteran = _veteranService.GetById(id);
 
-            if (veteran == null || veteran.Id != id) return BadRequest();
+            var userId = User.Identity.GetUserId();
+
+            if (veteran == null || veteran.Id != id || veteran.User.Id != userId) return BadRequest();
 
             veteran.IsDeleted = true;
             _veteranService.SaveArticle();
