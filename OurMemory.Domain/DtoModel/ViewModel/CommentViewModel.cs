@@ -12,6 +12,6 @@ namespace OurMemory.Domain.DtoModel.ViewModel
         public string Message { get; set; }
         public string UserId { get; set; }
         public string UserName { get; set; }
-        public DateTime CreatedDateTime { get; set; }
+        public string CreatedDateTime { get; set; }
     }
 }

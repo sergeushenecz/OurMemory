@@ -23,7 +23,7 @@ namespace OurMemory.Hubs
         {
             _container = container;
         }
-
+        [Microsoft.AspNet.SignalR.Authorize(Roles = "User")]
         public Task JoinRoom(int id, string commentType)
         {
             var roomName = GetNameRoom(id, commentType);
@@ -43,6 +43,7 @@ namespace OurMemory.Hubs
             return Groups.Remove(Context.ConnectionId, roomName);
         }
 
+        
         public Task SendComment(int id, string commentType, string message)
         {
             var roomName = GetNameRoom(id, commentType);
