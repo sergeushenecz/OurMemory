@@ -37,7 +37,7 @@ namespace OurMemory.Service.Services
         {
             PhotoAlbum veteran = _photoAlbumRepository.GetById(id);
 
-            return veteran;
+            return veteran.IsDeleted == false ? veteran : null;
         }
 
         public List<Image> GetPhotosAlbums(int idAlbum)

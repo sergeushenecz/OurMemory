@@ -45,7 +45,12 @@ namespace OurMemory.Controllers
             _photoAlbumService.SavePhotoAlbum();
 
             var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumViewModel>(photoAlbum);
-            return Ok(photoAlbumViewModel);
+
+            return Ok(new
+            {
+                Items = photoAlbumViewModel,
+                TotalCount = photoAlbumViewModel.Images.Count()
+            });
 
         }
 
