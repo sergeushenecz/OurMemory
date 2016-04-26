@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web;
 using AutoMapper;
 using OurMemory.Domain.DtoModel;
@@ -26,9 +27,11 @@ namespace OurMemory.AutomapperProfiles
                {
                    for (int i = 0; i < veteranImages.Images.Count; i++)
                    {
-                       veteranBindingImages.Images.ToList()[i].ImageOriginal = veteranImages.Images.ToList()[i].ImageOriginal.Insert(0, GetDomain);
+                       if (veteranImages.Images.ToList()[i].ImageOriginal != null)
+                           veteranBindingImages.Images.ToList()[i].ImageOriginal = veteranImages.Images.ToList()[i].ImageOriginal.Insert(0, GetDomain);
 
-                       veteranBindingImages.Images.ToList()[i].ThumbnailImage = veteranImages.Images.ToList()[i].ThumbnailImage.Insert(0, GetDomain);
+                       if (veteranImages.Images.ToList()[i].ThumbnailImage != null)
+                           veteranBindingImages.Images.ToList()[i].ThumbnailImage = veteranImages.Images.ToList()[i].ThumbnailImage.Insert(0, GetDomain);
                    }
 
                });
@@ -51,8 +54,11 @@ namespace OurMemory.AutomapperProfiles
             {
                 for (int i = 0; i < veteranImages.Images.Count; i++)
                 {
-                    veteranImages.Images.ToList()[i].ImageOriginal = veteranBindingImages.Images.ToList()[i].ImageOriginal.Replace(GetDomain, "");
-                    veteranImages.Images.ToList()[i].ThumbnailImage = veteranBindingImages.Images.ToList()[i].ThumbnailImage.Replace(GetDomain, "");
+                    if (veteranBindingImages.Images.ToList()[i].ImageOriginal != null)
+                        veteranImages.Images.ToList()[i].ImageOriginal = veteranBindingImages.Images.ToList()[i].ImageOriginal.Replace(GetDomain, "");
+
+                    if (veteranBindingImages.Images.ToList()[i].ThumbnailImage != null)
+                        veteranImages.Images.ToList()[i].ThumbnailImage = veteranBindingImages.Images.ToList()[i].ThumbnailImage.Replace(GetDomain, "");
                 }
 
             });

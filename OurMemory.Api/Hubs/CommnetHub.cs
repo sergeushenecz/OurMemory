@@ -23,6 +23,7 @@ namespace OurMemory.Hubs
         {
             _container = container;
         }
+
         [Microsoft.AspNet.SignalR.Authorize(Roles = "User")]
         public Task JoinRoom(int id, string commentType)
         {

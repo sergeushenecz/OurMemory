@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.Infrastructure;
 using Microsoft.Owin.Security.OAuth;
 using OurMemory.Data;
 using OurMemory.Providers;
@@ -10,6 +11,7 @@ namespace OurMemory
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
 
         public static string PublicClientId { get; private set; }
 
@@ -22,9 +24,9 @@ namespace OurMemory
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
-//            app.UseCookieAuthentication(new CookieAuthenticationOptions());
-//            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-          
+            //            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            //            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
             // Configure the application for OAuth based flow
             PublicClientId = "self";
 
@@ -37,11 +39,26 @@ namespace OurMemory
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                AllowInsecureHttp = true
+                AllowInsecureHttp = true,
+
             };
 
             // Enable the application to use bearer tokens to authenticate users
-            app.UseOAuthBearerTokens(OAuthOptions);
+//            app.UseOAuthBearerTokens(OAuthOptions);
+            app.UseOAuthAuthorizationServer(OAuthOptions);
+
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions()
+            {
+                Provider = new QueryStringOAuthBearerProvider(),
+                AccessTokenProvider = new AuthenticationTokenProvider()
+                {
+                    OnCreate = create,
+                    OnReceive = receive
+                },
+            };
+
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
@@ -62,5 +79,16 @@ namespace OurMemory
             //    ClientSecret = ""
             //});
         }
+
+        public static Action<AuthenticationTokenCreateContext> create = new Action<AuthenticationTokenCreateContext>(c =>
+        {
+            c.SetToken(c.SerializeTicket());
+        });
+
+        public static Action<AuthenticationTokenReceiveContext> receive = new Action<AuthenticationTokenReceiveContext>(c =>
+        {
+            c.DeserializeTicket(c.Token);
+            c.OwinContext.Environment["Properties"] = c.Ticket.Properties;
+        });
     }
 }
