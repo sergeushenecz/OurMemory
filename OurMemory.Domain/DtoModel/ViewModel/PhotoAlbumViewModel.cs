@@ -8,6 +8,9 @@ namespace OurMemory.Domain.DtoModel.ViewModel
         public string Name { get; set; }
         public string Views { get; set; }
         public Guid UserId { get; set; }
-        public virtual IEnumerable<ImageReference> Images { get; set; }
+        public string Description { get; set; }
+        public string ImageUrlAlbum { get; set; }
+
+        public int CountPhoto { get; set; }
     }
 }

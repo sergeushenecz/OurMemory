@@ -48,8 +48,7 @@ namespace OurMemory.Controllers
 
             return Ok(new
             {
-                Items = photoAlbumViewModel,
-                TotalCount = photoAlbumViewModel.Images.Count()
+                Items = photoAlbumViewModel
             });
 
         }

@@ -6,6 +6,9 @@ namespace OurMemory.Domain.Entities
     {
         public string Name { get; set; }
         public int Views { get; set; }
+        public string Description { get; set; }
+
+        public string ImageUrlAlbum { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
         public virtual User User { get; set; }

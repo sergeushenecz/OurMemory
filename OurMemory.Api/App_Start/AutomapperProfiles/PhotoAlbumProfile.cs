@@ -17,18 +17,8 @@ namespace OurMemory.AutomapperProfiles
             Mapper.CreateMap<PhotoAlbumBindingModel, PhotoAlbum>();
 
 
-            AutoMapper.Mapper.CreateMap<PhotoAlbum, PhotoAlbumViewModel>().AfterMap((photoAlbum, photoAlbumViewModel) =>
-            {
-                for (int i = 0; i < photoAlbum.Images.Count; i++)
-                {
-                    photoAlbumViewModel.Images.ToList()[i].ImageOriginal =
-                        photoAlbum.Images.ToList()[i].ImageOriginal.Insert(0, GetDomain);
-
-                    photoAlbumViewModel.Images.ToList()[i].ThumbnailImage =
-                        photoAlbum.Images.ToList()[i].ThumbnailImage.Insert(0, GetDomain);
-                }
-
-            });
+            AutoMapper.Mapper.CreateMap<PhotoAlbum, PhotoAlbumViewModel>()
+                .ForMember(dist => dist.CountPhoto, opt => opt.MapFrom(x => x.Images.Count));
 
             Mapper.CreateMap<PhotoAlbumBindingModel, PhotoAlbum>()
               .AfterMap((photoAlbumBindingModel, photoAlbum) =>

@@ -42,7 +42,7 @@ namespace OurMemory.Hubs
         }
 
 
-        [Microsoft.AspNet.SignalR.Authorize(Roles = "User")]
+//        [AuthorizeClaims]
         public Task SendComment(string message)
         {
             if (!_dictionaryRoom.ContainsKey(Context.ConnectionId))
@@ -86,13 +86,10 @@ namespace OurMemory.Hubs
             return base.OnReconnected();
         }
 
-
-
         private ICommentService GetService(string type)
         {
             return _container.Resolve<ICommentService>(type);
         }
-
 
         private string GetNameRoom(int id, string type)
         {

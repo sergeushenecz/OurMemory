@@ -67,7 +67,9 @@
             $('#sendmessage').click(function () {
                 debugger;
 
-                chat.server.sendComment($('#message').val());
+                chat.server.sendComment($('#message').val()).fail(function(error) {
+                    console.log("Error handler called: " + error);
+                });;
 
             });
         });

@@ -40,6 +40,7 @@ namespace OurMemory
                     // JSONP requests are insecure but some older browsers (and some
                     // versions of IE) require JSONP to work cross domain
                     // EnableJSONP = true
+                    EnableDetailedErrors = true
                 };
                 // Run the SignalR pipeline. We're not using MapSignalR
                 // since this branch already runs under the "/signalr"
