@@ -9,6 +9,7 @@ using Microsoft.Practices.Unity;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
+using OurMemory.Models;
 using OurMemory.Service.Interfaces;
 
 namespace OurMemory.Hubs
@@ -18,19 +19,20 @@ namespace OurMemory.Hubs
         private readonly IUnityContainer _container;
 
         private UnityContainer _unityContainer;
+        private static readonly Dictionary<string, Room> _dictionaryRoom = new Dictionary<string, Room>();
 
         public CommentHub(IUnityContainer container)
         {
             _container = container;
         }
 
-        [Microsoft.AspNet.SignalR.Authorize(Roles = "User")]
         public Task JoinRoom(int id, string commentType)
         {
             var roomName = GetNameRoom(id, commentType);
-
+            _dictionaryRoom.Add(Context.ConnectionId, new Room() { CommentType = commentType, Name = roomName, Id = id });
 
             Groups.Add(Context.ConnectionId, roomName);
+
             var commentService = GetService(commentType);
             ICollection<Comment> comments = commentService.GetComments(id);
             var commentsViewModel = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentViewModel>>(comments);
@@ -44,21 +46,28 @@ namespace OurMemory.Hubs
             return Groups.Remove(Context.ConnectionId, roomName);
         }
 
-        
-        public Task SendComment(int id, string commentType, string message)
-        {
-            var roomName = GetNameRoom(id, commentType);
 
-            var commentService = GetService(commentType);
-            var comment = commentService.AddComment(id, message, Context.User.Identity.GetUserId());
+        public Task SendComment(string message)
+        {
+            var room = _dictionaryRoom[Context.ConnectionId];
+
+            var commentService = GetService(room.CommentType);
+            var comment = commentService.AddComment(room.Id, message, Context.User.Identity.GetUserId());
 
             var commentViewModel = Mapper.Map<Comment, CommentViewModel>(comment);
 
-            return Clients.Group(roomName).getComment(commentViewModel);
+            return Clients.Group(room.Name).getComment(commentViewModel);
         }
 
         public override Task OnDisconnected(bool stopCalled)
         {
+            if (_dictionaryRoom.ContainsKey(Context.ConnectionId))
+            {
+                var room = _dictionaryRoom[Context.ConnectionId];
+                Groups.Remove(Context.ConnectionId, room.Name);
+                _dictionaryRoom.Remove(Context.ConnectionId);
+            }
+
             return base.OnDisconnected(stopCalled);
         }
 

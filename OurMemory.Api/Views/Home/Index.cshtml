@@ -67,7 +67,7 @@
             $('#sendmessage').click(function () {
                 debugger;
 
-                chat.server.sendComment(parseInt($('#roomId').val()), "ArticleServiceComment", $('#message').val());
+                chat.server.sendComment($('#message').val());
 
             });
         });
