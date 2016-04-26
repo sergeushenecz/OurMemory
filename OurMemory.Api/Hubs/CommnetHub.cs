@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Practices.Unity;
+using OurMemory.Domain;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
@@ -38,17 +39,17 @@ namespace OurMemory.Hubs
             var commentsViewModel = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentViewModel>>(comments);
 
             return Clients.Caller.getAllComments(commentsViewModel);
-
-        }
-
-        public Task LeaveRoom(string roomName)
-        {
-            return Groups.Remove(Context.ConnectionId, roomName);
         }
 
 
+        [Microsoft.AspNet.SignalR.Authorize(Roles = "User")]
         public Task SendComment(string message)
         {
+            if (!_dictionaryRoom.ContainsKey(Context.ConnectionId))
+            {
+                return Clients.Caller.getError("Error current user not room");
+            }
+
             var room = _dictionaryRoom[Context.ConnectionId];
 
             var commentService = GetService(room.CommentType);
