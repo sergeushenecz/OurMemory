@@ -19,7 +19,10 @@
     <label>Room Id</label>
     <input type="text" id="roomId" />
     <label>Comment</label>
-    <input type="text" id="message" />
+    <input type="text" id="message"/>
+    <label>Remove Id</label>
+    <input type="text" id="removeComment"/>
+    <input type="button" id="remove" value="Remove" />
     <input type="button" id="sendmessage" value="Send" />
     <input type="button" id="connect" value="Connect" />
     <input type="hidden" id="displayname" />
@@ -37,9 +40,11 @@
         var chat = $.connection.commentHub;
 
 
+
+
         chat.client.getAllComments = function (data) {
             for (var i = 0; i < data.length; i++) {
-                var encodedMsg = $('<div />').text(data[i].Message).html();
+                var encodedMsg = $('<div />').text(data[i].message).html();
                 // Add the message to the page.
                 $('#discussion').append('&nbsp;&nbsp;' + encodedMsg + '</li>');
             }
@@ -54,7 +59,10 @@
 
         };
 
+        chat.client.getRemoveComment = function (data) {
+           console.log(data);
 
+        };
 
 
         $.connection.hub.logging = true;
@@ -65,12 +73,18 @@
             });
 
             $('#sendmessage').click(function () {
-                debugger;
+            
 
                 chat.server.sendComment($('#message').val()).fail(function(error) {
                     console.log("Error handler called: " + error);
                 });;
 
+            });
+
+
+            $('#remove').click(function () {
+                var Id = parseInt($('#removeComment').val());
+                chat.server.removeComment(Id);
             });
         });
     });
