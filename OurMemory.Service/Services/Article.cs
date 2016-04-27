@@ -14,15 +14,15 @@ using OurMemory.Service.Specification;
 
 namespace OurMemory.Service.Services
 {
-    public class ArticleService : IArticleService
+    public class Article : IArticle
     {
 
-        private readonly IRepository<Article> _articleRepository;
+        private readonly IRepository<Domain.Entities.Article> _articleRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ArticleSpecification _articleSpecification;
         private readonly IUserService _userService;
 
-        public ArticleService(IRepository<Article> articleRepository,
+        public Article(IRepository<Domain.Entities.Article> articleRepository,
             IUnitOfWork unitOfWork,
             ArticleSpecification articleSpecification, IUserService userService)
         {
@@ -33,16 +33,16 @@ namespace OurMemory.Service.Services
         }
 
 
-        #region ArticleService Members
+        #region Article Members
 
-        public Article GetById(int id)
+        public Domain.Entities.Article GetById(int id)
         {
-            Article article = _articleRepository.GetById(id);
+            Domain.Entities.Article article = _articleRepository.GetById(id);
 
             return article.IsDeleted == false ? article : null;
         }
 
-        public IQueryable<Article> SearchArcticles(SearchArticleModel searchVeteranModel)
+        public IQueryable<Domain.Entities.Article> SearchArcticles(SearchArticleModel searchVeteranModel)
         {
             var keyWord = _articleSpecification.KeyWord(searchVeteranModel);
             var arcticles = _articleRepository.GetSpec(keyWord.Predicate).OrderBy(x => x.CreatedDateTime);
@@ -50,20 +50,20 @@ namespace OurMemory.Service.Services
             return arcticles;
         }
 
-        public void UpdateArticle(Article article)
+        public void UpdateArticle(Domain.Entities.Article article)
         {
             _articleRepository.Update(article);
             SaveArticle();
         }
 
-        public void Add(Article veteran)
+        public void Add(Domain.Entities.Article veteran)
         {
             _articleRepository.Add(veteran);
 
             SaveArticle();
         }
 
-        public IEnumerable<Article> GetAll()
+        public IEnumerable<Domain.Entities.Article> GetAll()
         {
             return _articleRepository.GetAll().Where(x => !x.IsDeleted);
         }
@@ -75,11 +75,11 @@ namespace OurMemory.Service.Services
 
         #endregion
 
-        #region Implementation ICommentService
+        #region Implementation IComment
 
-        public ICollection<Comment> GetComments(int id)
+        public IEnumerable<Comment> GetComments(int id)
         {
-            return _articleRepository.GetById(id)?.Comments;
+            return _articleRepository.GetById(id)?.Comments.Where(x=>!x.IsDeleted);
         }
 
         public IEnumerable<CommentViewModel> GetCommentViewModels(ICollection<Comment> comments)

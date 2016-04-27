@@ -1,3 +1,4 @@
+using System;
 using System.Data.Entity;
 using System.Linq;
 using Microsoft.Practices.Unity;
@@ -17,6 +18,7 @@ using OurMemory.Service.Services;
 using OurMemory.Service.Specification;
 using OurMemory.UnityResolvers;
 using Unity.WebApi;
+using Article = OurMemory.Service.Services.Article;
 
 namespace OurMemory
 {
@@ -29,8 +31,9 @@ namespace OurMemory
             container.RegisterType<IVeteranService, VeteranService>();
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
             container.RegisterType<IImageVeteranService, ImageVeteranService>(new HierarchicalLifetimeManager());
-            container.RegisterType<IArticleService, ArticleService>();
-            container.RegisterType<ICommentService, ArticleService>("ArticleServiceComment");
+            container.RegisterType<IArticle, Article>();
+            container.RegisterType<IComment, Article>("ArticleServiceComment");
+            container.RegisterType<ICommentService, CommentService>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IDatabaseFactory, DatabaseFactory>(new HierarchicalLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());
@@ -60,7 +63,7 @@ namespace OurMemory
 
         private static object CreateCommentHub(IUnityContainer p)
         {
-            var myHub = new CommentHub(p);
+            var myHub = new CommentHub(p, p.Resolve<ICommentService>());
 
             return myHub;
         }

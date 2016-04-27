@@ -11,7 +11,7 @@ namespace OurMemory.AutomapperProfiles
             Mapper.CreateMap<Comment, CommentViewModel>()
                 .ForMember(x => x.UserId, y => y.MapFrom(x => x.User.Id))
                 .ForMember(x => x.UserName, y => y.MapFrom(x => x.User.UserName))
-                .ForMember(x => x.CreatedDateTime, y => y.MapFrom(x => x.CreatedDateTime.ToString("yyyy-MM-dd")));
+                .ForMember(x => x.CreatedDateTime, y => y.MapFrom(x => x.CreatedDateTime));
             base.Configure();
         }
     }

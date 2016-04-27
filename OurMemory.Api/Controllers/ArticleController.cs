@@ -18,12 +18,12 @@ namespace OurMemory.Controllers
     [Authorize(Roles = "User")]
     public class ArticleController : ApiController
     {
-        private readonly IArticleService _articleService;
+        private readonly IArticle _article;
         private readonly IUserService _userService;
 
-        public ArticleController(IArticleService articleService, IUserService userService)
+        public ArticleController(IArticle article, IUserService userService)
         {
-            _articleService = articleService;
+            _article = article;
             _userService = userService;
         }
 
@@ -37,7 +37,7 @@ namespace OurMemory.Controllers
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
-            var article = _articleService.GetById(id);
+            var article = _article.GetById(id);
 
             if (article == null)
             {
@@ -45,7 +45,7 @@ namespace OurMemory.Controllers
             }
 
             article.Views++;
-            _articleService.SaveArticle();
+            _article.SaveArticle();
 
             var articleBindingModel = Mapper.Map<Article, ArticleViewModel>(article);
 
@@ -67,13 +67,13 @@ namespace OurMemory.Controllers
 
             if (searchArticleModel == null)
             {
-                arcticles = _articleService.GetAll();
+                arcticles = _article.GetAll();
                 allCount = arcticles?.ToList()?.Count();
             }
             else
             {
-                allCount = _articleService.SearchArcticles(searchArticleModel)?.Count();
-                arcticles = _articleService.SearchArcticles(searchArticleModel).Pagination((searchArticleModel.Page - 1) * searchArticleModel.Size, searchArticleModel.Size).ToList();
+                allCount = _article.SearchArcticles(searchArticleModel)?.Count();
+                arcticles = _article.SearchArcticles(searchArticleModel).Pagination((searchArticleModel.Page - 1) * searchArticleModel.Size, searchArticleModel.Size).ToList();
             }
 
             if (allCount == null)
@@ -113,7 +113,7 @@ namespace OurMemory.Controllers
             var user = _userService.GetById(userId);
             article.User = user;
 
-            _articleService.Add(article);
+            _article.Add(article);
             var articleViewModel = Mapper.Map<Article, ArticleViewModel>(article);
 
             return Ok(articleViewModel);
@@ -128,14 +128,14 @@ namespace OurMemory.Controllers
         [ResponseType(typeof(ArticleViewModel))]
         public IHttpActionResult Put([FromBody]ArticleBindingModel articleBindingModel)
         {
-            var arcticle = _articleService.GetById(articleBindingModel.Id);
+            var arcticle = _article.GetById(articleBindingModel.Id);
             var userId = User.Identity.GetUserId();
 
             if (ModelState.IsValid && articleBindingModel.Id == arcticle.Id && userId == arcticle.User.Id)
             {
                 Article mapVeteran = Mapper.Map<ArticleBindingModel, Article>(articleBindingModel);
                 Mapper.Map(mapVeteran, arcticle);
-                _articleService.UpdateArticle(arcticle);
+                _article.UpdateArticle(arcticle);
 
                 var articleModified = Mapper.Map<Article, ArticleViewModel>(arcticle);
 
@@ -153,13 +153,13 @@ namespace OurMemory.Controllers
         [Route("api/article")]
         public IHttpActionResult Delete(int id)
         {
-            var article = _articleService.GetById(id);
+            var article = _article.GetById(id);
             var userId = User.Identity.GetUserId();
 
             if (article == null || article.Id != id || article.User.Id != userId) return BadRequest();
 
             article.IsDeleted = true;
-            _articleService.SaveArticle();
+            _article.SaveArticle();
 
             return Ok();
         }

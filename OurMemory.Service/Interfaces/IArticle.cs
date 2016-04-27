@@ -5,7 +5,7 @@ using OurMemory.Service.Model;
 
 namespace OurMemory.Service.Interfaces
 {
-    public interface IArticleService : ICommentService
+    public interface IArticle : IComment
     {
         void Add(Article veteran);
         IEnumerable<Article> GetAll();
