@@ -21,11 +21,7 @@ using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Controllers
 {
-
     [Authorize(Roles = "User")]
-    /// <summary>
-    /// Work with files 
-    /// </summary>
     public class FilesController : ApiController
     {
         private readonly IImageService _imageService;

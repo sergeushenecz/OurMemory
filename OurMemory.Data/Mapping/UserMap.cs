@@ -10,6 +10,7 @@ namespace OurMemory.Data.Mapping
         {
             this.HasMany(x => x.Veterans);
             this.HasMany(x => x.Arcticles);
+            this.HasMany(x => x.PhotoAlbums);
         }
     }
 }

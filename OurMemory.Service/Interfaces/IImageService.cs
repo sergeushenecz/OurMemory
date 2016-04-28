@@ -11,5 +11,6 @@ namespace OurMemory.Service.Interfaces
         byte[] ImageToByte(Image img);
 
         List<ImageReference> SaveImages(MultipartMemoryStreamProvider provider, string root, ref Dictionary<string, string> errors);
+        void DeleteImages(IEnumerable<Domain.Entities.Image> images);
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="DtoModel\ViewModel\ArticleViewModel.cs" />
     <Compile Include="DtoModel\ViewModel\CommentViewModel.cs" />
     <Compile Include="DtoModel\ViewModel\PhotoAlbumViewModel.cs" />
+    <Compile Include="DtoModel\ViewModel\PhotoAlbumWithImagesViewModel.cs" />
     <Compile Include="DtoModel\ViewModel\VeteranViewModel.cs" />
     <Compile Include="Entities\Article.cs" />
     <Compile Include="Entities\Comment.cs" />

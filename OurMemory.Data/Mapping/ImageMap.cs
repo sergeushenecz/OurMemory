@@ -3,9 +3,9 @@ using OurMemory.Domain.Entities;
 
 namespace OurMemory.Data.Mapping
 {
-    public class ImageVeteranMap : EntityTypeConfiguration<Image>
+    public class ImageMap : EntityTypeConfiguration<Image>
     {
-        public ImageVeteranMap()
+        public ImageMap()
         {
 
             this.HasKey(x => x.Id);
@@ -14,7 +14,9 @@ namespace OurMemory.Data.Mapping
             this.Property(x => x.ThumbnailImage);
             this.Property(x => x.ImageMimeType);
 
-            this.HasRequired(x => x.Veteran);
+            this.HasOptional(x => x.Veteran);
+
+            this.HasOptional(x => x.PhotoAlbum);
         }
     }
 }

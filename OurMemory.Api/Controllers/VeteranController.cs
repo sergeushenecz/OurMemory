@@ -135,7 +135,7 @@ namespace OurMemory.Controllers
 
             if (ModelState.IsValid && veteranBindingModel.Id == veteran.Id && userId == veteran.User.Id)
             {
-                _imageVeteranService.DeleteImagesVeteran(veteran.Images);
+                _imageVeteranService.DeleteImages(veteran.Images);
                 Veteran mapVeteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
                 Mapper.Map<Veteran, Veteran>(mapVeteran, veteran);
                 _veteranService.UpdateVeteran(veteran);

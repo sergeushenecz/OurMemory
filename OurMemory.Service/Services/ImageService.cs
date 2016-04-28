@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
+using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
@@ -15,6 +16,19 @@ namespace OurMemory.Service.Services
 {
     public class ImageService : IImageService
     {
+        private readonly IRepository<Domain.Entities.Image> _imageRepository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ImageService()
+        {
+        }
+
+        public ImageService(IRepository<Domain.Entities.Image> imageRepository, IUnitOfWork unitOfWork)
+        {
+            _imageRepository = imageRepository;
+            _unitOfWork = unitOfWork;
+        }
+
         public Image ResizeImage(Image image, Size size, bool preserveAspectRatio = true)
         {
             int newWidth;
@@ -44,6 +58,7 @@ namespace OurMemory.Service.Services
 
             return newImage;
         }
+
         public byte[] ImageToByte(Image img)
         {
             byte[] byteArray = new byte[0];
@@ -144,9 +159,6 @@ namespace OurMemory.Service.Services
             return extensions.Any(i => i.Equals(extension));
         }
 
-        
-
-
         public ImageReference SaveImage(byte[] imageBytes)
         {
             ImageReference imageReference = new ImageReference();
@@ -176,7 +188,22 @@ namespace OurMemory.Service.Services
             return imageReference;
         }
 
+        public void DeleteImages(IEnumerable<Domain.Entities.Image> image)
+        {
+            var images = image.ToList();
 
+            for (int i = 0; i < images.Count(); i++)
+            {
+                _imageRepository.Delete(images[i]);
+            }
+
+            Save();
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Commit();
+        }
 
 
     }

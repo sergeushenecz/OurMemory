@@ -62,7 +62,8 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Mapping\ArticleMap.cs" />
     <Compile Include="Mapping\CommentMap.cs" />
-    <Compile Include="Mapping\ImageVeteranMap.cs" />
+    <Compile Include="Mapping\ImageMap.cs" />
+    <Compile Include="Mapping\PhotoAlbumMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Mapping\VeteranMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
