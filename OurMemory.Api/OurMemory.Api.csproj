@@ -352,6 +352,14 @@
     <Compile Include="Migrations\201604261542487_addFieldToPhotoAlbum.Designer.cs">
       <DependentUpon>201604261542487_addFieldToPhotoAlbum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604281043064_asd.cs" />
+    <Compile Include="Migrations\201604281043064_asd.Designer.cs">
+      <DependentUpon>201604281043064_asd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604281128355_changeField.cs" />
+    <Compile Include="Migrations\201604281128355_changeField.Designer.cs">
+      <DependentUpon>201604281128355_changeField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -423,6 +431,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604261542487_addFieldToPhotoAlbum.resx">
       <DependentUpon>201604261542487_addFieldToPhotoAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281043064_asd.resx">
+      <DependentUpon>201604281043064_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281128355_changeField.resx">
+      <DependentUpon>201604281128355_changeField.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

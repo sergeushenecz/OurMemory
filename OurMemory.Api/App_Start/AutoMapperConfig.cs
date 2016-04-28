@@ -28,6 +28,7 @@ namespace OurMemory
             AutoMapper.Mapper.AddProfile<ImageProfile>();
             AutoMapper.Mapper.AddProfile<CommentProfile>();
             AutoMapper.Mapper.AddProfile<ArticleProfile>();
+            AutoMapper.Mapper.AddProfile<PhotoAlbumProfile>();
         }
     }
 }

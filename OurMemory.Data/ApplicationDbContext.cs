@@ -15,7 +15,7 @@ namespace OurMemory.Data
         }
 
         public DbSet<Veteran> Veterans { get; set; }
-        public DbSet<Image> ImageVeterans { get; set; }
+        public DbSet<Image> Images { get; set; }
         public DbSet<Article> Arcticles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
@@ -23,8 +23,9 @@ namespace OurMemory.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new VeteranMap());
-            modelBuilder.Configurations.Add(new ImageVeteranMap());
+            modelBuilder.Configurations.Add(new ImageMap());
             modelBuilder.Configurations.Add(new ArticleMap());
+            modelBuilder.Configurations.Add(new PhotoAlbumMap());
 
 
             // Needed to ensure subclasses share the same table

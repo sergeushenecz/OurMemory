@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
@@ -13,7 +11,6 @@ using OurMemory.Domain.Entities;
 using OurMemory.Service.Extenshions;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
-using OurMemory.Service.Services;
 
 namespace OurMemory.Controllers
 {
@@ -58,16 +55,16 @@ namespace OurMemory.Controllers
         public IHttpActionResult Get([FromUri] SearchPhotoAlbumModel searchPhotoAlbumModel)
         {
             IEnumerable<PhotoAlbum> photoAlbums = null;
-            int allCount = 0;
+            int countAlbums = 0;
 
             if (searchPhotoAlbumModel == null)
             {
                 photoAlbums = _photoAlbumService.GetAll();
-                allCount = _photoAlbumService.GetAll().Count();
+                countAlbums = _photoAlbumService.GetAll().Count();
             }
             else
             {
-                allCount = _photoAlbumService.SearchPhotoAlbum(searchPhotoAlbumModel).Count();
+                countAlbums = _photoAlbumService.SearchPhotoAlbum(searchPhotoAlbumModel).Count();
                 photoAlbums = _photoAlbumService.SearchPhotoAlbum(searchPhotoAlbumModel).Pagination((searchPhotoAlbumModel.Page - 1) * searchPhotoAlbumModel.Size, searchPhotoAlbumModel.Size).ToList();
             }
 
@@ -76,7 +73,7 @@ namespace OurMemory.Controllers
             return Ok(new
             {
                 Items = photoAlbumViewModels,
-                TotalCount = allCount
+                TotalCount = countAlbums
             });
         }
 
@@ -101,7 +98,7 @@ namespace OurMemory.Controllers
 
             _photoAlbumService.Add(photoAlbum);
 
-            var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumViewModel>(photoAlbum);
+            var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumWithImagesViewModel>(photoAlbum);
 
             return Ok(photoAlbumViewModel);
 
@@ -114,7 +111,6 @@ namespace OurMemory.Controllers
 
             if (ModelState.IsValid && photoAlbumBindingModel.Id == photoAlbum.Id)
             {
-
                 PhotoAlbum album = Mapper.Map<PhotoAlbumBindingModel, PhotoAlbum>(photoAlbumBindingModel);
 
                 Mapper.Map(album, photoAlbum);

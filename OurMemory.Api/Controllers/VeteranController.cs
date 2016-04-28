@@ -153,7 +153,8 @@ namespace OurMemory.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Route("api/veteran")]
+        [Route("api/veteran/{id}")]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var veteran = _veteranService.GetById(id);

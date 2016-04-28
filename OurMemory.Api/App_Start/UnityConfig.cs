@@ -34,6 +34,7 @@ namespace OurMemory
             container.RegisterType<IArticle, Article>();
             container.RegisterType<IComment, Article>("ArticleServiceComment");
             container.RegisterType<ICommentService, CommentService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IPhotoAlbumService, PhotoAlbumService>(new HierarchicalLifetimeManager());
 
             container.RegisterType<IDatabaseFactory, DatabaseFactory>(new HierarchicalLifetimeManager());
             container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());

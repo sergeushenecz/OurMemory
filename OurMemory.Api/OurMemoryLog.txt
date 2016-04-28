@@ -5310,3 +5310,183 @@ System.Data.Entity.DynamicProxies.Veteran_41E951480DD0C708894CBD91A91324D38C6577
    в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
    в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-28 14:12:46,405 [23] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.InvalidOperationException: An error occurred when trying to create a controller of type 'PhotoAlbumController'. Make sure that the controller has a parameterless public constructor. ---> Microsoft.Practices.Unity.ResolutionFailedException: Resolution of the dependency failed, type = "OurMemory.Controllers.PhotoAlbumController", name = "(none)".
+Exception occurred while: while resolving.
+Exception is: InvalidOperationException - The current type, OurMemory.Service.Interfaces.IPhotoAlbumService, is an interface and cannot be constructed. Are you missing a type mapping?
+-----------------------------------------------
+At the time of the exception, the container was:
+
+  Resolving OurMemory.Controllers.PhotoAlbumController,(none)
+  Resolving parameter "photoAlbumService" of constructor OurMemory.Controllers.PhotoAlbumController(OurMemory.Service.Interfaces.IPhotoAlbumService photoAlbumService, OurMemory.Service.Interfaces.IUserService userService, OurMemory.Service.Interfaces.IImageVeteranService imageVeteranService)
+    Resolving OurMemory.Service.Interfaces.IPhotoAlbumService,(none)
+ ---> System.InvalidOperationException: The current type, OurMemory.Service.Interfaces.IPhotoAlbumService, is an interface and cannot be constructed. Are you missing a type mapping?
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodConstructorStrategy.ThrowForAttemptingToConstructInterface(IBuilderContext context)
+   в lambda_method(Closure , IBuilderContext )
+   в Microsoft.Practices.ObjectBuilder2.DynamicBuildPlanGenerationContext.<>c__DisplayClass1.<GetBuildMethod>b__0(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlan.BuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuilderContext.NewBuildUp(NamedTypeBuildKey newBuildKey)
+   в Microsoft.Practices.Unity.ObjectBuilder.NamedTypeDependencyResolverPolicy.Resolve(IBuilderContext context)
+   в lambda_method(Closure , IBuilderContext )
+   в Microsoft.Practices.ObjectBuilder2.DynamicBuildPlanGenerationContext.<>c__DisplayClass1.<GetBuildMethod>b__0(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlan.BuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   в Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   в Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, Object existing, String name, IEnumerable`1 resolverOverrides)
+   --- Конец трассировки внутреннего стека исключений ---
+   в Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, Object existing, String name, IEnumerable`1 resolverOverrides)
+   в Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, String name, IEnumerable`1 resolverOverrides)
+   в Microsoft.Practices.Unity.UnityContainer.Resolve(Type t, String name, ResolverOverride[] resolverOverrides)
+   в Microsoft.Practices.Unity.UnityContainerExtensions.Resolve(IUnityContainer container, Type t, ResolverOverride[] overrides)
+   в Unity.WebApi.UnityDependencyScope.GetService(Type serviceType)
+   в System.Web.Http.Dispatcher.DefaultHttpControllerActivator.GetInstanceOrActivator(HttpRequestMessage request, Type controllerType, Func`1& activator)
+   в System.Web.Http.Dispatcher.DefaultHttpControllerActivator.Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Web.Http.Dispatcher.DefaultHttpControllerActivator.Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)
+   в System.Web.Http.Controllers.HttpControllerDescriptor.CreateController(HttpRequestMessage request)
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-28 14:18:12,604 [9] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Infrastructure.DbUpdateException: Entities in 'ApplicationDbContext.ImageVeterans' participate in the 'Image_Veteran' relationship. 0 related 'Image_Veteran_Target' were found. 1 'Image_Veteran_Target' is expected. ---> System.Data.Entity.Core.UpdateException: Entities in 'ApplicationDbContext.ImageVeterans' participate in the 'Image_Veteran' relationship. 0 related 'Image_Veteran_Target' were found. 1 'Image_Veteran_Target' is expected.
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.RelationshipConstraintValidator.ValidateConstraints()
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ProduceCommands()
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   в System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в OurMemory.Data.ApplicationDbContext.Commit() в G:\Диплом\OurMemory\OurMemory.Data\ApplicationDbContext.cs:строка 73
+   в OurMemory.Data.Infrastructure.UnitOfWork.Commit() в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\UnitOfWork.cs:строка 20
+   в OurMemory.Service.Services.PhotoAlbumService.SavePhotoAlbum() в G:\Диплом\OurMemory\OurMemory.Service\Services\PhotoAlbumService.cs:строка 66
+   в OurMemory.Service.Services.PhotoAlbumService.Add(PhotoAlbum photoAlbum) в G:\Диплом\OurMemory\OurMemory.Service\Services\PhotoAlbumService.cs:строка 28
+   в OurMemory.Controllers.PhotoAlbumController.Post(PhotoAlbumBindingModel albumBindingModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\PhotoAlbumController.cs:строка 99
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-28 14:18:56,157 [12] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Infrastructure.DbUpdateException: Entities in 'ApplicationDbContext.ImageVeterans' participate in the 'Image_Veteran' relationship. 0 related 'Image_Veteran_Target' were found. 1 'Image_Veteran_Target' is expected. ---> System.Data.Entity.Core.UpdateException: Entities in 'ApplicationDbContext.ImageVeterans' participate in the 'Image_Veteran' relationship. 0 related 'Image_Veteran_Target' were found. 1 'Image_Veteran_Target' is expected.
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.RelationshipConstraintValidator.ValidateConstraints()
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ProduceCommands()
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   в System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в OurMemory.Data.ApplicationDbContext.Commit() в G:\Диплом\OurMemory\OurMemory.Data\ApplicationDbContext.cs:строка 73
+   в OurMemory.Data.Infrastructure.UnitOfWork.Commit() в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\UnitOfWork.cs:строка 20
+   в OurMemory.Service.Services.PhotoAlbumService.SavePhotoAlbum() в G:\Диплом\OurMemory\OurMemory.Service\Services\PhotoAlbumService.cs:строка 66
+   в OurMemory.Service.Services.PhotoAlbumService.Add(PhotoAlbum photoAlbum) в G:\Диплом\OurMemory\OurMemory.Service\Services\PhotoAlbumService.cs:строка 28
+   в OurMemory.Controllers.PhotoAlbumController.Post(PhotoAlbumBindingModel albumBindingModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\PhotoAlbumController.cs:строка 99
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2016-04-28 14:24:34,215 [11] ERROR OurMemory.WebApiApplication+GlobalExceptionLogger System.Data.Entity.Infrastructure.DbUpdateException: Entities in 'ApplicationDbContext.ImageVeterans' participate in the 'Image_Veteran' relationship. 0 related 'Image_Veteran_Target' were found. 1 'Image_Veteran_Target' is expected. ---> System.Data.Entity.Core.UpdateException: Entities in 'ApplicationDbContext.ImageVeterans' participate in the 'Image_Veteran' relationship. 0 related 'Image_Veteran_Target' were found. 1 'Image_Veteran_Target' is expected.
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.RelationshipConstraintValidator.ValidateConstraints()
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.ProduceCommands()
+   в System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   в System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   в System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в OurMemory.Data.ApplicationDbContext.Commit() в G:\Диплом\OurMemory\OurMemory.Data\ApplicationDbContext.cs:строка 74
+   в OurMemory.Data.Infrastructure.UnitOfWork.Commit() в G:\Диплом\OurMemory\OurMemory.Data\Infrastructure\UnitOfWork.cs:строка 20
+   в OurMemory.Service.Services.PhotoAlbumService.SavePhotoAlbum() в G:\Диплом\OurMemory\OurMemory.Service\Services\PhotoAlbumService.cs:строка 66
+   в OurMemory.Service.Services.PhotoAlbumService.Add(PhotoAlbum photoAlbum) в G:\Диплом\OurMemory\OurMemory.Service\Services\PhotoAlbumService.cs:строка 28
+   в OurMemory.Controllers.PhotoAlbumController.Post(PhotoAlbumBindingModel albumBindingModel) в G:\Диплом\OurMemory\OurMemory.Api\Controllers\PhotoAlbumController.cs:строка 99
+   в lambda_method(Closure , Object , Object[] )
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   в System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
