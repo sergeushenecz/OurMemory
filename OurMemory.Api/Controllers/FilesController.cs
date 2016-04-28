@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -17,6 +18,7 @@ using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
 using OurMemory.Service.Parsers;
 using OurMemory.Service.Services;
+using Image = System.Drawing.Image;
 using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Controllers
@@ -42,7 +44,6 @@ namespace OurMemory.Controllers
             _veteranService = veteranService;
             _userService = userService;
         }
-
         /// <summary>
         /// Get report excell file 
         /// </summary>
@@ -93,7 +94,6 @@ namespace OurMemory.Controllers
 
             var imageUrl = GenerateAbsolutePath(HttpContext.Current.Request.ApplicationPath + ConfigurationSettingsModule.GetItem("PathImages"));
 
-
             if (!Directory.Exists(root))
             {
                 Directory.CreateDirectory(root);
@@ -130,17 +130,13 @@ namespace OurMemory.Controllers
                 return BadRequest();
             }
 
+            var provider = new MultipartMemoryStreamProvider();
             string path = null;
 
-            var provider = new MultipartMemoryStreamProvider();
-            await Request.Content.ReadAsMultipartAsync(provider);
+            Tuple<byte[], HttpContent> fileArrayAndFileHttpContent = await GetFileArrayAndFileHttpContentFromProvider(provider);
 
-            var file = provider.Contents[0];
-            byte[] fileArray = file.ReadAsByteArrayAsync().Result;
-
-            var filename = file.Headers.ContentDisposition.FileName.Replace("\"", string.Empty);
+            var filename = GetFilename(fileArrayAndFileHttpContent.Item2);
             filename += Guid.NewGuid() + ".xlsx";
-
 
             path = Path.Combine(HttpContext.Current.Server.MapPath("~" + ConfigurationSettingsModule.GetItem("Temp")), filename);
 
@@ -152,7 +148,7 @@ namespace OurMemory.Controllers
 
             using (FileStream fs = new FileStream(path, FileMode.Create))
             {
-                fs.Write(fileArray, 0, fileArray.Length);
+                fs.Write(fileArrayAndFileHttpContent.Item1, 0, fileArrayAndFileHttpContent.Item1.Length);
             }
 
             try
@@ -201,6 +197,52 @@ namespace OurMemory.Controllers
 
             return Ok();
         }
+
+        private static string GetFilename(HttpContent file)
+        {
+            var filename = file.Headers.ContentDisposition.FileName.Replace("\"", string.Empty);
+
+            return filename;
+        }
+
+        private async Task<Tuple<byte[], HttpContent>> GetFileArrayAndFileHttpContentFromProvider(MultipartMemoryStreamProvider provider)
+        {
+            await Request.Content.ReadAsMultipartAsync(provider);
+
+            var file = provider.Contents[0];
+            byte[] fileArray = file.ReadAsByteArrayAsync().Result;
+
+            return new Tuple<byte[], HttpContent>(fileArray, file);
+        }
+
+        /// <summary>
+        /// Crop a image by coordinates
+        /// x,y,widh,heigh
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/files/cropImage")]
+        public async Task<IHttpActionResult> CropImage()
+        {
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                return BadRequest();
+            }
+            var provider = new MultipartMemoryStreamProvider();
+
+            Tuple<byte[], HttpContent> fileArrayAndFileHttpContentFromProvider = await GetFileArrayAndFileHttpContentFromProvider(provider);
+
+            using (var ms = new MemoryStream(fileArrayAndFileHttpContentFromProvider.Item1))
+            {
+                var source = new Bitmap(ms);
+                Rectangle section = new Rectangle(new Point(12, 50), new Size(150, 150));
+                var cropImage = _imageService.CropImage(source, section);
+            }
+
+
+            return Ok();
+        }
+
+
         [System.Web.Http.NonAction]
         public string GenerateAbsolutePath(string virtualPath)
         {

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Practices.Unity;
-using OurMemory.Domain;
-using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
