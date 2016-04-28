@@ -18,17 +18,17 @@ namespace OurMemory.Controllers
     {
         private readonly IPhotoAlbumService _photoAlbumService;
         private readonly IUserService _userService;
-        private readonly IImageVeteranService _imageVeteranService;
+        private readonly IImageService _imageService;
 
-        public PhotoAlbumController(IPhotoAlbumService photoAlbumService, IUserService userService, IImageVeteranService imageVeteranService)
+        public PhotoAlbumController(IPhotoAlbumService photoAlbumService, IUserService userService, IImageService imageService)
         {
             _photoAlbumService = photoAlbumService;
             _userService = userService;
-            _imageVeteranService = imageVeteranService;
+            _imageService = imageService;
         }
 
         [Route("api/photoAlbum/{id}")]
-        [ResponseType(typeof(PhotoAlbumViewModel))]
+        [ResponseType(typeof(PhotoAlbumWithImagesViewModel))]
         public IHttpActionResult Get(int id)
         {
             var photoAlbum = _photoAlbumService.GetById(id);
@@ -41,7 +41,7 @@ namespace OurMemory.Controllers
             photoAlbum.Views++;
             _photoAlbumService.SavePhotoAlbum();
 
-            var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumViewModel>(photoAlbum);
+            var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumWithImagesViewModel>(photoAlbum);
 
             return Ok(new
             {
@@ -49,7 +49,6 @@ namespace OurMemory.Controllers
             });
 
         }
-
         [Route("api/photoAlbum")]
         [ResponseType(typeof(PhotoAlbumViewModel))]
         public IHttpActionResult Get([FromUri] SearchPhotoAlbumModel searchPhotoAlbumModel)
@@ -78,7 +77,7 @@ namespace OurMemory.Controllers
         }
 
         [Route("api/photoAlbum")]
-        [ResponseType(typeof(PhotoAlbumViewModel))]
+        [ResponseType(typeof(PhotoAlbumWithImagesViewModel))]
         public IHttpActionResult Post(PhotoAlbumBindingModel albumBindingModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -105,18 +104,20 @@ namespace OurMemory.Controllers
         }
 
         [Route("api/photoAlbum")]
+        [ResponseType(typeof(PhotoAlbumWithImagesViewModel))]
         public IHttpActionResult Put([FromBody]PhotoAlbumBindingModel photoAlbumBindingModel)
         {
             var photoAlbum = _photoAlbumService.GetById(photoAlbumBindingModel.Id);
 
             if (ModelState.IsValid && photoAlbumBindingModel.Id == photoAlbum.Id)
             {
+                _imageService.DeleteImages(photoAlbum.Images);
                 PhotoAlbum album = Mapper.Map<PhotoAlbumBindingModel, PhotoAlbum>(photoAlbumBindingModel);
 
-                Mapper.Map(album, photoAlbum);
-                _photoAlbumService.UpdatePhotoAlbum(photoAlbum);
+                var map = Mapper.Map(album, photoAlbum);
+                _photoAlbumService.UpdatePhotoAlbum(map);
 
-                var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumViewModel>(photoAlbum);
+                var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumWithImagesViewModel>(photoAlbum);
 
                 return Ok(photoAlbumViewModel);
             }

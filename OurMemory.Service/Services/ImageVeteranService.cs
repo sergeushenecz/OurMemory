@@ -17,7 +17,7 @@ namespace OurMemory.Service.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void DeleteImagesVeteran(IEnumerable<Image> imageVeterans)
+        public void DeleteImages(IEnumerable<Image> imageVeterans)
         {
             var veterans = imageVeterans.ToList();
 
