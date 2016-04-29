@@ -16,6 +16,7 @@ namespace OurMemory.AutomapperProfiles
 
             Mapper.CreateMap<Article, ArticleViewModel>()
                 .ForMember(dist => dist.ArticleImageUrl, opt => opt.MapFrom(x => x.ArticleImageUrl.ToAbsolutPath()))
+                .ForMember(dist => dist.UserName, opt => opt.MapFrom(x => x.User.UserName))
                 .ForMember(dist => dist.UserImageUrl, opt => opt.MapFrom(x => x.User.UserImageUrl.ToAbsolutPath()))
                 .ForMember(dist => dist.UserId, opt => opt.MapFrom(x => x.User.Id));
 

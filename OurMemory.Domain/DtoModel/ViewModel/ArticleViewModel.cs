@@ -11,6 +11,7 @@ namespace OurMemory.Domain.DtoModel.ViewModel
         public int Views { get; set; }
         public string ArticleImageUrl { get; set; }
         public Guid UserId { get; set; }
+        public string UserName { get; set; }
         public string UserImageUrl { get; set; }
     }
 }
