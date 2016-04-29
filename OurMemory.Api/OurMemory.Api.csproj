@@ -365,8 +365,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AuthorizeClaimsAttribute.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\SelectionImageBindingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\CustomMultipartFileStreamProvider.cs" />
     <Compile Include="Providers\QueryStringOAuthBearerProvider .cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
@@ -475,6 +477,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Common\" />
     <Folder Include="Content\Files\" />
+    <Folder Include="Extention\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

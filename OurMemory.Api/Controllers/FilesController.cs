@@ -7,12 +7,15 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Common;
+using OurMemory.Common.Extention;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
+using OurMemory.Models;
 using OurMemory.Service.Extenshions;
 using OurMemory.Service.Interfaces;
 using OurMemory.Service.Model;
@@ -198,6 +201,35 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Crop a image by coordinates
+        /// x,y,widh,heigh
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/files/cropImage")]
+        public async Task<IHttpActionResult> CropImage([FromUri]SelectionImageBindingModel selectionImage)
+        {
+            var source = new Bitmap(HostingEnvironment.MapPath(selectionImage.UrlImage.ToRelativePath()));
+
+            Rectangle section = new Rectangle(new Point(selectionImage.X, selectionImage.Y), new Size(selectionImage.Width, selectionImage.Height));
+            var cropImage = _imageService.CropImage(source, section);
+
+            var imageReference = _imageService.SaveImage(cropImage);
+
+            return Ok(imageReference);
+        }
+
+
+        [System.Web.Http.NonAction]
+        public string GenerateAbsolutePath(string virtualPath)
+        {
+            return HttpContext.Current.Request.Url.Scheme +
+                           "://"
+                           + HttpContext.Current.Request.Url.Authority + virtualPath;
+        }
+
+
+
         private static string GetFilename(HttpContent file)
         {
             var filename = file.Headers.ContentDisposition.FileName.Replace("\"", string.Empty);
@@ -213,42 +245,6 @@ namespace OurMemory.Controllers
             byte[] fileArray = file.ReadAsByteArrayAsync().Result;
 
             return new Tuple<byte[], HttpContent>(fileArray, file);
-        }
-
-        /// <summary>
-        /// Crop a image by coordinates
-        /// x,y,widh,heigh
-        /// </summary>
-        /// <returns></returns>
-        [Route("api/files/cropImage")]
-        public async Task<IHttpActionResult> CropImage()
-        {
-            if (!Request.Content.IsMimeMultipartContent())
-            {
-                return BadRequest();
-            }
-            var provider = new MultipartMemoryStreamProvider();
-
-            Tuple<byte[], HttpContent> fileArrayAndFileHttpContentFromProvider = await GetFileArrayAndFileHttpContentFromProvider(provider);
-
-            using (var ms = new MemoryStream(fileArrayAndFileHttpContentFromProvider.Item1))
-            {
-                var source = new Bitmap(ms);
-                Rectangle section = new Rectangle(new Point(12, 50), new Size(150, 150));
-                var cropImage = _imageService.CropImage(source, section);
-            }
-
-
-            return Ok();
-        }
-
-
-        [System.Web.Http.NonAction]
-        public string GenerateAbsolutePath(string virtualPath)
-        {
-            return HttpContext.Current.Request.Url.Scheme +
-                           "://"
-                           + HttpContext.Current.Request.Url.Authority + virtualPath;
         }
     }
 }

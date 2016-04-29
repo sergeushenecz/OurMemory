@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
+using OurMemory.Common.Extention;
 using OurMemory.Data.Infrastructure;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Service.Interfaces;
@@ -82,8 +83,7 @@ namespace OurMemory.Service.Services
 
                 if (!ValidateImageType(filename))
                 {
-                    if (errors != null)
-                        errors.Add(filename, "Cannot supported type file");
+                    errors?.Add(filename, "Cannot supported type file");
                     continue;
                 }
 
@@ -164,9 +164,6 @@ namespace OurMemory.Service.Services
             ImageReference imageReference = new ImageReference();
 
             string root = HttpContext.Current.Server.MapPath("~/Content/Files/");
-
-//            var imageUrl = HttpContext.Current.Request.ApplicationPath + "Content/Files/";
-
             string imageUrl = VirtualPathUtility.ToAbsolute("~/Content/Files/");
 
             var filename = Guid.NewGuid() + ".jpg";
@@ -185,6 +182,9 @@ namespace OurMemory.Service.Services
                 throw new Exception("Not Save Image");
             }
 
+            imageReference.ImageOriginal = imageReference.ImageOriginal.ToAbsolutPath();
+            imageReference.ThumbnailImage = imageReference.ThumbnailImage.ToAbsolutPath();
+
             return imageReference;
         }
 
@@ -200,7 +200,7 @@ namespace OurMemory.Service.Services
             Save();
         }
 
-        public Image CropImage(Image source, Rectangle section)
+        public byte[] CropImage(Image source, Rectangle section)
         {
             // An empty bitmap which will hold the cropped image
             Bitmap bmp = new Bitmap(section.Width, section.Height);
@@ -211,7 +211,7 @@ namespace OurMemory.Service.Services
             // at location 0,0 on the empty bitmap (bmp)
             g.DrawImage(source, 0, 0, section, GraphicsUnit.Pixel);
 
-            return bmp;
+            return ImageToByte(bmp);
         }
 
         public void Save()

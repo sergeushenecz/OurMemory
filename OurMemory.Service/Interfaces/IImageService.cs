@@ -12,6 +12,7 @@ namespace OurMemory.Service.Interfaces
 
         List<ImageReference> SaveImages(MultipartMemoryStreamProvider provider, string root, ref Dictionary<string, string> errors);
         void DeleteImages(IEnumerable<Domain.Entities.Image> images);
-        Image CropImage(Image source, Rectangle section);
+        byte[] CropImage(Image source, Rectangle section);
+        ImageReference SaveImage(byte[] imageBytes);
     }
 }
