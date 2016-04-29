@@ -53,7 +53,7 @@ namespace OurMemory
             container.RegisterType<User>();
             container.RegisterType<DbContext, ApplicationDbContext>();
             container.RegisterType<ApplicationUserManager>();
-            container.RegisterType<AccountController>(new InjectionConstructor(typeof(ApplicationUserManager)));
+            container.RegisterType<AccountController>(new InjectionConstructor(typeof(ApplicationUserManager),typeof(IUserService)));
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
             GlobalHost.DependencyResolver = new SignalRUnityDependencyResolver(container);

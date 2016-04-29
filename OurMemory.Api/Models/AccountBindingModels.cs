@@ -46,6 +46,9 @@ namespace OurMemory.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Image")]
+        public string ImageUserImageUrl { get; set; }
     }
 
     public class RegisterExternalBindingModel

@@ -7,18 +7,22 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using LinqToExcel.Extensions;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using OurMemory.Common.Extention;
 using OurMemory.Data;
 using OurMemory.Domain;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
 using OurMemory.Providers;
 using OurMemory.Results;
+using OurMemory.Service.Helper;
+using OurMemory.Service.Interfaces;
 
 namespace OurMemory.Controllers
 {
@@ -28,13 +32,14 @@ namespace OurMemory.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : BaseController
     {
+        private readonly IUserService _userService;
         private const string LocalLoginProvider = "Local";
 
 
-        public AccountController(ApplicationUserManager userManager)
+        public AccountController(ApplicationUserManager userManager, IUserService userService)
         {
+            _userService = userService;
             UserManager = userManager;
-
         }
 
         public ApplicationUserManager UserManager
@@ -68,11 +73,12 @@ namespace OurMemory.Controllers
 
             return new UserInfoViewModel
             {
-                UserId= User.Identity.GetUserId(),
+                UserId = User.Identity.GetUserId(),
                 Email = User.Identity.GetUserName(),
                 Role = roleUser[0],
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                LoginProvider = externalLogin?.LoginProvider,
+                ImageUrl = _userService.GetById(User.Identity.GetUserId()).UserImageUrl.ToAbsolutPath()
             };
         }
 
@@ -371,7 +377,12 @@ namespace OurMemory.Controllers
                 return BadRequest(ModelState);
             }
 
-            User user = new User() { UserName = model.Email, Email = model.Email };
+            User user = new User()
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                UserImageUrl = model.ImageUserImageUrl.ToRelativePath()
+            };
 
             IdentityResult createUserResult = await UserManager.CreateAsync(user, model.Password);
 

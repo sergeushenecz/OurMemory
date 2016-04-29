@@ -34,6 +34,7 @@ namespace OurMemory.Models
 
         public string LoginProvider { get; set; }
         public string UserId { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class UserLoginInfoViewModel
