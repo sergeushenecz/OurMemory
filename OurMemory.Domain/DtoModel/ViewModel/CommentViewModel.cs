@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace OurMemory.Domain.DtoModel.ViewModel
 {
@@ -20,5 +14,7 @@ namespace OurMemory.Domain.DtoModel.ViewModel
         public string UserName { get; set; }
         [JsonProperty(PropertyName = "createdDateTime")]
         public string CreatedDateTime { get; set; }
+        [JsonProperty(PropertyName = "imageUser")]
+        public string ImageUser { get; set; }
     }
 }
