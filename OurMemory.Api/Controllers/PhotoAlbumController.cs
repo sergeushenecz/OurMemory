@@ -14,6 +14,7 @@ using OurMemory.Service.Model;
 
 namespace OurMemory.Controllers
 {
+    [Authorize(Roles = "User")]
     public class PhotoAlbumController : ApiController
     {
         private readonly IPhotoAlbumService _photoAlbumService;
@@ -29,6 +30,7 @@ namespace OurMemory.Controllers
 
         [Route("api/photoAlbum/{id}")]
         [ResponseType(typeof(PhotoAlbumWithImagesViewModel))]
+        [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
             var photoAlbum = _photoAlbumService.GetById(id);
@@ -51,6 +53,7 @@ namespace OurMemory.Controllers
         }
         [Route("api/photoAlbum")]
         [ResponseType(typeof(PhotoAlbumViewModel))]
+        [AllowAnonymous]
         public IHttpActionResult Get([FromUri] SearchPhotoAlbumModel searchPhotoAlbumModel)
         {
             IEnumerable<PhotoAlbum> photoAlbums = null;
@@ -109,14 +112,15 @@ namespace OurMemory.Controllers
         {
             var photoAlbum = _photoAlbumService.GetById(photoAlbumBindingModel.Id);
 
-            if (ModelState.IsValid && photoAlbumBindingModel.Id == photoAlbum.Id)
+            var userId = User.Identity.GetUserId();
+
+            if (ModelState.IsValid && photoAlbumBindingModel.Id == photoAlbum.Id && userId == photoAlbum.User.Id)
             {
                 _imageService.DeleteImages(photoAlbum.Images);
                 PhotoAlbum album = Mapper.Map<PhotoAlbumBindingModel, PhotoAlbum>(photoAlbumBindingModel);
 
-                var map = Mapper.Map(album, photoAlbum);
-                _photoAlbumService.UpdatePhotoAlbum(map);
-
+                Mapper.Map(album, photoAlbum);
+                _photoAlbumService.UpdatePhotoAlbum(photoAlbum);
                 var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumWithImagesViewModel>(photoAlbum);
 
                 return Ok(photoAlbumViewModel);
@@ -127,8 +131,26 @@ namespace OurMemory.Controllers
 
         }
 
+        /// <summary>
+        /// delete a photo album
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("api/photoAlbum/{id}")]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
+            var album = _photoAlbumService.GetById(id);
+
+            var userId = User.Identity.GetUserId();
+
+            if (album == null || album.Id != id || album.User.Id != userId) return BadRequest();
+
+            album.IsDeleted = true;
+            _photoAlbumService.SavePhotoAlbum();
+
+            return Ok();
+
             return Ok();
         }
 
