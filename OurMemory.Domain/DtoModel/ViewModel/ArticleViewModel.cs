@@ -2,7 +2,7 @@
 
 namespace OurMemory.Domain.DtoModel.ViewModel
 {
-    public class ArticleViewModel: BaseBindingModel
+    public class ArticleViewModel : BaseBindingModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -10,5 +10,6 @@ namespace OurMemory.Domain.DtoModel.ViewModel
         public int Views { get; set; }
         public string ImageArticleUrl { get; set; }
         public Guid UserId { get; set; }
+        public string UserImageUrl { get; set; }
     }
 }

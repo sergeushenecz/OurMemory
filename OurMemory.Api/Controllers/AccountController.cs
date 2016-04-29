@@ -434,6 +434,14 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
+        [Route("ChangeUserInfo")]
+        public IHttpActionResult ChangeInfo([FromUri] )
+        {
+            return Ok();
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
