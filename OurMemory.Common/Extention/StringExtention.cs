@@ -10,7 +10,7 @@ namespace OurMemory.Common.Extention
 
         public static string ToAbsolutPath(this string relative)
         {
-            return relative.Insert(0,
+            return relative?.Insert(0,
                 HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority);
         }
 

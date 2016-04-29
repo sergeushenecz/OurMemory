@@ -360,6 +360,10 @@
     <Compile Include="Migrations\201604281128355_changeField.Designer.cs">
       <DependentUpon>201604281128355_changeField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604290805468_addFieldImageUrltoArticleTable.cs" />
+    <Compile Include="Migrations\201604290805468_addFieldImageUrltoArticleTable.Designer.cs">
+      <DependentUpon>201604290805468_addFieldImageUrltoArticleTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -440,6 +444,9 @@
     <EmbeddedResource Include="Migrations\201604281128355_changeField.resx">
       <DependentUpon>201604281128355_changeField.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604290805468_addFieldImageUrltoArticleTable.resx">
+      <DependentUpon>201604290805468_addFieldImageUrltoArticleTable.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -477,7 +484,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Common\" />
     <Folder Include="Content\Files\" />
-    <Folder Include="Extention\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
