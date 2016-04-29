@@ -2,6 +2,6 @@
 {
     public class BaseBindingModel
     {
-        public string UpdatedDateTime { get; set; }
+        public string CreatedDateTime { get; set; }
     }
 }

@@ -5,10 +5,11 @@ namespace OurMemory.Domain.DtoModel.ViewModel
     public class ArticleViewModel : BaseBindingModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; }
+        public string ShortDescription { get; set; }
+        public string FullDescription { get; set; }
         public int Views { get; set; }
-        public string ImageArticleUrl { get; set; }
+        public string ArticleImageUrl { get; set; }
         public Guid UserId { get; set; }
         public string UserImageUrl { get; set; }
     }

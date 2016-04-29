@@ -37,7 +37,7 @@ namespace UnitTestProject1
 
             userManager.Setup(x => x.AddToRoleAsync(It.IsAny<string>(), "Guest"));
 
-            var accountController = new AccountController(userManager.Object) { Request = new HttpRequestMessage() };
+            var accountController = new AccountController(userManager.Object,null) { Request = new HttpRequestMessage() };
 
             IHttpActionResult register = accountController.Register(registerBindingModel).Result;
 

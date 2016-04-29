@@ -368,6 +368,14 @@
     <Compile Include="Migrations\201604290818209_addImageFiledToUser.Designer.cs">
       <DependentUpon>201604290818209_addImageFiledToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604291403043_addFieldToArticleTable.cs" />
+    <Compile Include="Migrations\201604291403043_addFieldToArticleTable.Designer.cs">
+      <DependentUpon>201604291403043_addFieldToArticleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604291414570_asd1.cs" />
+    <Compile Include="Migrations\201604291414570_asd1.Designer.cs">
+      <DependentUpon>201604291414570_asd1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -453,6 +461,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604290818209_addImageFiledToUser.resx">
       <DependentUpon>201604290818209_addImageFiledToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604291403043_addFieldToArticleTable.resx">
+      <DependentUpon>201604291403043_addFieldToArticleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604291414570_asd1.resx">
+      <DependentUpon>201604291414570_asd1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -8,8 +8,9 @@ namespace OurMemory.Data.Mapping
         public ArticleMap()
         {
             this.HasKey(x => x.Id);
-            this.Property(x => x.Name);
-            this.Property(x => x.Description);
+            this.Property(x => x.Title);
+            this.Property(x => x.ShortDescription);
+            this.Property(x => x.FullDescription);
             this.HasOptional(x => x.User);
             this.HasMany(x => x.Comments);
         }

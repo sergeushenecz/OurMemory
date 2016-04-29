@@ -12,13 +12,11 @@ namespace OurMemory.AutomapperProfiles
         protected override void Configure()
         {
             Mapper.CreateMap<Article, ArticleBindingModel>();
-            Mapper.CreateMap<ArticleBindingModel, Article>().ForMember(dist => dist.ImageArticleUrl, opt => opt.MapFrom(x => x.ImageArticleUrl.ToRelativePath()));
+            Mapper.CreateMap<ArticleBindingModel, Article>().ForMember(dist => dist.ArticleImageUrl, opt => opt.MapFrom(x => x.ArticleImageUrl.ToRelativePath()));
 
             Mapper.CreateMap<Article, ArticleViewModel>()
-                .ForMember(dist => dist.ImageArticleUrl, opt => opt.MapFrom(x => x.ImageArticleUrl.ToAbsolutPath()))
+                .ForMember(dist => dist.ArticleImageUrl, opt => opt.MapFrom(x => x.ArticleImageUrl.ToAbsolutPath()))
                 .ForMember(dist => dist.UserImageUrl, opt => opt.MapFrom(x => x.User.UserImageUrl.ToAbsolutPath()))
-                .ForMember(dist => dist.UpdatedDateTime,
-                    opt => opt.MapFrom(x => x.UpdatedDateTime.ToString("yyyy-MM-dd")))
                 .ForMember(dist => dist.UserId, opt => opt.MapFrom(x => x.User.Id));
 
             base.Configure();

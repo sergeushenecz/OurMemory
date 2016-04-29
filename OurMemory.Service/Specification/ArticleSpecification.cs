@@ -13,7 +13,7 @@ namespace OurMemory.Service.Specification
 
         public Specification<Article> GetByName(string name)
         {
-            return name == null ? Empty() : new Specification<Article>(x => x.Name.Contains(name));
+            return name == null ? Empty() : new Specification<Article>(x => x.Title.Contains(name));
 
         }
     }

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using LinqToExcel.Extensions;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -15,13 +13,11 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using OurMemory.Common.Extention;
-using OurMemory.Data;
 using OurMemory.Domain;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
 using OurMemory.Providers;
 using OurMemory.Results;
-using OurMemory.Service.Helper;
 using OurMemory.Service.Interfaces;
 
 namespace OurMemory.Controllers
@@ -434,11 +430,11 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-        [Route("ChangeUserInfo")]
-        public IHttpActionResult ChangeInfo([FromUri] )
-        {
-            return Ok();
-        }
+//        [Route("ChangeUserInfo")]
+//        public IHttpActionResult ChangeInfo([FromUri] )
+//        {
+//            return Ok();
+//        }
 
 
 

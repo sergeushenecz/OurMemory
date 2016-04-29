@@ -39,7 +39,7 @@ namespace OurMemory.Service.Services
         {
             Domain.Entities.Article article = _articleRepository.GetById(id);
 
-            return article.IsDeleted == false ? article : null;
+            return article?.IsDeleted == false ? article : null;
         }
 
         public IQueryable<Domain.Entities.Article> SearchArcticles(SearchArticleModel searchVeteranModel)
@@ -79,7 +79,7 @@ namespace OurMemory.Service.Services
 
         public IEnumerable<Comment> GetComments(int id)
         {
-            return _articleRepository.GetById(id)?.Comments.Where(x=>!x.IsDeleted);
+            return _articleRepository.GetById(id)?.Comments.Where(x => !x.IsDeleted);
         }
 
         public IEnumerable<CommentViewModel> GetCommentViewModels(ICollection<Comment> comments)
