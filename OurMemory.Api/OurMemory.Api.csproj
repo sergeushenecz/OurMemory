@@ -250,6 +250,7 @@
     <Compile Include="App_Start\AutomapperProfiles\CommentProfile.cs" />
     <Compile Include="App_Start\AutomapperProfiles\ImageProfile.cs" />
     <Compile Include="App_Start\AutomapperProfiles\PhotoAlbumProfile.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\UserProfile.cs" />
     <Compile Include="App_Start\AutomapperProfiles\VeteranProfile.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

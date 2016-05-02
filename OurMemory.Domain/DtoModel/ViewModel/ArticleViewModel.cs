@@ -10,8 +10,7 @@ namespace OurMemory.Domain.DtoModel.ViewModel
         public string FullDescription { get; set; }
         public int Views { get; set; }
         public string ArticleImageUrl { get; set; }
-        public Guid UserId { get; set; }
-        public string UserName { get; set; }
-        public string UserImageUrl { get; set; }
+        
+        public UserViewModel User { get; set; }
     }
 }
