@@ -14,7 +14,7 @@ namespace OurMemory.Service.Specification
 
         public Specification<PhotoAlbum> KeyWord(SearchPhotoAlbumModel searchPhotoAlbumModel)
         {
-            var specification = searchPhotoAlbumModel.Name != null ? new Specification<PhotoAlbum>(x => x.Name.Contains(searchPhotoAlbumModel.Name)) :
+            var specification = searchPhotoAlbumModel.Name != null ? new Specification<PhotoAlbum>(x => x.Title.Contains(searchPhotoAlbumModel.Name)) :
                 Empty();
 
 

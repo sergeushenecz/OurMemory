@@ -381,6 +381,14 @@
     <Compile Include="Migrations\201605030643384_changeUser.Designer.cs">
       <DependentUpon>201605030643384_changeUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605030706488_sa.cs" />
+    <Compile Include="Migrations\201605030706488_sa.Designer.cs">
+      <DependentUpon>201605030706488_sa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605030714073_ad.cs" />
+    <Compile Include="Migrations\201605030714073_ad.Designer.cs">
+      <DependentUpon>201605030714073_ad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -475,6 +483,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605030643384_changeUser.resx">
       <DependentUpon>201605030643384_changeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605030706488_sa.resx">
+      <DependentUpon>201605030706488_sa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605030714073_ad.resx">
+      <DependentUpon>201605030714073_ad.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

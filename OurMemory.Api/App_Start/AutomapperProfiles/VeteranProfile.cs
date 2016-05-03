@@ -29,7 +29,7 @@ namespace OurMemory.AutomapperProfiles
                    for (int i = 0; i < veteranImages.Images.Count; i++)
                    {
                        veteranBindingImages.Images.ToList()[i].ImageOriginal = veteranImages.Images.ToList()[i].ImageOriginal.ToAbsolutPath();
-                       veteranBindingImages.Images.ToList()[i].ThumbnailImage = veteranImages.Images.ToList()[i].ThumbnailImage.ToAbsolutPath();
+                       veteranBindingImages.Images.ToList()[i].ThumbnailImage = veteranImages.Images.ToList()[i].ImageThumbnail.ToAbsolutPath();
                    }
 
                });
@@ -53,7 +53,7 @@ namespace OurMemory.AutomapperProfiles
                 for (int i = 0; i < veteranImages.Images.Count; i++)
                 {
                     veteranImages.Images.ToList()[i].ImageOriginal = veteranBindingImages.Images.ToList()[i].ImageOriginal.ToRelativePath();
-                    veteranImages.Images.ToList()[i].ThumbnailImage = veteranBindingImages.Images.ToList()[i].ThumbnailImage.ToRelativePath();
+                    veteranImages.Images.ToList()[i].ImageThumbnail = veteranBindingImages.Images.ToList()[i].ThumbnailImage.ToRelativePath();
                 }
 
             });

@@ -57,7 +57,7 @@ namespace OurMemory.Service.Services
         {
             Specification<PhotoAlbum> keyWord = _photoAlbumSpecification.KeyWord(searchVeteranModel);
 
-            var photoAlbums = _photoAlbumRepository.GetSpec(keyWord.Predicate).OrderBy(x => x.Name);
+            var photoAlbums = _photoAlbumRepository.GetSpec(keyWord.Predicate).OrderBy(x => x.Title);
             return photoAlbums;
         }
 

@@ -11,7 +11,7 @@ namespace OurMemory.Data.Mapping
             this.HasKey(x => x.Id);
 
             this.Property(x => x.ImageOriginal);
-            this.Property(x => x.ThumbnailImage);
+            this.Property(x => x.ImageThumbnail);
             this.Property(x => x.ImageMimeType);
 
             this.HasOptional(x => x.Veteran);

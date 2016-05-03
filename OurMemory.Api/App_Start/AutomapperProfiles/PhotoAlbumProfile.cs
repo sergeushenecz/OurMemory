@@ -20,32 +20,30 @@ namespace OurMemory.AutomapperProfiles
 
             AutoMapper.Mapper.CreateMap<PhotoAlbum, PhotoAlbumViewModel>()
                 .ForMember(dist => dist.CountPhoto, opt => opt.MapFrom(x => x.Images.Count))
-                .ForMember(dist => dist.ImageAlbumUrl, opt => opt.MapFrom(x => x.ImageAlbumUrl.ToAbsolutPath()));
+                .ForMember(dist => dist.Image, opt => opt.MapFrom(x => x.Image.ToAbsolutPath()));
 
             Mapper.CreateMap<PhotoAlbumBindingModel, PhotoAlbum>()
-              .ForMember(dist => dist.ImageAlbumUrl, opt => opt.MapFrom(x => x.ImageAlbumUrl.ToRelativePath()))
+              .ForMember(dist => dist.Image, opt => opt.MapFrom(x => x.Image.ToRelativePath()))
               .AfterMap((photoAlbumBindingModel, photoAlbum) =>
               {
                   for (int i = 0; i < photoAlbum.Images.Count; i++)
                   {
                       photoAlbum.Images.ToList()[i].ImageOriginal = photoAlbumBindingModel.Images.ToList()[i].ImageOriginal.ToRelativePath();
-                      photoAlbum.Images.ToList()[i].ThumbnailImage = photoAlbumBindingModel.Images.ToList()[i].ThumbnailImage.ToRelativePath();
+                      photoAlbum.Images.ToList()[i].ImageThumbnail = photoAlbumBindingModel.Images.ToList()[i].ThumbnailImage.ToRelativePath();
                   }
 
               });
 
             Mapper.CreateMap<PhotoAlbum, PhotoAlbumWithImagesViewModel>()
               .ForMember(dist => dist.CountPhoto, opt => opt.MapFrom(x => x.Images.Count))
-              .ForMember(dist => dist.ImageAlbumUrl, opt => opt.MapFrom(x => x.ImageAlbumUrl.ToAbsolutPath()))
+              .ForMember(dist => dist.Image, opt => opt.MapFrom(x => x.Image.ToAbsolutPath()))
               .AfterMap((album, photoAlbumWithImages) =>
               {
                   for (int i = 0; i < album.Images.Count; i++)
                   {
-                      if (album.Images.ToList()[i].ImageOriginal != null)
-                          photoAlbumWithImages.Images.ToList()[i].ImageOriginal = album.Images.ToList()[i].ImageOriginal.ToAbsolutPath();
+                      photoAlbumWithImages.Images.ToList()[i].ImageOriginal = album.Images.ToList()[i].ImageOriginal.ToAbsolutPath();
 
-                      if (album.Images.ToList()[i].ThumbnailImage != null)
-                          photoAlbumWithImages.Images.ToList()[i].ThumbnailImage = album.Images.ToList()[i].ThumbnailImage.ToAbsolutPath();
+                      photoAlbumWithImages.Images.ToList()[i].ThumbnailImage = album.Images.ToList()[i].ImageThumbnail.ToAbsolutPath();
                   }
 
               });

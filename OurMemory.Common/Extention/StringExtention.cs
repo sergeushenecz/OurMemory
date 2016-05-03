@@ -16,7 +16,7 @@ namespace OurMemory.Common.Extention
 
         public static string ToRelativePath(this string absolut)
         {
-            return absolut.Replace(HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority, "");
+            return absolut?.Replace(HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority, "");
         }
     }
 }
