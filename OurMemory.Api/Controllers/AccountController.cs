@@ -74,7 +74,7 @@ namespace OurMemory.Controllers
                 Role = roleUser[0],
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin?.LoginProvider,
-                ImageUrl = _userService.GetById(User.Identity.GetUserId()).UserImageUrl.ToAbsolutPath()
+                ImageUrl = _userService.GetById(User.Identity.GetUserId()).Image.ToAbsolutPath()
             };
         }
 
@@ -377,7 +377,7 @@ namespace OurMemory.Controllers
             {
                 UserName = model.Email,
                 Email = model.Email,
-                UserImageUrl = model.ImageUserImageUrl.ToRelativePath()
+                Image = model.ImageUserImageUrl.ToRelativePath()
             };
 
             IdentityResult createUserResult = await UserManager.CreateAsync(user, model.Password);

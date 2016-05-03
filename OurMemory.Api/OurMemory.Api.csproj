@@ -377,6 +377,10 @@
     <Compile Include="Migrations\201604291414570_asd1.Designer.cs">
       <DependentUpon>201604291414570_asd1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605030643384_changeUser.cs" />
+    <Compile Include="Migrations\201605030643384_changeUser.Designer.cs">
+      <DependentUpon>201605030643384_changeUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -468,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604291414570_asd1.resx">
       <DependentUpon>201604291414570_asd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605030643384_changeUser.resx">
+      <DependentUpon>201605030643384_changeUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\PublishProfiles\OurMemory.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

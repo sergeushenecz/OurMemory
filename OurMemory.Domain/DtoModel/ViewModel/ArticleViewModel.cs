@@ -9,7 +9,7 @@ namespace OurMemory.Domain.DtoModel.ViewModel
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
         public int Views { get; set; }
-        public string ArticleImageUrl { get; set; }
+        public string Image { get; set; }
         
         public UserViewModel User { get; set; }
     }

@@ -9,7 +9,7 @@ namespace OurMemory.Domain.Entities
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
         public int Views { get; set; }
-        public string ArticleImageUrl { get; set; }
+        public string Image { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }

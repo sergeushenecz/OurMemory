@@ -10,7 +10,7 @@ namespace OurMemory.Domain.Entities
     public class User : IdentityUser, IDomainObject
     {
 
-        public string UserImageUrl { get; set; }
+        public string Image { get; set; }
 
         public virtual ICollection<Veteran> Veterans { get; set; }
         public virtual ICollection<Article> Arcticles { get; set; }

@@ -8,6 +8,6 @@ namespace OurMemory.Domain.DtoModel
         public string Title { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
-        public string ArticleImageUrl { get; set; }
+        public string Image { get; set; }
     }
 }
