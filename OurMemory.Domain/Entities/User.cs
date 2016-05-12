@@ -11,7 +11,8 @@ namespace OurMemory.Domain.Entities
     {
 
         public string Image { get; set; }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public virtual ICollection<Veteran> Veterans { get; set; }
         public virtual ICollection<Article> Arcticles { get; set; }
         public virtual ICollection<PhotoAlbum> PhotoAlbums { get; set; }

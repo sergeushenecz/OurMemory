@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -149,6 +150,24 @@ namespace OurMemory.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            return Ok();
+        }
+
+        [Route("UpdateProfile")]
+
+        public IHttpActionResult UpdateProfile(UserInfoBindingModel userInfo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = _userService.GetById(User.Identity.GetUserId());
+
+            Mapper.Map<UserInfoBindingModel, User>(userInfo, user);
+
+            _userService.UpdateUser(user);
 
             return Ok();
         }
@@ -377,7 +396,7 @@ namespace OurMemory.Controllers
             {
                 UserName = model.Email,
                 Email = model.Email,
-                Image = model.ImageUserImageUrl.ToRelativePath()
+                Image = model.Image.ToRelativePath()
             };
 
             IdentityResult createUserResult = await UserManager.CreateAsync(user, model.Password);
@@ -430,11 +449,11 @@ namespace OurMemory.Controllers
             return Ok();
         }
 
-//        [Route("ChangeUserInfo")]
-//        public IHttpActionResult ChangeInfo([FromUri] )
-//        {
-//            return Ok();
-//        }
+        //        [Route("ChangeUserInfo")]
+        //        public IHttpActionResult ChangeInfo([FromUri] )
+        //        {
+        //            return Ok();
+        //        }
 
 
 

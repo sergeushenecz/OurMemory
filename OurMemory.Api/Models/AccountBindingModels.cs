@@ -48,7 +48,7 @@ namespace OurMemory.Models
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Image")]
-        public string ImageUserImageUrl { get; set; }
+        public string Image { get; set; }
     }
 
     public class RegisterExternalBindingModel
@@ -86,7 +86,8 @@ namespace OurMemory.Models
 
     public class UserInfoBindingModel
     {
-        public string ImageUserUrl { get; set; }
-        public string Email { get; set; }
+        public string Image { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

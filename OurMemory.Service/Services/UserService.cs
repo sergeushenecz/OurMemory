@@ -22,5 +22,17 @@ namespace OurMemory.Service.Services
 
             return !user.IsDeleted ? user : null;
         }
+
+        public void UpdateUser(User user)
+        {
+            _userRepository.Update(user);
+            SaveUser();
+        }
+
+       
+        public void SaveUser()
+        {
+            _unitOfWork.Commit();
+        }
     }
 }
