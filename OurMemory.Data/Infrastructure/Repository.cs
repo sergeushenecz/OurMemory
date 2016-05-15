@@ -21,12 +21,12 @@ namespace OurMemory.Data.Infrastructure
 
         public void DetachAllEntities()
         {
-        dataContext.Commit();
+        //dataContext.Commit();
 
-            foreach (var entity in dataContext.ChangeTracker.Entries().Where(e => e.State == EntityState.Unchanged))
-            {
-                this.dataContext.Entry(entity.Entity).State = EntityState.Detached;
-            }
+            //foreach (var entity in dataContext.ChangeTracker.Entries().Where(e => e.State == EntityState.Unchanged))
+            //{
+            //    this.dataContext.Entry(entity.Entity).State = EntityState.Detached;
+            //}
         }
 
         protected IDatabaseFactory DatabaseFactory
