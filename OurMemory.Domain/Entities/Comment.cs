@@ -3,7 +3,7 @@
     public class Comment : DomainObject
     {
         public string Message { get; set; }
-        public Article Article { get; set; }
-        public User User { get; set; }
+        public virtual Article Article { get; set; }
+        public virtual User User { get; set; }
     }
 }

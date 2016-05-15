@@ -67,15 +67,18 @@ namespace OurMemory.Controllers
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
             var roleUser = UserManager.GetRoles(User.Identity.GetUserId());
+            var user = _userService.GetById(User.Identity.GetUserId());
 
             return new UserInfoViewModel
             {
-                UserId = User.Identity.GetUserId(),
-                Email = User.Identity.GetUserName(),
+                Id = user.Id,
+                Email = user.Email,
                 Role = roleUser[0],
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin?.LoginProvider,
-                ImageUrl = _userService.GetById(User.Identity.GetUserId()).Image.ToAbsolutPath()
+                Image = user.Image.ToAbsolutPath(),
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
         }
 

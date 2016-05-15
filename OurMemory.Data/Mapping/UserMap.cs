@@ -8,9 +8,12 @@ namespace OurMemory.Data.Mapping
     {
         public UserMap()
         {
+            this.Property(x => x.FirstName);
+            this.Property(x => x.LastName);
             this.HasMany(x => x.Veterans);
             this.HasMany(x => x.Arcticles);
             this.HasMany(x => x.PhotoAlbums);
+            this.HasMany(x => x.Comments);
         }
     }
 }

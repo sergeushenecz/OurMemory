@@ -79,6 +79,7 @@ namespace OurMemory.Service.Services
 
         public IEnumerable<Comment> GetComments(int id)
         {
+            _articleRepository.DetachAllEntities();
             return _articleRepository.GetById(id)?.Comments.Where(x => !x.IsDeleted);
         }
 

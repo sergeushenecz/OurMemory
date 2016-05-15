@@ -17,5 +17,6 @@ namespace OurMemory.Data.Infrastructure
         T Get(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();
         IQueryable<T> GetSpec(Expression<Func<T, bool>> specification);
+        void DetachAllEntities();
     }
 }

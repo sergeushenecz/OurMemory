@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -12,6 +13,8 @@ namespace OurMemory.Data
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
+            //this.Configuration.LazyLoadingEnabled = false;
+            //this.Configuration.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Veteran> Veterans { get; set; }

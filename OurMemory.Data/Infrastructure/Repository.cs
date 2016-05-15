@@ -19,6 +19,16 @@ namespace OurMemory.Data.Infrastructure
             dbset = DataContext.Set<T>();
         }
 
+        public void DetachAllEntities()
+        {
+        dataContext.Commit();
+
+            foreach (var entity in dataContext.ChangeTracker.Entries().Where(e => e.State == EntityState.Unchanged))
+            {
+                this.dataContext.Entry(entity.Entity).State = EntityState.Detached;
+            }
+        }
+
         protected IDatabaseFactory DatabaseFactory
         {
             get;
