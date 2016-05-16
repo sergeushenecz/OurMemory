@@ -8,10 +8,10 @@ namespace OurMemory.Service.Interfaces
     public interface IPhotoAlbumService
     {
         void Add(PhotoAlbum veteran);
-        IEnumerable<PhotoAlbum> GetAll();
+        IEnumerable<PhotoAlbum> GetAll(bool withImages =false);
         PhotoAlbum GetById(int id);
 
-        List<Image> GetPhotosAlbums(int idAlbum);
+        List<Image> GetPhotoAlbums(int idAlbum);
 
         void UpdatePhotoAlbum(PhotoAlbum veteran);
         IQueryable<PhotoAlbum> SearchPhotoAlbum(SearchPhotoAlbumModel searchVeteranModel);

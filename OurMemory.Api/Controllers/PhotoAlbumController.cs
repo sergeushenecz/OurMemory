@@ -61,7 +61,7 @@ namespace OurMemory.Controllers
 
             if (searchPhotoAlbumModel == null)
             {
-                photoAlbums = _photoAlbumService.GetAll();
+                photoAlbums = _photoAlbumService.GetAll(false);
                 countAlbums = _photoAlbumService.GetAll().Count();
             }
             else
@@ -70,7 +70,7 @@ namespace OurMemory.Controllers
                 photoAlbums = _photoAlbumService.SearchPhotoAlbum(searchPhotoAlbumModel).Pagination((searchPhotoAlbumModel.Page - 1) * searchPhotoAlbumModel.Size, searchPhotoAlbumModel.Size).ToList();
             }
 
-            var photoAlbumViewModels = Mapper.Map<IEnumerable<PhotoAlbum>, IEnumerable<PhotoAlbumViewModel>>(photoAlbums);
+            var photoAlbumViewModels = Mapper.Map<IEnumerable<PhotoAlbum>, IEnumerable<PhotoAlbumWithImagesViewModel>>(photoAlbums);
 
             return Ok(new
             {

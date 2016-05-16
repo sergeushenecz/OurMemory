@@ -28,8 +28,29 @@ namespace OurMemory.Service.Services
             SavePhotoAlbum();
         }
 
-        public IEnumerable<PhotoAlbum> GetAll()
+        public IEnumerable<PhotoAlbum> GetAll(bool withImages = false)
         {
+            if (withImages)
+            {
+                var photoAlbums = _photoAlbumRepository
+                    .GetAll()
+                    .Where(x => !x.IsDeleted)
+                    .Select(x=> new PhotoAlbum()
+                    {
+                        User = x.User,
+                        Images = null,
+                        Id = x.Id,
+                        Image = x.Image,
+                        Description = x.Description,
+                        CreatedDateTime = x.CreatedDateTime,
+                        Title = x.Title,
+                        Views = x.Views,
+                        IsDeleted = x.IsDeleted,
+                        UpdatedDateTime = x.UpdatedDateTime
+                    });
+              
+            }
+
             return _photoAlbumRepository.GetAll().Where(x => !x.IsDeleted);
         }
 
@@ -40,7 +61,7 @@ namespace OurMemory.Service.Services
             return veteran.IsDeleted == false ? veteran : null;
         }
 
-        public List<Image> GetPhotosAlbums(int idAlbum)
+        public List<Image> GetPhotoAlbums(int idAlbum)
         {
             var collection = _photoAlbumRepository.GetById(idAlbum).Images.Where(x => !x.IsDeleted).ToList();
 
