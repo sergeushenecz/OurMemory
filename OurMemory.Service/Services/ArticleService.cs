@@ -14,7 +14,7 @@ using OurMemory.Service.Specification;
 
 namespace OurMemory.Service.Services
 {
-    public class Article : IArticle
+    public class ArticleService : IArticleService
     {
 
         private readonly IRepository<Domain.Entities.Article> _articleRepository;
@@ -22,7 +22,7 @@ namespace OurMemory.Service.Services
         private readonly ArticleSpecification _articleSpecification;
         private readonly IUserService _userService;
 
-        public Article(IRepository<Domain.Entities.Article> articleRepository,
+        public ArticleService(IRepository<Domain.Entities.Article> articleRepository,
             IUnitOfWork unitOfWork,
             ArticleSpecification articleSpecification, IUserService userService)
         {
@@ -33,7 +33,7 @@ namespace OurMemory.Service.Services
         }
 
 
-        #region Article Members
+        #region ArticleService Members
 
         public Domain.Entities.Article GetById(int id)
         {

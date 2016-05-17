@@ -10,5 +10,6 @@ namespace OurMemory.Domain
     {
         public static string Guest = "Guest";
         public static string User = "User";
+        public static string Administrator = "Admin";
     }
 }

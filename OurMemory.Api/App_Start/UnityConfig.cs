@@ -18,7 +18,6 @@ using OurMemory.Service.Services;
 using OurMemory.Service.Specification;
 using OurMemory.UnityResolvers;
 using Unity.WebApi;
-using Article = OurMemory.Service.Services.Article;
 
 namespace OurMemory
 {
@@ -31,8 +30,8 @@ namespace OurMemory
             container.RegisterType<IVeteranService, VeteranService>();
             container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
             container.RegisterType<IImageVeteranService, ImageVeteranService>(new HierarchicalLifetimeManager());
-            container.RegisterType<IArticle, Article>();
-            container.RegisterType<IComment, Article>("ArticleServiceComment");
+            container.RegisterType<IArticleService, ArticleService>();
+            container.RegisterType<IComment, ArticleService>("ArticleServiceComment");
             container.RegisterType<ICommentService, CommentService>(new HierarchicalLifetimeManager());
             container.RegisterType<IPhotoAlbumService, PhotoAlbumService>(new HierarchicalLifetimeManager());
 
