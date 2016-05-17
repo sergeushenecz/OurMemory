@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OurMemory.Controllers.AccountController">
+    <Position X="1" Y="1.75" Width="1.75" />
+    <NestedTypes>
+      <Class Name="OurMemory.Controllers.AccountController.ExternalLoginData" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="OurMemory.Controllers.AccountController.RandomOAuthStateGenerator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAAAEBCAACAAgQAAEAARAgIAABABEBAAAAAEgAAAAQA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OurMemory.Controllers.ArticleController">
+    <Position X="3" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAICAEAAAAAAAAEAAAAAAg=</HashCode>
+      <FileName>Controllers\ArticleController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OurMemory.Controllers.FilesController">
+    <Position X="5.25" Y="1.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACEAAAAABAAAAACKACAQAAAAAAFAAAAQAA=</HashCode>
+      <FileName>Controllers\FilesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OurMemory.Controllers.PhotoAlbumController">
+    <Position X="9.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAABAAAAAAAAACAEAAAAAAAAEAAQAAAg=</HashCode>
+      <FileName>Controllers\PhotoAlbumController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OurMemory.Controllers.VeteranController">
+    <Position X="12" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABgAAAAAAAACAEAAAAAAAAFAAAAAAg=</HashCode>
+      <FileName>Controllers\VeteranController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OurMemory.Hubs.CommentHub">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAJAAAEAAAAAAAACAAgAAgAAIAAQAAABAgAEA=</HashCode>
+      <FileName>Hubs\CommnetHub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
