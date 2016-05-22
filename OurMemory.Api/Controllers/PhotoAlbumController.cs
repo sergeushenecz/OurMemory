@@ -61,7 +61,7 @@ namespace OurMemory.Controllers
 
             if (searchPhotoAlbumModel == null)
             {
-                photoAlbums = _photoAlbumService.GetAll(false);
+                photoAlbums = _photoAlbumService.GetAll();
                 countAlbums = _photoAlbumService.GetAll().Count();
             }
             else
