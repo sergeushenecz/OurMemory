@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="OurMemory.Service.Services.ArticleService">
-    <Position X="3.75" Y="0.5" Width="2.75" />
+    <Position X="3" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAIQAAAIAAAAAAAAAgBAAQBAQAAAAAAAAggEAAAEAIA=</HashCode>
       <FileName>Services\ArticleService.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OurMemory.Service.Services.CommentService">
-    <Position X="7" Y="1" Width="1.5" />
+    <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAQAAAAAQAAAAAAAAAAAAAAJA=</HashCode>
       <FileName>Services\CommentService.cs</FileName>
@@ -17,14 +17,25 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OurMemory.Service.Services.GoogleMapsService">
-    <Position X="9.25" Y="1" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIACAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\GoogleMapsService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OurMemory.Service.Services.ImageService">
-    <Position X="1.5" Y="5.25" Width="1.5" />
+    <Position X="10.75" Y="2.75" Width="1.5" />
+    <InheritanceLine Type="System.Object" ManuallyRouted="true">
+      <Path>
+        <Point X="2" Y="1.062" />
+        <Point X="2" Y="1.254" />
+        <Point X="2.684" Y="1.254" />
+        <Point X="2.684" Y="6.416" />
+        <Point X="12.875" Y="6.416" />
+        <Point X="12.875" Y="4.489" />
+        <Point X="12.25" Y="4.489" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>IAAAAIAAQAAAAAAABhBAAAAECAAAAAAAAgAAAAAAABA=</HashCode>
       <FileName>Services\ImageService.cs</FileName>
@@ -32,7 +43,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OurMemory.Service.Services.ImageVeteranService">
-    <Position X="11" Y="5" Width="2" />
+    <Position X="10.25" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAQAAAAAQAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\ImageVeteranService.cs</FileName>
@@ -40,7 +51,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OurMemory.Service.Services.PhotoAlbumService">
-    <Position X="8.25" Y="5" Width="2.25" />
+    <Position X="8" Y="3" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AgoAAAAAAAAAAAAAAgAAAAAgAAAAAQAAAoAAAAAgAIA=</HashCode>
       <FileName>Services\PhotoAlbumService.cs</FileName>
@@ -48,7 +59,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OurMemory.Service.Services.UserService">
-    <Position X="6.25" Y="5" Width="1.5" />
+    <Position X="6.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAgAAAAAAgAAAAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
       <FileName>Services\UserService.cs</FileName>
@@ -56,12 +67,16 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OurMemory.Service.Services.VeteranService">
-    <Position X="4" Y="5" Width="1.5" />
+    <Position X="0.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAQAgAAAQAAAABAAAAIAggAAAAAAIA=</HashCode>
       <FileName>Services\VeteranService.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

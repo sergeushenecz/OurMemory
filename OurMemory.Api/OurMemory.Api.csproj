@@ -301,6 +301,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\CommnetHub.cs" />
+    <Compile Include="Interface1.cs" />
     <Compile Include="Migrations\201512051036052_Init.cs" />
     <Compile Include="Migrations\201512051036052_Init.Designer.cs">
       <DependentUpon>201512051036052_Init.cs</DependentUpon>

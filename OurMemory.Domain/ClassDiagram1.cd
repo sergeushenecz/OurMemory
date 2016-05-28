@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="OurMemory.Domain.Entities.DomainObject">
-    <Position X="4" Y="0.5" Width="2" />
+    <Position X="5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAIAAAAAAAAAAIAAAAAAAQAAAAA=</HashCode>
       <FileName>Entities\DomainObject.cs</FileName>
@@ -9,53 +9,38 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OurMemory.Domain.Entities.Article">
-    <Position X="0.5" Y="3" Width="1.5" />
+    <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgABAAAAAAgAAEAAAAAAAAAAABAAABAAAAAAAAAAIAA=</HashCode>
       <FileName>Entities\Article.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OurMemory.Domain.Entities.Comment">
-    <Position X="8" Y="3.25" Width="1.5" />
+    <Position X="9.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Entities\Comment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OurMemory.Domain.Entities.Image">
-    <Position X="4.25" Y="3.5" Width="1.5" />
+    <Position X="5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAFAABAAAA=</HashCode>
       <FileName>Entities\Image.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OurMemory.Domain.Entities.PhotoAlbum">
-    <Position X="6" Y="3.5" Width="1.5" />
+    <Position X="6.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgABAAAAAAAgAEAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\PhotoAlbum.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OurMemory.Domain.Entities.User">
-    <Position X="6" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAEAACAAAAAAAAAAAIAAAAAAAABAAAAAAAQIAIAg=</HashCode>
-      <FileName>Entities\User.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="OurMemory.Domain.Entities.Veteran">
-    <Position X="2.25" Y="3" Width="1.5" />
+    <Position X="3" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AiABAEAAA0AgAgAAAAAYAAAAAAAQABAAAAAAAAAAAIg=</HashCode>
       <FileName>Entities\Veteran.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OurMemory.Domain.UserRoles">
-    <Position X="10" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAg=</HashCode>
-      <FileName>UserRoles.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="OurMemory.Domain.Entities.IDomainObject">
