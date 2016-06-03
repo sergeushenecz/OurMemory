@@ -4240,8 +4240,8 @@
 <XPD:REF name="Participant">kAi9+Qt2NkakZBhPlJ2LcgAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">oRvDcHnYAk6MkImQFwpcQAAA</XPD:REF>
-<XPD:REF name="Views[1]">JxDhJjhnLk+QAzgL20bCiwAA</XPD:REF>
-<XPD:REF name="Views[2]">ti3hCyrg6Umsi7oAv6sU7QAA</XPD:REF>
+<XPD:REF name="Views[1]">ti3hCyrg6Umsi7oAv6sU7QAA</XPD:REF>
+<XPD:REF name="Views[2]">JxDhJjhnLk+QAzgL20bCiwAA</XPD:REF>
 <XPD:REF name="Views[3]">72+/2s197EmyABDTiuM97AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="5Rh5ZxaRGUyz5LAXToWI6QAA">
@@ -4249,8 +4249,8 @@
 <XPD:REF name="Participant">SmfuA+wUvk6aKagqRrkJ9gAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">Y2RpzLIHd0q9sr3aBenDmQAA</XPD:REF>
-<XPD:REF name="Views[1]">yl1E7q8wTk+zn9YVCKsD8gAA</XPD:REF>
-<XPD:REF name="Views[2]">O7DGm3inSEGLECMJzumwOwAA</XPD:REF>
+<XPD:REF name="Views[1]">O7DGm3inSEGLECMJzumwOwAA</XPD:REF>
+<XPD:REF name="Views[2]">yl1E7q8wTk+zn9YVCKsD8gAA</XPD:REF>
 <XPD:REF name="Views[3]">TqcdfxgFBkKyr5YKcZWVvQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -5392,14 +5392,14 @@
 <XPD:ATTR name="Left" type="integer">400</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">156</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">240</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">67</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">93</XPD:ATTR>
 <XPD:ATTR name="WordWrap" type="boolean">True</XPD:ATTR>
 <XPD:REF name="Model">9Ut/mpE5oEmb37NfYYkuDQAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="MUJQVJBTj0COxNIkKAMHPgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="dt/lBlmNIUOtXB3JjROq9gAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">160</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Администрировать ветеранов</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Администрировать информацию о ветеранах</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="rkOwLeDC+0+9BSMYvI9ZkwAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5425,15 +5425,15 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">108</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">60</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">246</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">24</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">24</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">445</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">45</XPD:ATTR>
 <XPD:REF name="Model">Vk8GloV0GUiekk2TGhJVHAAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="a+B+GcFbXkulLw+MqK7sDwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Eddv4/q2x0C1BCTzbxVkxQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Добавить ветерана</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Добавить информацию о ветеранах</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="eqY3lHpvwEKk7eToO6q39QAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5459,15 +5459,15 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">368</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">60</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">315</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">472</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">16</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">514</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">45</XPD:ATTR>
 <XPD:REF name="Model">qF54CDSntE6jGFf70aiZ+gAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="5p8FmSSzok+9wnFFm9KCPQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="j+ulF+L8mEqGOyUqgcYOFAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Редактировать ветерана</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Редактировать информацию о ветеранах</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="bd6sk2pKIE2UvjOiezzVYQAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5493,15 +5493,15 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">692</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">68</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">231</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">708</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">80</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">431</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">45</XPD:ATTR>
 <XPD:REF name="Model">5ETM0Dw6TUKFmxTZQl7eFwAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="PWDS1RHhckuoyHXASwH97QAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="K0fnYNsetU6lwBbCe72xKAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Удалить ветерана</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Удалить информацию о ветеранах</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="oI/Tiv/ZfUyI6oA4+X2ZVAAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5527,7 +5527,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">505,248;511,222</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">506,248;506,248</XPD:ATTR>
 <XPD:REF name="Model">/Eujk0RZNkGq9glIylZY0AAA</XPD:REF>
 <XPD:REF name="Head">ZCWAflz7Gki3i5ZpQEynNwAA</XPD:REF>
 <XPD:REF name="Tail">8RB6J18cPEm0VtRJUrQmVQAA</XPD:REF>
@@ -5612,7 +5612,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">430,156;289,104</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">438,156;284,68</XPD:ATTR>
 <XPD:REF name="Model">hYb0BbUlhUqEflRMjacnQwAA</XPD:REF>
 <XPD:REF name="Head">iOwT+AES9kaJ62y3m24a0AAA</XPD:REF>
 <XPD:REF name="Tail">ZCWAflz7Gki3i5ZpQEynNwAA</XPD:REF>
@@ -5640,7 +5640,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">521,156;524,104</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">578,156;700,60</XPD:ATTR>
 <XPD:REF name="Model">8c50KzvibEGMMPB25Sgc1QAA</XPD:REF>
 <XPD:REF name="Head">oiXYGzHVqUGQICA9A2e/ngAA</XPD:REF>
 <XPD:REF name="Tail">ZCWAflz7Gki3i5ZpQEynNwAA</XPD:REF>
@@ -5652,8 +5652,8 @@
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="EdgeLabelView" guid="RNsG6N7XuU2WK/Krd1bu4AAA">
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">-4,84761658092769</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">57,8705451849211</XPD:ATTR>
+<XPD:ATTR name="Alpha" type="real">-4,39133806645787</XPD:ATTR>
+<XPD:ATTR name="Distance" type="real">36,3593179253957</XPD:ATTR>
 <XPD:ATTR name="Text" type="string">&lt;&lt;include&gt;&gt;</XPD:ATTR>
 <XPD:REF name="Model">8c50KzvibEGMMPB25Sgc1QAA</XPD:REF>
 </XPD:OBJ>
@@ -5668,7 +5668,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">615,156;743,112</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">639,172;834,124</XPD:ATTR>
 <XPD:REF name="Model">Dtb2bwLNXECRFRvN2ogHtgAA</XPD:REF>
 <XPD:REF name="Head">BfSBXdUtt0mGGAVi6dC5twAA</XPD:REF>
 <XPD:REF name="Tail">ZCWAflz7Gki3i5ZpQEynNwAA</XPD:REF>
@@ -5680,8 +5680,8 @@
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="EdgeLabelView" guid="KYvM46n5ZU2tE/8zPQ6vxgAA">
 <XPD:ATTR name="FontSize" type="integer">12</XPD:ATTR>
-<XPD:ATTR name="Alpha" type="real">1,5707963267949</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">30</XPD:ATTR>
+<XPD:ATTR name="Alpha" type="real">-4,34475760795916</XPD:ATTR>
+<XPD:ATTR name="Distance" type="real">28,0178514522438</XPD:ATTR>
 <XPD:ATTR name="Text" type="string">&lt;&lt;include&gt;&gt;</XPD:ATTR>
 <XPD:REF name="Model">Dtb2bwLNXECRFRvN2ogHtgAA</XPD:REF>
 </XPD:OBJ>
@@ -5784,7 +5784,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[5]" type="UMLUseCase" guid="9Ut/mpE5oEmb37NfYYkuDQAA">
-<XPD:ATTR name="Name" type="string">Администрировать ветеранов</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Администрировать информацию о ветеранах</XPD:ATTR>
 <XPD:REF name="Namespace">t80yE8VxuUq+/AHWSG5w9AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">ZCWAflz7Gki3i5ZpQEynNwAA</XPD:REF>
@@ -5802,7 +5802,7 @@
 <XPD:REF name="Includes[2]">Dtb2bwLNXECRFRvN2ogHtgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[6]" type="UMLUseCase" guid="Vk8GloV0GUiekk2TGhJVHAAA">
-<XPD:ATTR name="Name" type="string">Добавить ветерана</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Добавить информацию о ветеранах</XPD:ATTR>
 <XPD:REF name="Namespace">t80yE8VxuUq+/AHWSG5w9AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">iOwT+AES9kaJ62y3m24a0AAA</XPD:REF>
@@ -5815,7 +5815,7 @@
 <XPD:REF name="Includers[0]">hYb0BbUlhUqEflRMjacnQwAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[7]" type="UMLUseCase" guid="qF54CDSntE6jGFf70aiZ+gAA">
-<XPD:ATTR name="Name" type="string">Редактировать ветерана</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Редактировать информацию о ветеранах</XPD:ATTR>
 <XPD:REF name="Namespace">t80yE8VxuUq+/AHWSG5w9AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">oiXYGzHVqUGQICA9A2e/ngAA</XPD:REF>
@@ -5828,7 +5828,7 @@
 <XPD:REF name="Includers[0]">8c50KzvibEGMMPB25Sgc1QAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[8]" type="UMLUseCase" guid="5ETM0Dw6TUKFmxTZQl7eFwAA">
-<XPD:ATTR name="Name" type="string">Удалить ветерана</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Удалить информацию о ветеранах</XPD:ATTR>
 <XPD:REF name="Namespace">t80yE8VxuUq+/AHWSG5w9AAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">BfSBXdUtt0mGGAVi6dC5twAA</XPD:REF>
