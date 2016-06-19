@@ -12,7 +12,9 @@ using System.Web.Http;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using OurMemory.Common;
+using OurMemory.Common.Attributes;
 using OurMemory.Common.Extention;
+using OurMemory.Domain;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
@@ -26,7 +28,7 @@ using ImageReference = OurMemory.Domain.DtoModel.ImageReference;
 
 namespace OurMemory.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Roles(UserRoles.User, UserRoles.Administrator)]
     public class FilesController : ApiController
     {
         private readonly IImageService _imageService;

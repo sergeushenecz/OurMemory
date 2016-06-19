@@ -79,6 +79,8 @@ namespace OurMemory.Service.Services
 
         public IEnumerable<Comment> GetComments(int id)
         {
+            _articleRepository.DetachAllEntities();
+
             return _articleRepository.GetById(id)?.Comments.Where(x => !x.IsDeleted);
         }
 
@@ -89,8 +91,12 @@ namespace OurMemory.Service.Services
 
         public Comment AddComment(int id, string message, string userId)
         {
+
+            _articleRepository.DetachAllEntities();
+
             var article = _articleRepository.GetById(id);
 
+            
             var user = userId == null ? null : _userService.GetById(userId);
 
 
@@ -103,7 +109,9 @@ namespace OurMemory.Service.Services
             };
 
             article.Comments.Add(comment);
+
             UpdateArticle(article);
+
 
             return comment;
         }

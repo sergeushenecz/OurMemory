@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Practices.Unity;
+using OurMemory.Domain;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
 using OurMemory.Models;
@@ -72,7 +73,8 @@ namespace OurMemory.Hubs
 
             var comment = _commentService.GetById(id);
 
-            if (comment != null && comment.User.Id == Context.User.Identity.GetUserId())
+            if (comment != null && comment.User.Id == Context.User.Identity.GetUserId() 
+                || Context.User.IsInRole(UserRoles.Administrator))
             {
                 comment.IsDeleted = true;
                 _commentService.UpdateComment(comment);

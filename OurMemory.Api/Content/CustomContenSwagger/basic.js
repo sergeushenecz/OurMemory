@@ -15,6 +15,7 @@
 
 
         $("#getToken").on("click", function () {
+            debugger;
             var username = $('#input_username').val();
             var password = $('#input_password').val();
 
@@ -23,7 +24,7 @@
                 username: username,
                 password: password
             };
-
+            debugger;
             $.ajax({
                 type: 'POST',
                 url: domain+ '/api/Token',

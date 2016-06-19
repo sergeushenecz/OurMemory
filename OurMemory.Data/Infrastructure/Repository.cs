@@ -21,12 +21,10 @@ namespace OurMemory.Data.Infrastructure
 
         public void DetachAllEntities()
         {
-        //dataContext.Commit();
-
-            //foreach (var entity in dataContext.ChangeTracker.Entries().Where(e => e.State == EntityState.Unchanged))
-            //{
-            //    this.dataContext.Entry(entity.Entity).State = EntityState.Detached;
-            //}
+            foreach (var entity in dataContext.ChangeTracker.Entries().Where(e => e.State == EntityState.Unchanged))
+            {
+                this.dataContext.Entry(entity.Entity).State = EntityState.Detached;
+            }
         }
 
         protected IDatabaseFactory DatabaseFactory
@@ -50,6 +48,10 @@ namespace OurMemory.Data.Infrastructure
         }
         public virtual void Delete(T entity)
         {
+            var entry = dataContext.Entry(entity);
+            if (entry.State == EntityState.Detached)
+                dbset.Attach(entity);
+
             dbset.Remove(entity);
         }
         public virtual void Delete(Expression<Func<T, bool>> where)

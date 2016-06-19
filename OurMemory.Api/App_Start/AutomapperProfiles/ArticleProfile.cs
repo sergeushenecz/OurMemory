@@ -15,7 +15,8 @@ namespace OurMemory.AutomapperProfiles
             Mapper.CreateMap<ArticleBindingModel, Article>().ForMember(dist => dist.Image, opt => opt.MapFrom(x => x.Image.ToRelativePath()));
 
             Mapper.CreateMap<Article, ArticleViewModel>()
-                .ForMember(dist => dist.Image, opt => opt.MapFrom(x => x.Image.ToAbsolutPath()));
+                .ForMember(dist => dist.Image, opt => opt.MapFrom(x => x.Image.ToAbsolutPath()))
+                .ForMember(x => x.CreatedDateTime, x => x.MapFrom(article => article.CreatedDateTime.ToString("yyyy-MM-dd hh:mm")));
 
             base.Configure();
         }

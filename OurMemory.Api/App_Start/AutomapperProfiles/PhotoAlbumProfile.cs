@@ -16,7 +16,7 @@ namespace OurMemory.AutomapperProfiles
 
             Mapper.CreateMap<PhotoAlbum, PhotoAlbumBindingModel>();
             Mapper.CreateMap<PhotoAlbumBindingModel, PhotoAlbum>();
-            Mapper.CreateMap<PhotoAlbum, PhotoAlbum>();
+            Mapper.CreateMap<PhotoAlbum, PhotoAlbum>().ForMember(x=>x.User,opt=>opt.Ignore());
 
             AutoMapper.Mapper.CreateMap<PhotoAlbum, PhotoAlbumViewModel>()
                 .ForMember(dist => dist.CountPhoto, opt => opt.MapFrom(x => x.Images.Count))
@@ -24,6 +24,7 @@ namespace OurMemory.AutomapperProfiles
 
             Mapper.CreateMap<PhotoAlbumBindingModel, PhotoAlbum>()
               .ForMember(dist => dist.Image, opt => opt.MapFrom(x => x.Image.ToRelativePath()))
+              .ForMember(x=>x.User,opt=>opt.Ignore())
               .AfterMap((photoAlbumBindingModel, photoAlbum) =>
               {
                   for (int i = 0; i < photoAlbum.Images.Count; i++)

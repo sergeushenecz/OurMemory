@@ -290,6 +290,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Common\Attributes\RolesAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -301,7 +302,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\CommnetHub.cs" />
-    <Compile Include="Interface1.cs" />
     <Compile Include="Migrations\201512051036052_Init.cs" />
     <Compile Include="Migrations\201512051036052_Init.Designer.cs">
       <DependentUpon>201512051036052_Init.cs</DependentUpon>
@@ -534,7 +534,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Common\" />
     <Folder Include="Content\Files\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -579,6 +578,9 @@
     <EmbeddedResource Include="Migrations\201512071745494_AddFieldViews.resx">
       <DependentUpon>201512071745494_AddFieldViews.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

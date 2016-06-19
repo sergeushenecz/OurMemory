@@ -8,8 +8,8 @@ namespace OurMemory.Data.Infrastructure
 
         public ApplicationDbContext Get()
         {
-            //return _dataContext ?? (_dataContext = new ApplicationDbContext());
-            return _dataContext = new ApplicationDbContext();
+            return _dataContext ?? (_dataContext = new ApplicationDbContext());
+            //return _dataContext = new ApplicationDbContext();
         }
         protected override void DisposeCore()
         {

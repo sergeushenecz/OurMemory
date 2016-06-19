@@ -5,6 +5,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
+using OurMemory.Common.Attributes;
+using OurMemory.Domain;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
@@ -14,7 +16,7 @@ using OurMemory.Service.Model;
 
 namespace OurMemory.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Roles(UserRoles.User, UserRoles.Administrator)]
     public class PhotoAlbumController : ApiController
     {
         private readonly IPhotoAlbumService _photoAlbumService;
@@ -45,10 +47,7 @@ namespace OurMemory.Controllers
 
             var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumWithImagesViewModel>(photoAlbum);
 
-            return Ok(new
-            {
-                Items = photoAlbumViewModel
-            });
+            return Ok(photoAlbumViewModel);
 
         }
         [Route("api/photoAlbum")]
@@ -114,12 +113,12 @@ namespace OurMemory.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            if (ModelState.IsValid && photoAlbumBindingModel.Id == photoAlbum.Id && userId == photoAlbum.User.Id)
+            if (ModelState.IsValid && photoAlbumBindingModel.Id == photoAlbum.Id && userId == photoAlbum.User.Id || User.IsInRole(UserRoles.Administrator))
             {
                 _imageService.DeleteImages(photoAlbum.Images);
-                PhotoAlbum album = Mapper.Map<PhotoAlbumBindingModel, PhotoAlbum>(photoAlbumBindingModel);
 
-                Mapper.Map(album, photoAlbum);
+                Mapper.Map(photoAlbumBindingModel, photoAlbum);
+
                 _photoAlbumService.UpdatePhotoAlbum(photoAlbum);
                 var photoAlbumViewModel = Mapper.Map<PhotoAlbum, PhotoAlbumWithImagesViewModel>(photoAlbum);
 
@@ -144,14 +143,15 @@ namespace OurMemory.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            if (album == null || album.Id != id || album.User.Id != userId) return BadRequest();
+            if (album != null && album.Id == id || album.User.Id == userId || User.IsInRole(UserRoles.Administrator))
+            {
+                album.IsDeleted = true;
+                _photoAlbumService.SavePhotoAlbum();
 
-            album.IsDeleted = true;
-            _photoAlbumService.SavePhotoAlbum();
+                return Ok();
+            }
 
-            return Ok();
-
-            return Ok();
+            return BadRequest();
         }
 
     }

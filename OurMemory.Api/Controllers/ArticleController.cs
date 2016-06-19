@@ -5,6 +5,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
+using OurMemory.Common.Attributes;
+using OurMemory.Domain;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
@@ -14,7 +16,7 @@ using OurMemory.Service.Model;
 
 namespace OurMemory.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Roles(UserRoles.User, UserRoles.Administrator)]
     public class ArticleController : ApiController
     {
         private readonly IArticleService _articleService;
@@ -130,10 +132,11 @@ namespace OurMemory.Controllers
             var arcticle = _articleService.GetById(articleBindingModel.Id);
             var userId = User.Identity.GetUserId();
 
-            if (ModelState.IsValid && articleBindingModel.Id == arcticle.Id && userId == arcticle.User.Id)
+            if (ModelState.IsValid && articleBindingModel.Id == arcticle.Id && userId == arcticle.User.Id || User.IsInRole(UserRoles.Administrator))
             {
-                Article mapVeteran = Mapper.Map<ArticleBindingModel, Article>(articleBindingModel);
-                Mapper.Map(mapVeteran, arcticle);
+
+                Mapper.Map(articleBindingModel, arcticle);
+
                 _articleService.UpdateArticle(arcticle);
 
                 var articleModified = Mapper.Map<Article, ArticleViewModel>(arcticle);
@@ -149,18 +152,24 @@ namespace OurMemory.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Route("api/article")]
+        [Route("api/article/{id}")]
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             var article = _articleService.GetById(id);
             var userId = User.Identity.GetUserId();
 
-            if (article == null || article.Id != id || article.User.Id != userId) return BadRequest();
+            if (article != null && article.Id == id && article.User.Id != userId ||
+                User.IsInRole(UserRoles.Administrator))
+            {
+                article.IsDeleted = true;
+                _articleService.SaveArticle();
 
-            article.IsDeleted = true;
-            _articleService.SaveArticle();
+                return Ok();
+            }
 
-            return Ok();
+            return BadRequest();
+
         }
     }
 }

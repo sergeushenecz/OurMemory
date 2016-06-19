@@ -5,6 +5,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
+using OurMemory.Common.Attributes;
+using OurMemory.Domain;
 using OurMemory.Domain.DtoModel;
 using OurMemory.Domain.DtoModel.ViewModel;
 using OurMemory.Domain.Entities;
@@ -17,7 +19,7 @@ namespace OurMemory.Controllers
     /// <summary>
     /// Work with veterans entity
     /// </summary>
-    [Authorize(Roles = "User")]
+    [Roles(UserRoles.User, UserRoles.Administrator)]
     public class VeteranController : ApiController
     {
         private readonly IVeteranService _veteranService;
@@ -133,11 +135,12 @@ namespace OurMemory.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            if (ModelState.IsValid && veteranBindingModel.Id == veteran.Id && userId == veteran.User.Id)
+            if (ModelState.IsValid && veteranBindingModel.Id == veteran.Id && userId == veteran.User.Id || User.IsInRole(UserRoles.Administrator))
             {
                 _imageVeteranService.DeleteImages(veteran.Images);
-                Veteran mapVeteran = Mapper.Map<VeteranBindingModel, Veteran>(veteranBindingModel);
-                Mapper.Map<Veteran, Veteran>(mapVeteran, veteran);
+
+                Mapper.Map(veteranBindingModel, veteran);
+               
                 _veteranService.UpdateVeteran(veteran);
 
                 var veteranModified = Mapper.Map<Veteran, VeteranViewModel>(veteran);
@@ -161,12 +164,15 @@ namespace OurMemory.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            if (veteran == null || veteran.Id != id || veteran.User.Id != userId) return BadRequest();
+            if (veteran != null && veteran.Id == id && veteran.User.Id == userId ||
+                User.IsInRole(UserRoles.Administrator))
+            {
+                veteran.IsDeleted = true;
+                _veteranService.SaveArticle();
+                return Ok();
+            }
 
-            veteran.IsDeleted = true;
-            _veteranService.SaveArticle();
-
-            return Ok();
+            return BadRequest();
         }
     }
 }

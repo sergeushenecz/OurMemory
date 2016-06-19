@@ -38,6 +38,11 @@ namespace OurMemory.Service.Services
         {
             Veteran veteran = _veteranRepository.GetById(id);
 
+            if (veteran == null)
+            {
+                return null;
+            }
+
             return !veteran.IsDeleted ? veteran : null;
         }
 
